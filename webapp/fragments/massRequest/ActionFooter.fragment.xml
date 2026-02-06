@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <Bar>
+        <contentRight>
+        <HBox visible="{parts:['CreateMassRequest>/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnVisibleActionFooter'}">
+            <Button text="{i18n>deleteRequest}" type="Emphasized" press="onDeleteDraftRequest" class="MM_BtnDefault" visible="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus','CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.fnVisibleDeleteDraft'}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>
+            <Button text="{i18n>saveRequestHeader}" type="Emphasized" press="onMU_saveRequestHeader" class="MM_BtnEmphasized" visible="{parts:['CreateMassRequest>/selectedMassRequestTab','CreateMassRequest>/RequestHeader/data/requestStatus','oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnVisibleMassSaveRequestHeader'}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>
+            <Button text="{i18n>saveMassUploadData}" type="Emphasized" press="onSaveMassUpload" class="MM_BtnEmphasized" visible="{parts:['CreateMassRequest>/selectedMassRequestTab',  'CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateMassRequest>/MassUpload/documentsRef/attachmentcount'], formatter:'.formatter.fnVisibleMassSave'}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>
+            <Button text="{i18n>submitRequest}" type="Emphasized" press="onSubmitRequest" class="MM_BtnEmphasized" visible="{parts:['CreateMassRequest>/selectedMassRequestTab',  'CreateMassRequest>/RequestHeader/data/requestStatus'], formatter:'.formatter.fnVisibleMassSubmit'}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>
+            
+            <!-- WF action Buttons -->
+            <Button text="{i18n>approveTask}" type="Emphasized" press="onApproveTask" class="MM_BtnEmphasized" visible="{CreateMassRequest>/ActionFooter/visibility/approve}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>
+            <Button text="{i18n>rejectTask}" type="Emphasized" press="onRejectTask" class="MM_BtnEmphasized" visible="{CreateMassRequest>/ActionFooter/visibility/reject}">
+            <layoutData>
+                <FlexItemData styleClass="sapUiTinyMarginEnd" />
+            </layoutData>
+            </Button>           
+       </HBox>
+       <HBox visible="{parts:['CreateMassRequest>/isUserRequestOwner', 'oAppModel>/userdetails/btpRoles', 'CreateMassRequest>/RequestHeader/data/requestStatus'], formatter:'.formatter.fnVisibleDeleteActionFooter'}">
+            <Button text="{i18n>deleteRequest}" type="Emphasized" press="onDeleteDraftRequest" class="MM_BtnDefault" visible="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus','CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.fnVisibleDeleteDraft'}"/>
+       </HBox>
+       </contentRight>
+    </Bar>
+</core:FragmentDefinition>

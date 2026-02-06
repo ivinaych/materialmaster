@@ -1,0 +1,77 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <Bar>
+        <!-- <contentLeft>
+            <Button icon="sap-icon://activities" text="{i18n>viewChanges}" tooltip="{i18n>changeLogSummary}" type="Default" class="MM_BtnDefault" press="fnClickReqChngLogSummary" visible="{parts:['CreateProject>/MaterialList/materialList','CreateProject>/selectedCreateProjectTab'], formatter:'.formatter.fnVisibleViewChanges'}"/>
+        </contentLeft> -->
+        <contentRight>
+        <HBox >
+            <HBox visible="{parts:['CreateProject>/MaterialList/materialList','CreateProject>/selectedCreateProjectTab'], formatter:'.formatter.fnVisibleViewChanges'}">
+                <Button icon="sap-icon://activities" text="{i18n>viewChanges}" tooltip="{i18n>changeLogSummary}" type="Default" class="MM_BtnDefault" press="fnClickReqChngLogSummary" />
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+            </HBox>
+            <HBox visible="{parts:['CreateProject>/GeneralData/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnVisibleActionFooter'}">
+                <Button text="{i18n>deleteRequest}" type="Default" press="onDeleteDraftRequest" class="MM_BtnDefault" visible="{parts:['CreateProject>/RequestHeader/data/requestStatus','CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.fnVisibleDeleteDraft'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>saveRequestHeader}" type="Emphasized" press="onsaveRequestHeader" class="MM_BtnEmphasized" visible="{parts:['CreateProject>/selectedCreateProjectTab' , 'CreateProject>/RequestHeader/data/requestStatus','oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnVisibleSaveRequestHeader'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>submitRequest}" type="Emphasized" press="onSubmitRequest" class="MM_BtnEmphasized" visible="{parts:['CreateProject>/selectedCreateProjectTab' , 'oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestStatus'], formatter:'.formatter.fnVisibleSubmitML'}" enabled="{parts:['CreateProject>/MaterialList/materialList'], formatter:'.formatter.fnEnableSubmitML'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+
+                <!-- WF action Buttons -->
+                <Button text="{i18n>reSubmit}" type="Emphasized" press="onReSubmissionTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/resubmit}" enabled="{parts:['CreateProject>/MaterialList/materialList'], formatter:'.formatter.fnEnable_Rework'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>cancel}" type="Emphasized" press="onCancelTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/resubmit}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>approveTask}" type="Emphasized" press="onApproveTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/approve}"  enabled="{parts:['oAppModel>/taskDetails/wfTaskType','CreateProject>/MaterialList/materialList','CreateProject>/RequestHeader/data/requestType'], formatter:'.formatter.fnEnable_Approve_ML'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>completeRequest}" type="Emphasized" press="fnShowDialogForOpenCasesWhenCompleteTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/complete}" enabled="{parts:['oAppModel>/taskDetails/wfTaskType','CreateProject>/MaterialList/materialList','CreateProject>/RequestHeader/data/requestType'], formatter:'.formatter.fnEnable_Complete_ML'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>rejectTask}" type="Emphasized" press="onRejectTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/reject}" enabled="{parts:['CreateProject>/MaterialList/materialList'], formatter:'.formatter.fnEnanle_Reject_ML'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>returnToRequestor}" type="Emphasized" press="onReturnToRequestorTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/returnToRequestor}" enabled="{parts:['CreateProject>/MaterialList/materialList'], formatter:'.formatter.fnEnable_ReturnToRequestor_ML'}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+                <Button text="{i18n>returnToGMDM}" type="Emphasized" press="onReturnToGMDMTask" class="MM_BtnEmphasized" visible="{CreateProject>/ActionFooter/visibility/returnToGMDM}">
+                <layoutData>
+                    <FlexItemData styleClass="sapUiTinyMarginEnd" />
+                </layoutData>
+                </Button>
+            </HBox>
+            <HBox visible="{parts:['CreateProject>/GeneralData/isUserRequestOwner', 'oAppModel>/userdetails/btpRoles', 'CreateProject>/RequestHeader/data/requestStatus'], formatter:'.formatter.fnVisibleDeleteActionFooter'}"> 
+                <Button text="{i18n>deleteRequest}" type="Default" press="onDeleteDraftRequest" class="MM_BtnDefault" visible="{parts:['CreateProject>/RequestHeader/data/requestStatus','CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.fnVisibleDeleteDraft'}"/>
+            </HBox>
+        </HBox>
+        </contentRight>
+    </Bar>
+</core:FragmentDefinition>

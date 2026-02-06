@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="11%" showHeader="true" id="id_copySystemDetails" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H5" titleStyle="H5" text="{i18n>copySystemDetails}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    	<core:Icon src="sap-icon://decline" class="size3" press="onCloseCopySystemDetails"></core:Icon>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <l:Grid defaultSpan="XL12 L12 M12 S12" binding="{MaterialDetails>/GeneralData}" class="MM_Grid">
+            <CheckBox text="{i18n>doYouWantToCopyThisDataTo} {parts:['MaterialDetails>copyToSystem', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'} {i18n>systemQues}" selected="{MaterialDetails>checkBoxSelected}" class="MM_CheckBox" wrapping="true"/>
+            </l:Grid>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>saveWithoutCopying}" type="Emphasized" class="MM_BtnEmphasized" press="onSaveWithoutCopying" visible="{path: 'MaterialDetails>/GeneralData/checkBoxSelected', formatter: '.formatter.saveWithoutCopyBtnVisible'}"></Button>
+                <Button text="{i18n>copyAndSave}" type="Emphasized" class="MM_BtnEmphasized" press="onCopyAndSave" visible="{path: 'MaterialDetails>/GeneralData/checkBoxSelected', formatter: '.formatter.saveAndCopyBtnVisible'}"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

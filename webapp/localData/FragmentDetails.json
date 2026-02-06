@@ -1,0 +1,138 @@
+{
+    "AddPlants": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddPlants",
+        "id": "id_AddPlants"
+    },
+    "AddNewPlants": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddNewPlant",
+        "id": "id_AddNewPlants"
+    },
+    "digitalSignature": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.digitalSignature",
+        "id": "id_digitalSignature"
+    },
+    "MD_MissingMandatoryField": {
+        "name": "com.viatris.materialmaster.fragments.materialDetails.MissingMandatoryFields",
+        "id": "id_MD_MissingMandatoryField"
+    },
+    "SyndicationError": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.SyndicationError",
+        "id": "idSAPerror"
+    },
+    "mandatoryField": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.mandatoryField",
+        "id": "id_mandatoryField"
+    },
+    "Repo_AdvanceSearch": {
+        "name": "com.viatris.materialmaster.fragments.repository.AdvanceSearch",
+        "id": "id_Repo_AdvanceSearch"
+    },
+    "ProductDataTree": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.ProductDataTree",
+        "id": "id_ProductData_Tree"
+    },
+    "Material_Desc": {
+        "name": "com.viatris.materialmaster.fragments.systemDetails.MaterialDescDialog",
+        "id": "id_Material_Desc"
+    },
+    "Material_BasicDataText": {
+        "name": "com.viatris.materialmaster.fragments.systemDetails.MaterialBasicDataTextDialog",
+        "id": "id_Material_BasicDataText"
+    },
+    "ApproveReject_Comments": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.ApproveRejectComments",
+        "id": "id_ApproveReject_Comments"
+    },
+    "Classification_AssignmentClass": {
+        "name": "com.viatris.materialmaster.fragments.materialDetails.AssignmentClass",
+        "id": "Classification_AssignmentClass"
+    },
+    "AddExistingMaterial": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddExistingMaterial",
+        "id": "id_addExistingMaterial"
+    },
+    "AddNewUOM": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddNewUOM",
+        "id": "id_AddNewUOM"
+    },
+    "AlternateIDTable": {
+        "name": "com.viatris.materialmaster.fragments.materialDetails.PD_AlternateID",
+        "id": "id_AlternateIDTable"
+    },
+    "CopyExistingMaterial": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.CopyExistingMaterial",
+        "id": "id_copyExistingMaterial"
+    },
+    "AddNewSystems": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddNewSystem",
+        "id": "id_AddNewSystems"
+    },
+    "AddNewAlternateID": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddNewAlternateId",
+        "id": "id_AddNewAlternateID"
+    },
+    "RequestManagement_AdvanceSearch": {
+        "name": "com.viatris.materialmaster.fragments.requestManagement.AdvanceSearch",
+        "id": "id_RequestManagement_AdvanceSearch"
+    },
+    "CopySystemDetails": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.CopySystemDetails",
+        "id": "id_copySystemDetails"
+    },
+    "SyndicateSystems": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.SyndicateSystems",
+        "id": "id_SystemsForSyndication"
+    },
+    "RequestManagement_DownloadData":{
+        "name": "com.viatris.materialmaster.fragments.requestManagement.DownloadData",
+        "id": "id_RequestManagement_DownloadData"
+    },
+    "Repository_DownloadData":{
+        "name": "com.viatris.materialmaster.fragments.repository.DownloadData",
+        "id": "id_Repository_DownloadData"
+    },
+    "Repo_Audit_Log_Download":{
+        "name": "com.viatris.materialmaster.fragments.repository.DownloadAuditLog",
+        "id": "id_Repo_DownloadAuditLog"
+    },
+    "WfTriggeredInfo":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.WfTriggeredInfo",
+        "id": "id_WfTriggeredInfo"
+    },
+    "WfValidationSummary":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.WfValidationSummary",
+        "id": "id_WfValidationSummary"
+    },
+    "AddNewCase":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.AddNewCase",
+        "id": "id_AddNewCase"
+    },
+    "DuplicateMaterial":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.DuplicateDialog",
+        "id": "id_DuplicateCheck"
+    },
+    "DocumentSystemStatus":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.document.DocumentSystemStatus",
+        "id": "id_DocumentSystemStatus"
+    },
+    "DocumentSyndicationSummary":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.document.DocumentSyndicationSummary",
+        "id": "id_DocumentSyndicationSummary"
+    },
+    "WfTriggeredInfoRepo":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.WfTriggeredInfoRepo",
+        "id": "id_WfTriggeredInfoRepo"
+    },
+    "SyndicationInfoRepo":{
+        "name": "com.viatris.materialmaster.fragments.Dialog.SyndicationInfoRepo",
+        "id": "id_SyndicationInfoRepo"
+    },
+    "changeLogSummary": {
+        "name": "com.viatris.materialmaster.fragments.Dialog.ChangeLogSummary",
+        "id": "id_changeLogSummary"
+    },
+    "requestChangeLogSummary": {
+        "name": "com.viatris.materialmaster.fragments.createProject.ChangeLogSummary",
+        "id": "id_RequestChangeLogSummary"
+    }
+}

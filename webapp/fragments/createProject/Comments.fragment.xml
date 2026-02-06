@@ -1,0 +1,93 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:u="sap.ui.unified"
+    xmlns:uiTable="sap.ui.table"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <!-- <Panel expandable="true" expanded="true" width="auto" binding="{docCommentModel>/documents}" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>documentsWithOpeningBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                    <Text emptyIndicatorMode="On" text="{docCommentModel>attachmentcount}" class="MM_Title"></Text>
+                    <Title text="{i18n>closingBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                </OverflowToolbar>
+            </headerToolbar>
+            <Toolbar class="MM_HideUnderline sapUiSmallMarginBeginEnd">
+                <Text text="{i18n>DocsInfo}" class=""></Text>
+                <ToolbarSpacer />
+                <u:FileUploader class="sapUiTinyMarginEnd MM_FileUploader" id="fileUploader" buttonText="Browse" buttonOnly="false" name="myFileUpload" change="UploadComplete" />
+                <Button text="{i18n>upload}" type="Emphasized" class="MM_BtnEmphasized" press="onUploadFileAttach"></Button>
+            </Toolbar>
+            <uiTable:Table rows="{docCommentModel>existingDoc}" selectionMode="None" class="MM_UiTable sapUiTinyMargin" >
+                <uiTable:columns>
+                    <uiTable:Column>
+                        <Label text="{i18n>fileName}" />
+                        <uiTable:template>
+                            <HBox>
+                                <main:Icon class="MM_IconColor sapUiTinyMarginEnd" name="{parts:['docCommentModel>documentType'], formatter:'.formatter.getDocumenticon'}"/>
+                                <Link text="{docCommentModel>documentName}" press="onDownloadDocumentFile" />
+                            </HBox>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="20%">
+                        <Label text="{i18n>Uploadedby}" />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>updatedBy}" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="15%">
+                        <Label text="{i18n>Uploadedon}" />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>updatedOn}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="7%">
+                        <Label text="{i18n>action}"/>
+                        <uiTable:template>
+                            <main:Icon class="MM_IconColor sapUiTinyMargin" name="sap-icon://delete" click="onDeleteDocument" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                </uiTable:columns>
+            </uiTable:Table>
+        </Panel> -->
+
+        <Panel expandable="true" expanded="true" width="auto" binding="{docCommentModel>/reqLevelComments}" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>commentsWithOpeningBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                    <Text emptyIndicatorMode="On" text="{docCommentModel>totalcomments}" class="MM_Title"></Text>
+                    <Title text="{i18n>closingBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                </OverflowToolbar >
+            </headerToolbar>
+
+            <FeedInput value="{docCommentModel>newComment}" post="onPostReqLevelComments" showIcon="false" placeholder="Enter a comment (Max-500 characters)" maxLength="500" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestStatus', 'CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateProject>/GeneralData/isUserRequestOwner', 'CreateMassRequest>/isUserRequestOwner'],formatter: '.formatter.fnReqCommentFeedInputEnable'}"/>
+            <!-- class="MM_FeedInput" -->
+
+            <uiTable:Table rows="{docCommentModel>existingComments}" selectionMode="None" class="MM_UiTable sapUiTinyMargin MM_UiTableCopy" visibleRowCount="5">
+                <uiTable:columns>
+                    <uiTable:Column>
+                        <Label text="{i18n>comment}" />
+                        <uiTable:template>
+                            <HBox>
+                                <Text text="{docCommentModel>comment}"/>
+                            </HBox>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="20%">
+                        <Label text="{i18n>commentedBy}" />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>commentedBy}" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="15%">
+                        <Label text="{i18n>time} {i18n>gmt} "/>
+                        <uiTable:template>
+                            <Text text="{docCommentModel>commentedOn}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                </uiTable:columns>
+            </uiTable:Table>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

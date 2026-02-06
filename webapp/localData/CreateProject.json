@@ -1,0 +1,158 @@
+{
+    "selectedCreateProjectTab": "requestHeader",
+    "productDataOutline": null,
+    "RequestHeader": {
+        "oldData": {
+            "requestNumber": null,
+            "requestDescription": "",
+            "requestTypeId": null,
+            "materialTypeId": null,
+            "requestSubTypeId": null,
+            "requestorOrganization": null,
+            "requestStatus": null,
+            "uiView": null,
+            "createdOn": "",
+            "createdBy": "",
+            "changedOn": "",
+            "changedBy": "",
+            "requestSource": "Request_Management"
+        },
+        "data": {},
+        "savedData": {},
+        "valueState": {},
+        "editable": {},
+        "valueStateMessage": {},
+        "childRequestDetails": {
+            "data": [],
+            "visible": false
+        }
+    },
+    "OrganizationalData": {
+        "selectedPlants": [],
+        "selectedPlantsCopy": [],
+        "searchedPlant": "",
+        "listofAllPlants": []
+    },
+    "MaterialList": {
+        "generalDetails": {
+            "oldValidationStatus": false,
+            "selectedPath": "",
+            "addBtnEnable": true,
+            "selectedMaterialDetailsTab": "ProductData",
+            "attributeListProdData": null
+        },
+        "materialList": [],
+        "visible": {
+            "MaterialDetails": false
+        },
+        "editable": {
+            "materialSearchOkBtnEditable": false
+        },
+        "existingMaterial": {
+            "materialNo": null,
+            "MaterialSearchHelpSet": [],
+            "checkBoxSelected": false,
+            "withReferenceFlag": false
+        },
+        "selectedMaterialData": {},
+        "RequestDetailList": [],
+        "fromSystemDetailsView": false
+    },
+    "DocComments": {
+        "docsCommentsFlagCreateProj": false,
+        "documents": {
+            "attachedDocument": {},
+            "searchDocument": "",
+            "existingDoc": []
+        },
+        "comments": {
+            "userComment": "",
+            "existingComments": [],
+            "newComment": ""
+        },
+        "reqLevelComments": {
+            "existingComments": [],
+            "newComment": ""
+        }
+    },
+    "requestChangeHistory": {
+        "historyDetails": []
+    },
+    "PaginationDetailsRequestChangeLog": {
+        "totalPages": 1,
+        "currentPage": 1,
+        "rowsPerPage": 10,
+        "selectRowsPerPage": 10,
+        "totalrecords": 0,
+        "totalPagesArray": [],
+        "trayDetails": {
+            "start": 1,
+            "end": 5
+        },
+        "inputValue": "",
+        "footerVisible": false,
+        "fromRequestMangementPage": true,
+        "possibleRowsPerPage": [
+            {
+                "key": 10
+            },
+            {
+                "key": 20
+            },
+            {
+                "key": 50
+            },
+            {
+                "key": 100
+            }
+        ]
+    },
+    "WorkflowDetails": {
+        "visibility": {
+            "showWorkflowDetailsTab": false,
+            "showWorkflowDetails": false,
+            "showChildRequestMessage": false,
+            "showNoWorkflowTasksMessage": false
+        },
+        "processDetails": {},
+        "tasksDetail": [],
+        "currentTaskInfo": {},
+        "workflowRequestor": "",
+        "workflowGetContextResponse": []
+    },
+    "eSign": {
+        "data": {},
+        "valueState": {}
+    },
+    "GeneralData": {
+        "wfApproverChainRecalculateForModify": {
+            "isToSplitRequests": true,
+            "isToUpdatedContext": false,
+            "resetContextData": {}
+        },
+        "SAPError": {
+            "errorList": [],
+            "errorFor": "system"
+        },
+        "isUserRequestOwner": false
+    },
+    "ActionFooter": {
+        "visibility": {}
+    },
+    "ActionFooterTemplate": {
+        "visibility": {
+            "resubmit": false,
+            "approve": false,
+            "complete": false,
+            "reject": false,
+            "returnToRequestor": false,
+            "returnToGMDM": false,
+            "cancel": false
+        }
+    },
+    "changeLogSummary": {
+        "changeLogSummaryList": [],
+        "lineNoMatNoLookup": [],
+        "selectedLineNoMatListId": null
+    }
+}

@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Panel expanded="true" expandable="true" class="MM_panel sapUiTinyMarginTop sapUiSizeCompact">
+        <headerToolbar>
+            <Toolbar>
+                <content>
+                    <Title text="{i18n>materialClassification}" class="MM_Title" />
+                    <!--<Button text="Save" press="onSaveClassification" visible="true"/>
+                    <Button text="Load Data" press="onLoadDataClassification" visible="true"/>-->
+                </content>
+            </Toolbar>
+        </headerToolbar>
+        <Table id="classificationTable" items="{MaterialDetails>/SystemDetails/Classification/classList}" noDataText="{i18n>NoDataAvailable}" alternateRowColors="true" class="" sticky="ColumnHeaders" showSeparators="None">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <content>
+                        <ToolbarSpacer />
+                        <Label text="{i18n>Class}" class="MM_Label" />
+                        <Input class="MM_InputText" maxLength="4" placeholder="{i18n>ClassType}" value="{MaterialDetails>/SystemDetails/Classification/Classtype}" editable="false" width="100px"/>
+
+                        <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onAddAssigmentClass" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemDetails/Classification/editClassification/isEditPerformed', 'MaterialDetails>/SystemDetails/Classification/editClassification/isNewAddedClass'],formatter: '.formatter.fnClassificationAddButtonEnable'}"/>
+                        <!-- {MaterialDetails>/SystemDetails/Classification/classificationItemEditable} -->
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column hAlign="Begin" width="20%">
+                    <Text text="{i18n>SAPClass}" class="" />
+                </Column>
+                <Column hAlign="Begin" width="70%">
+                    <Text text= "{i18n>Description}" class="" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text= "{i18n>action}" class="" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Navigation" press="onSelectClassification">
+                    <cells>
+                        <Text text="{MaterialDetails>classnum}" class="" />
+                    </cells>
+                    <cells>
+                        <Text text="{MaterialDetails>Descrption}" class=" " />
+                    </cells>
+                    <cells>
+                        <HBox class="MM_SpaceAround">
+                            <Button icon="sap-icon://edit" tooltip="{i18n>edit}" type="Default" class="MM_BtnDefault_No_Border" press="onEditAsgnmtClass" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemDetails/Classification/editClassification/isEditPerformed', 'MaterialDetails>/SystemDetails/Classification/editClassification/editSelectedClassNum', 'MaterialDetails>classnum', 'MaterialDetails>/SystemDetails/Classification/editClassification/isNewAddedClass'],formatter: '.formatter.fnClassificationEditEnability'}" visible="{parts:['MaterialDetails>classnum', 'MaterialDetails>/SystemData/targetSystem', 'LookupModel>/allowedClassList'],formatter: '.formatter.fnClassificationEditVisibility'}"/>
+                            <Button icon="sap-icon://delete" tooltip="{i18n>delete}" class="MM_BtnDefault_No_Border" press="onDeleteAsgnmtClass" enabled="{parts:['MaterialDetails>newlyAdded', 'oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner'],formatter: '.formatter.fnClassificationDeleteEnability'}"/>
+                            <!-- {MaterialDetails>/SystemDetails/Classification/classificationItemEditable} -->
+                        </HBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Panel>
+    <VBox id="MM_VBoxClassification" class ="sapUiMediumMarginTop">
+    </VBox>
+</core:FragmentDefinition>

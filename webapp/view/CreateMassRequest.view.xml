@@ -1,0 +1,50 @@
+<mvc:View controllerName="com.viatris.materialmaster.controller.CreateMassRequest"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
+	<Page showHeader="true" enableScrolling="false" class="MM_Page sapUiTinyMarginBottom">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="onGoBackMassRequest" class="MM_BtnDefault_noBorder" visible="{parts:['oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnCreateProjectBackBtn'}"/>
+					<Title level="H5" titleStyle="H5" text="{i18n>requestNo} {CreateMassRequest>/RequestHeader/data/requestNumber}" class="MM_Title"/>
+				</contentLeft>
+			</Bar>
+		</customHeader>
+		<content>
+			<IconTabBar stretchContentHeight="true" backgroundDesign="Transparent" headerMode="Inline" applyContentPadding="false" expanded="{device>/isNoPhone}" expandable="false" class="MM_IconTabBar" selectedKey="{CreateMassRequest>/selectedMassRequestTab}"  select="onPressIconTabBar">
+				<items>
+					<IconTabFilter icon="sap-icon://notes" text="{i18n>requestHeader}" key="requestHeader" class="MM_IconTabFilter">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.massRequest.RequestHeader" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://excel-attachment" text="{i18n>massUpload}" key="massUpload"  enabled="{parts:['CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.massRequest.MassUpload" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+					<!-- <IconTabFilter icon="sap-icon://comment" text="{i18n>reqComments}" key="docsComments"  enabled="{parts:['CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.DocsComments" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter> -->
+					<IconTabFilter icon="sap-icon://comment" text="{i18n>reqComments}" key="comments" enabled="{parts:['CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.Comments" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://workflow-tasks" text="{i18n>workflowDetails}" key="workflowDetails" enabled="{parts:['CreateMassRequest>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}" visible="{= ${CreateMassRequest>/RequestHeader/data/requestStatus} === 1 || ${CreateMassRequest>/RequestHeader/data/requestStatus} === '1' ? false : true}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.massRequest.MassWorkflowDetails" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<core:Fragment fragmentName="com.viatris.materialmaster.fragments.massRequest.ActionFooter" type="XML"/>
+		</footer>
+	</Page>
+</mvc:View>

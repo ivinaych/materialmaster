@@ -1,0 +1,181 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+    <VBox >
+        <VBox binding="{MaterialDetails>/OrganizationalData}">
+            <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom">
+                <headerToolbar>
+                    <OverflowToolbar style="Clear">
+                        <Title text="{i18n>Org_Data}" />
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <Toolbar class="MM_HideUnderline">
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" text="{i18n>Add}" type="Default" visible="{MaterialDetails>/OrganizationalData/buttonVisibility/addPlant}" enabled="{MaterialDetails>/OrganizationalData/buttonVisibility/addPlant}" class="MM_BtnDefault_No_Border" press="onClickAddNewPlant"/>
+                    </Toolbar>
+                    <Table items="{MaterialDetails>selectedPlants}" noDataText="{i18n>Noplantsavailable}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                        <columns>
+                            <Column hAlign="Begin" width="10%">
+                                <Text text="{i18n>included}"/>
+                            </Column>
+                            <Column hAlign="Begin" width="10%">
+                                <Text text="{i18n>Plant}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>Plantdesc}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>system}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>profitCenter}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>batchManagement}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>plantSpecificMatStatus}"/>
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>plantActive}"/>
+                            </Column>
+                            <Column hAlign="Begin" visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnSetVisibleReqSysStatusCol'}">
+                                <Text text="{i18n>reqPlantSyndicationStatus}"/>
+                            </Column>
+                            <Column hAlign="Begin" visible="{parts:['oAppModel>/sideNavigation/currentView', 'CreateProject>/RequestHeader/data/requestType'], formatter: '.formatter.fnSetVisibleRepoStatus'}">
+                                <Text text="{parts: ['oAppModel>/sideNavigation/currentView'], formatter: '.formatter.fnGetLabelNameForRepoPlantStatus'}"/>
+                            </Column>
+                            <Column hAlign="Begin" width="10%">
+                                <Text text="{i18n>action}"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <CheckBox selected="{MaterialDetails>isIncluded}" enabled="{parts: [{value: 'isIncluded'},{path: 'MaterialDetails>/OrganizationalData/buttonVisibility/excludePlant'},{path: 'MaterialDetails>/OrganizationalData/plantListForRequestSpecificModify'},{path: 'MaterialDetails>MM_PLANT_ID'},{path: 'LookupModel>/MM_PLANT_REF_LIST'},{path: 'MaterialDetails>requestPlantStatus'},{path: 'MaterialDetails>repositoryPlantStatusId'}, {path: 'oAppModel>/taskDetails/wfTaskType'}, {path: 'Repository>/MaterialSelected/repoSubmitFor'}, {path: 'MaterialDetails>isIncluded'}], formatter: '.formatter.fnHandleEnableForPlantData'}" select="fnToExcludeOrgData"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>MM_PLANT_ID', 'LookupModel>/MM_PLANT_REF_LIST'],formatter: '.formatter.getPlantIdCode'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>MM_PLANT_ID', 'LookupModel>/MM_PLANT_REF_LIST'],formatter: '.formatter.getPlantDescText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>profitCenterId}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Switch state="{MaterialDetails>batchManagement}" customTextOn="{i18n>SwitchAction_Yes}" customTextOff="{i18n>SwitchAction_No}" enabled="false"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts: ['MaterialDetails>plantSpecificMatStatus', 'MaterialDetails>systemId', 'LookupModel>/oDataLookups'], formatter: '.formatter.getPlantSpecificMatStatusText'}"/>
+                                </cells>
+                                <!-- <cells>
+                                    <Text text="{parts: ['MaterialDetails>plantActive', 'LookupModel>/plantActiveStatus'], formatter: '.formatter.getPlantActiveStatusText'}"/>
+                                </cells> -->
+                                <cells>
+                                    <Text text="{parts: ['MaterialDetails>MM_PLANT_ID', 'LookupModel>/MM_PLANT_REF_LIST', 'LookupModel>/plantActiveStatus'], formatter: '.formatter.fnGetPlantActiveStatusText'}"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestPlantStatus', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>repositoryPlantStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <OverflowToolbar class="MM_OverflowToolbar">
+                                        <OverflowToolbarButton icon="sap-icon://edit" text="{i18n>edit}" tooltip="{i18n>edit}" class="MM_OverflowBtn" visible= "{MaterialDetails>/OrganizationalData/buttonVisibility/editPlant}" enabled="{parts: [{value: 'editPlant'}, {path:'MaterialDetails>/OrganizationalData/buttonVisibility/editPlant'}, {path:'MaterialDetails>/OrganizationalData/plantListForRequestSpecificModify'}, {path:'MaterialDetails>MM_PLANT_ID'}, {path:'LookupModel>/MM_PLANT_REF_LIST'}, {path:'MaterialDetails>requestPlantStatus'}, {path: 'MaterialDetails>repositoryPlantStatusId'}, {path:'oAppModel>/taskDetails/wfTaskType'}, {path: 'Repository>/MaterialSelected/repoSubmitFor'}, {path: 'MaterialDetails>isIncluded'} ], formatter: '.formatter.fnHandleEnableForPlantData'}" press="onClickEditPlant"/>
+                                        <OverflowToolbarButton icon="sap-icon://delete" text="{i18n>delete}" tooltip="{i18n>delete}" class="MM_OverflowBtn" visible="{MaterialDetails>/OrganizationalData/buttonVisibility/deletePlant}" enabled="{parts: [{value: 'deletePlant'}, {path:'MaterialDetails>/OrganizationalData/buttonVisibility/deletePlant'}, {path:'MaterialDetails>/OrganizationalData/plantListForRequestSpecificModify'}, {path:'MaterialDetails>MM_PLANT_ID'}, {path:'LookupModel>/MM_PLANT_REF_LIST'}, {path:'MaterialDetails>requestPlantStatus'}, {path: 'MaterialDetails>repositoryPlantStatusId'}, {path:'oAppModel>/taskDetails/wfTaskType'}, {path: 'Repository>/MaterialSelected/repoSubmitFor'}, {path: 'MaterialDetails>isIncluded'}], formatter: '.formatter.fnHandleEnableForPlantData'}" press="onDeletePlant"/>
+                                    </OverflowToolbar>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
+        </VBox>
+        <VBox binding="{MaterialDetails>/SystemData}">
+            <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom">
+                <headerToolbar>
+                    <OverflowToolbar style="Clear">
+                        <Title text="{i18n>systemdata}" />
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <Toolbar class="MM_HideUnderline">
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" text="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onClickAddSystemData" visible="{MaterialDetails>/SystemData/buttonVisibility/addSystem}"/>
+                    </Toolbar>
+                    <Table items="{MaterialDetails>selectedSystems}" noDataText="{i18n>noSystemAdded}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                        <columns>
+                            <Column hAlign="Begin" width="10%" visible="{parts:['oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType'],formatter: '.formatter.fnVisible_SystemInclude'}">
+                                <Text text="{i18n>included}"/>
+                            </Column>
+                            <Column hAlign="Begin" width="25%">
+                                <Text text="{i18n>system}" class=""/>
+                            </Column>
+                            <Column hAlign="Begin" width="20%" visible="{parts:['CreateProject>/RequestHeader/data/requestType', 'oAppModel>/taskDetails/wfTaskType'],formatter: '.formatter.markForSyndicationVisibility'}">
+                                <Text text="{i18n>markForSyndication}" class="" />
+                            </Column>
+                            <Column hAlign="Begin" width="25%">
+                                <Text text="{i18n>targetSystemMaterialId}" class=""/>
+                            </Column>
+                            <Column hAlign="Begin" width="25%">
+                                <Text text="{i18n>targetSystemMaterialTypeId}" class=""/>
+                            </Column>
+                            <Column hAlign="Begin" width="25%" visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnSetVisibleReqSysStatusCol'}">
+                                <Text text="{i18n>reqSystemSyndicationStatus}" class=""/>
+                            </Column>
+                            <Column hAlign="Begin" width="25%" visible="{parts:['oAppModel>/sideNavigation/currentView', 'CreateProject>/RequestHeader/data/requestType'], formatter: '.formatter.fnSetVisibleRepoStatus'}">
+                                <Text text="{parts: ['oAppModel>/sideNavigation/currentView'], formatter: '.formatter.fnGetLabelNameForRepoSystemStatus'}"/>
+                            </Column>
+                            <Column hAlign="Begin" width="30%">
+                                <Text text="{i18n>action}"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <CheckBox selected="{MaterialDetails>isIncluded}" select="onPressExcludeSystem" enabled="{parts:[{value: 'isIncluded'},{path : 'MaterialDetails>/SystemData/buttonVisibility/excludeSystem'},{path : 'MaterialDetails>/SystemData/systemListForRequestSpecificModify'},{path : 'MaterialDetails>MM_SYSTEM_ID'},{path :  'MaterialDetails>requestSystemStatusId'}, {path: 'MaterialDetails>repositorySystemStatusId'}, {path : 'oAppModel>/taskDetails/wfTaskType'}],formatter: '.formatter.fnHandleEnableforSystemData'}"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>MM_SYSTEM_ID', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Switch state="{MaterialDetails>markForSyndication}" customTextOn="{i18n>SwitchAction_Yes}" customTextOff="{i18n>SwitchAction_No}" change="fnChangeMarkforSyncFlag" enabled="{parts:['MaterialDetails>requestSystemStatusId'],formatter: '.formatter.markForSyndicationEnability'}"/>
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>MM_TARGET_SYSTEM_MATERIAL_ID}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>MM_TARGET_SYSTEM_MATERIAL_TYPE_ID', 'LookupModel>/materialType'], formatter:'.formatter.getMaterialTypetext'}" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestSystemStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>repositorySystemStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <OverflowToolbar class="MM_OverflowToolbar">
+                                        <OverflowToolbarButton icon="sap-icon://edit" text="{i18n>edit}" tooltip="{i18n>edit}" class="MM_OverflowBtn" press="onClickEditSystem" visible="{MaterialDetails>/SystemData/buttonVisibility/editSystem}" enabled="{parts:[{value: 'editSystem'} ,{path: 'MaterialDetails>/SystemData/buttonVisibility/editSystem'},{path : 'MaterialDetails>/SystemData/systemListForRequestSpecificModify' },{path : 'MaterialDetails>MM_SYSTEM_ID'},{path : 'MaterialDetails>requestSystemStatusId'},{path: 'MaterialDetails>repositorySystemStatusId'}, {path : 'oAppModel>/taskDetails/wfTaskType'}],formatter: '.formatter.fnHandleEnableforSystemData'}"/>
+                                        <OverflowToolbarButton icon="sap-icon://delete" text="{i18n>delete}" tooltip="{i18n>delete}" class="MM_OverflowBtn" press="onDeleteSystem" visible="{MaterialDetails>/SystemData/buttonVisibility/deleteSystem}" enabled="{parts:[{value: 'deleteSystem'} ,{path : 'MaterialDetails>/SystemData/buttonVisibility/deleteSystem'},{path : 'MaterialDetails>/SystemData/systemListForRequestSpecificModify'},{path : 'MaterialDetails>MM_SYSTEM_ID'},{path : 'MaterialDetails>requestSystemStatusId'},{path: 'MaterialDetails>repositorySystemStatusId'}, {path : 'oAppModel>/taskDetails/wfTaskType'}],formatter: '.formatter.fnHandleEnableforSystemData'}"/>
+                                        <Button text="{i18n>viewBasicData}" tooltip="{i18n>viewBasicData}" press="onClickViewBasicData" class="MM_BtnDefault" />
+                                    </OverflowToolbar>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                </content>
+            </Panel>
+        </VBox>
+
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,119 @@
+{
+    "selectedMassRequestTab": "requestHeader",
+    "RequestHeader": {
+        "oldData": {
+            "requestNumber": null,
+            "requestDescription": "",
+            "requestTypeId": null,
+            "materialTypeId": null,
+            "requestStatus": null,
+            "uiView": null,
+            "createdOn": "",
+            "createdBy": "",
+            "changedOn": "",
+            "changedBy": "",
+            "requestSource": "Mass_Request"
+        },
+        "data": {},
+        "savedData": {},
+        "valueState": {},
+        "editable": {},
+        "valueStateMessage": {}
+    },
+    "MassUpload": {
+        "templateRef": {
+            "uiView": null,
+            "attributesList": [],
+            "systemId": null,
+            "syndicationState": true
+        },
+        "documentsRef": {
+            "uploadedDocs": {},
+            "documentsList": []
+        },
+        "massRequestReUpload": false
+    },
+    "DocComments": {
+        "documents": {
+            "attachedDocument": {},
+            "searchDocument": "",
+            "existingDoc": []
+        },
+        "comments": {
+            "userComment": "",
+            "existingComments": []
+        },
+        "reqLevelComments": {
+            "existingComments": [],
+            "newComment": ""
+        }
+    },
+   
+    "WorkflowDetails": {
+        "processDetails": {},
+        "taskDetails": [],
+        "currentTaskInfo": {}
+    },
+    "ActionFooter": {
+        "visibility": {
+            "approve": false,
+            "reject": false
+        }
+    },
+    "MassUploadMandFields": {
+        "MassUploadMandFieldsMapping": [
+            {
+                "uiView": "",
+                "isMandAttributes": true,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Product_Data",
+                "isMandAttributes": true,
+                "isMandSystem": false
+            },
+            {
+                "uiView": "Basic_Data_1",
+                "isMandAttributes": true,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Basic_Data_2",
+                "isMandAttributes": true,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Add_Data_Desc",
+                "isMandAttributes": false,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Add_Data_Basic_Data_Text",
+                "isMandAttributes": false,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Alternate_Id",
+                "isMandAttributes": false,
+                "isMandSystem": false
+            },
+            {
+                "uiView": "Add_Data_Units_Of_Measure",
+                "isMandAttributes": true,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "Plant_Data",
+                "isMandAttributes": false,
+                "isMandSystem": true
+            },
+            {
+                "uiView": "System_Data",
+                "isMandAttributes": false,
+                "isMandSystem": true
+            }
+        ],
+        "valueState": {},
+        "isUserRequestOwner": false
+    }
+}

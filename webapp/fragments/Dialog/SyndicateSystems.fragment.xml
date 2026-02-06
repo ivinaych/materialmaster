@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="20%" horizontalScrolling="false" draggable="true" title="{i18n>systemsForSyndication}" class="MM_FragmentHeader" id="id_SystemsForSyndication">
+        <List items="{path: 'MaterialDetails>/GeneralData/systemsForSyndication', sorter: { path: 'toBeSyndicated', group: true , descending: true}}">
+            <StandardListItem title="{parts:['MaterialDetails>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" icon="sap-icon://begin" class=""/>
+        </List>
+        <buttons>
+            <Button text="{i18n>close}" press="onCloseSystemsForSync" class="MM_BtnDefault"></Button>
+            <Button text="{i18n>okText}" press="onOkSystemsForSyndication" type="Emphasized" class="MM_BtnEmphasized"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

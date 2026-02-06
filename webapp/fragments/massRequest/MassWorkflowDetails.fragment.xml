@@ -1,0 +1,95 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <VBox>
+            <OverflowToolbar class="MM_OverflowToolbar">
+                <Title text="{i18n>processDetails}" class="MM_Title sapUiSmallMarginBeginEnd" level="H5" titleStyle="H5"></Title>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://refresh" type="Default" tooltip= "{i18n>refresh}" press="onRefreshMassWorkflow" class="MM_BtnDefault"/>
+            </OverflowToolbar>
+            <Panel width="auto" class="MM_panel sapUiSmallMarginBeginEnd" binding="{CreateMassRequest>/WorkflowDetails/processDetails}">
+                <content>
+                    <HBox class="MM_MaterialDetailHeaderPanel">
+                        <VBox>
+                            <Label text="{i18n>requestNumber}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateMassRequest>businessKey}" class=""/>
+                        </VBox>
+                        <VBox >
+                            <Label text="{i18n>processName}" class="MM_NotificationLabel"/>
+                            <Text text="{parts:['CreateMassRequest>/RequestHeader/data/requestType', 'LookupModel>/massRequestRequestType'],formatter: '.formatter.getRequestTypetext'}" class="" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>status}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateMassRequest>status}" class=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>startedAt}" class="MM_NotificationLabel"/>
+                            <!-- <Text text="{CreateMassRequest>startedAt}" class=""/> -->
+                            <Text text="{path: 'CreateMassRequest>startedAt', formatter:'.formatter.onGetDateFormat'}" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>startedBy}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateMassRequest>startedBy}" class=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>completedAt}" class="MM_NotificationLabel"/>
+                            <!-- <Text text="{CreateProject>completedAt}" class=""/> -->
+                            <Text text="{path: 'CreateMassRequest>completedAt', formatter:'.formatter.onGetDateFormat'}" />
+                        </VBox>
+
+                    </HBox>
+                </content>
+            </Panel>
+        </VBox>
+        <VBox>
+            <Title text="{i18n>taskDetails}" class="MM_Title sapUiSmallMarginBeginEnd sapUiSmallMarginTop" level="H5" titleStyle="H5"></Title>
+            <VBox class="sapUiSmallMarginBeginEnd MM_TableContainer">
+                <Table items="{CreateMassRequest>/WorkflowDetails/taskDetails}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>taskName}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>taskOwners}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>status}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdAt}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>dueDate}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>completedAt}" class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press="">
+                            <cells>
+                                <Text text="{parts:['CreateMassRequest>description'], formatter: '.formatter.geti18nName'}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{CreateMassRequest>processor}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{CreateMassRequest>status}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateMassRequest>createdAt', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateMassRequest>dueDate', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateMassRequest>completedAt', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

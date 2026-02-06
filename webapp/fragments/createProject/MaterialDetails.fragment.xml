@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <IconTabBar selectedKey="{CreateProject>/MaterialList/selectedMaterialDetailsTab}" backgroundDesign="Transparent" headerMode="Inline" applyContentPadding="false" expanded="{device>/isNoPhone}" expandable="false" class="MM_IconTabBarMD sapUiResponsiveContentPadding" select="onMaterialDetailsTabSelection" >
+        <items>
+            <IconTabFilter text="{i18n>productData}" key="ProductData">
+                <core:Fragment fragmentName="com.viatris.materialmaster.fragments.materialDetails.ProductData" type="XML"/>
+            </IconTabFilter>
+            <IconTabFilter text="{i18n>SystemAndOrgData}" key="Org_Data">
+                <core:Fragment fragmentName="com.viatris.materialmaster.fragments.materialDetails.OrganizationalData" type="XML" />
+            </IconTabFilter>
+            <IconTabFilter text="{parts:['oAppModel>/sideNavigation/currentView','i18n>matDocuemntsCommentsAndCases','i18n>matDocumentsAndComments'], formatter:'.formatter.handleMaterialDocumentCommentCaseTabName'}" key="docsComments" visible="{parts:['CreateProject>/MaterialList/selectedMaterialData/materialListId','oAppModel>/sideNavigation/currentView'], formatter:'.formatter.tabVisibilityDocsComments'}">
+                <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.DocsComments" type="XML" class="MM_ContentScrollable" />
+            </IconTabFilter>
+            <IconTabFilter text="{i18n>materialChangeHistory}" key="MaterialChangeHistory">
+                <core:Fragment fragmentName="com.viatris.materialmaster.fragments.materialDetails.MaterialChangeHistory" type="XML"/>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

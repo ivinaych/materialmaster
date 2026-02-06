@@ -1,0 +1,482 @@
+{
+    "ProductData": {},
+    "ProductDataStatic": {
+        "alternateID": {
+            "selectedIDs": [],
+            "selectedIDsCopy": [],
+            "addNewID": {},
+            "selectedPath": "",
+            "searchedID": "",
+            "listofAllIDs": [],
+            "newIDData": {
+                "materialList": "",
+                "Alternate_ID_Type": "",
+                "Alternate_ID_Type_Country": "",
+                "Field_Value": "",
+                "isDeleted": false,
+                "alternateId": null,
+                "scenario": null
+            },
+            "alternateIDBtns": {
+                "visible": false
+            }
+        },
+        "TreeData": {
+            "TreeFields": [],
+            "TreeField_Objects": [],
+            "CurrentTree": {
+                "headerName": "",
+                "fieldName": "",
+                "selectedNodeID": {
+                    "nodeId": null,
+                    "nodeText": null,
+                    "nodeKey": null,
+                    "nodeFullPath": null
+                },
+                "lookupData": []
+            }
+        }
+    },
+    "OrganizationalData": {
+        "selectedPlants": [],
+        "selectedPlantsCopy": [],
+        "selectedPath": "",
+        "searchedPlant": "",
+        "addPlantClicked": false,
+        "editPlantClicked": false,
+        "listofAllPlants": [],
+        "plantListForRequestSpecificModify": [],
+        "newPlantData": {
+            "isIncluded": true,
+            "salesOrg": "",
+            "wareHouse": "",
+            "costing": "",
+            "isSapSyndicated": false,
+            "batchManagement": true,
+            "batchManagementBtnEnability": false,
+            "targetSystemBtnEditability": false,
+            "plantStatus": 1,
+            "plantActive": null
+        },
+        "buttonVisibility": {
+            "addPlant": false,
+            "editPlant": false,
+            "excludePlant": false,
+            "deletePlant": false
+        },
+        "addNewPlant": {
+            "valueState": {}
+        }
+    },
+    "SystemData": {
+        "systemListForRequestSpecificModify": [],
+        "targetSystem": null,
+        "selectedSystems": [],
+        "selectedSystemsCopy": [],
+        "selectedPath": "",
+        "searchedSystem": "",
+        "listofAllSystems": [],
+        "listOfSystems": [],
+        "newSystemDataTemplate": {
+            "isIncluded": true,
+            "materialNumber": null,
+            "markForSyndication": false,
+            "MM_SYSTEM_ID": null,
+            "MM_TARGET_SYSTEM_MATERIAL_ID": null,
+            "MM_TARGET_SYSTEM_MATERIAL_TYPE_ID": null,
+            "scenario": null,
+            "requestSystemStatusId": 1,
+            "repositorySystemStatusId": null,
+            "valueState": {
+                "MM_SYSTEM_ID": "None"
+            }
+        },
+        "buttonVisibility": {
+            "addSystem": false,
+            "editSystem": false,
+            "excludeSystem": false,
+            "deleteSystem": false
+        },
+        "BasicData1BaseUom": {}
+    },
+    "SystemDetails": {
+        "basicData1": {
+            "generalData": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_INDUSTRY_SECTOR_MARA_MBRSH": false,
+                    "MM_BASE_UNIT_OF_MEASURE_MARM_MEINS": false,
+                    "MM_MATERIAL_GROUP_MARA_MATKL": false,
+                    "MM_OLD_MATERIAL_NUMBER_MARA_BISMT": false,
+                    "MM_DIVISION_MARA_SPART": false,
+                    "MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR": false,
+                    "MM_PRODUCT_ALLOCATION_MARA_KOSCH": false,
+                    "MM_PRODUCT_HIERARCHY_MARA_PRDHA": false,
+                    "MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE": false,
+                    "MM_VALID_FROM_MARA_DATAB": false,
+                    "MM_ASSIGN_EFFECT_VALS_MARA_KZEFF": false,
+                    "MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA": false,
+                    "MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG": false
+                },
+                "editable": {
+                    "MM_INDUSTRY_SECTOR_MARA_MBRSH": false,
+                    "MM_BASE_UNIT_OF_MEASURE_MARM_MEINS": false,
+                    "MM_MATERIAL_GROUP_MARA_MATKL": false,
+                    "MM_OLD_MATERIAL_NUMBER_MARA_BISMT": false,
+                    "MM_DIVISION_MARA_SPART": false,
+                    "MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR": false,
+                    "MM_PRODUCT_ALLOCATION_MARA_KOSCH": false,
+                    "MM_PRODUCT_HIERARCHY_MARA_PRDHA": false,
+                    "MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE": false,
+                    "MM_VALID_FROM_MARA_DATAB": false,
+                    "MM_ASSIGN_EFFECT_VALS_MARA_KZEFF": false,
+                    "MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA": false,
+                    "MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG": false
+                }
+            },
+            "shippingData": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_TRANSPORTATION_GROUP_MARA_TRAGR": false
+                },
+                "editable": {
+                    "MM_TRANSPORTATION_GROUP_MARA_TRAGR": false
+                }
+            },
+            "matAuthGroup": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_AUTHORIZATION_GROUP_MARA_BEGRU": false
+                },
+                "editable": {
+                    "MM_AUTHORIZATION_GROUP_MARA_BEGRU": false
+                }
+            },
+            "dimensionsEans": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_GROSS_WEIGHT_MARA_BRGEW": false,
+                    "MM_WEIGHT_UNIT_MARM_GEWEI": false,
+                    "MM_NET_WEIGHT_MARA_NTGEW": false,
+                    "MM_VOLUME_MARM_VOLUM": false,
+                    "MM_VOLUME_UNIT_MARM_VOLEH": false,
+                    "MM_SIZE_DIMENSIONS_MARA_GROES": false,
+                    "MM_EAN_UPC_MARA_EAN11": false,
+                    "MM_EAN_CATEGORY_MARA_NUMTP": false
+                },
+                "editable": {
+                    "MM_GROSS_WEIGHT_MARA_BRGEW": false,
+                    "MM_WEIGHT_UNIT_MARM_GEWEI": false,
+                    "MM_NET_WEIGHT_MARA_NTGEW": false,
+                    "MM_VOLUME_MARM_VOLUM": false,
+                    "MM_VOLUME_UNIT_MARM_VOLEH": false,
+                    "MM_SIZE_DIMENSIONS_MARA_GROES": false,
+                    "MM_EAN_UPC_MARA_EAN11": false,
+                    "MM_EAN_CATEGORY_MARA_NUMTP": false
+                }
+            },
+            "packagingMatData": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_MATL_GRP_PACK_MATLS_MARA_MAGRV": false,
+                    "MM_REF_MAT_FOR_PCKG_MARA_RMATP": false
+                },
+                "editable": {
+                    "MM_MATL_GRP_PACK_MATLS_MARA_MAGRV": false,
+                    "MM_REF_MAT_FOR_PCKG_MARA_RMATP": false
+                }
+            },
+            "advTrackTrace": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE": false,
+                    "MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF": false,
+                    "MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT": false,
+                    "MM_SYNCHRONIZATION_ACTIVE_MARA_STTPEC_SYNCACT": false,
+                    "MM_LAST_SYNCHRONIZED_MARA_DATS": false
+                },
+                "editable": {
+                    "MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE": false,
+                    "MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF": false,
+                    "MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT": false,
+                    "MM_SYNCHRONIZATION_ACTIVE_MARA_STTPEC_SYNCACT": false,
+                    "MM_LAST_SYNCHRONIZED_MARA_DATS": false
+                }
+            }
+        },
+        "basicData2": {
+            "otherData": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH": false,
+                    "MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT": false,
+                    "MM_IND_DESCRIPTION_MARA_NORMT": false,
+                    "MM_CAD_INDICATOR_MARA_CADKZ": false,
+                    "MM_BASIC_MATERIAL_MARA_WRKST": false,
+                    "MM_MEDIUM_MARA_MEDIUM": false
+                },
+                "editable": {
+                    "MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH": false,
+                    "MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT": false,
+                    "MM_IND_DESCRIPTION_MARA_NORMT": false,
+                    "MM_CAD_INDICATOR_MARA_CADKZ": false,
+                    "MM_BASIC_MATERIAL_MARA_WRKST": false,
+                    "MM_MEDIUM_MARA_MEDIUM": false
+                }
+            },
+            "environment": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_DG_INDICATOR_PROFILE_MARA_PROFL": false,
+                    "MM_ENVIRONMENTALLY_RELEVANT_MARA_KZUMW": false,
+                    "MM_IN_BULK_LIQUID_MARA_ILOOS": false,
+                    "MM_HIGHLY_VISCOS_MARA_IHIVI": false
+                },
+                "editable": {
+                    "MM_DG_INDICATOR_PROFILE_MARA_PROFL": false,
+                    "MM_ENVIRONMENTALLY_RELEVANT_MARA_KZUMW": false,
+                    "MM_IN_BULK_LIQUID_MARA_ILOOS": false,
+                    "MM_HIGHLY_VISCOS_MARA_IHIVI": false
+                }
+            },
+            "designDocAssigned": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_NO_LINK": false
+                },
+                "editable": {
+                    "MM_NO_LINK": false
+                }
+            },
+            "designdrawing": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_DOCUMENT_MARA_ZEINR": false,
+                    "MM_DOCUMENT_TYPE_MARA_ZEIAR": false,
+                    "MM_DOCUMENT_VERSION_MARA_ZEIVR": false,
+                    "MM_PAGE_NUMBER_MARA_BLATT": false,
+                    "MM_DOC_CH_NO_MARA_AESZN": false,
+                    "MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO": false,
+                    "MM_NO_SHEETS_MARA_BLANZ": false
+                },
+                "editable": {
+                    "MM_DOCUMENT_MARA_ZEINR": false,
+                    "MM_DOCUMENT_TYPE_MARA_ZEIAR": false,
+                    "MM_DOCUMENT_VERSION_MARA_ZEIVR": false,
+                    "MM_PAGE_NUMBER_MARA_BLATT": false,
+                    "MM_DOC_CH_NO_MARA_AESZN": false,
+                    "MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO": false,
+                    "MM_NO_SHEETS_MARA_BLANZ": false
+                }
+            },
+            "clientSpecificConfig": {
+                "data": {},
+                "valueState": {},
+                "valueStateMessage": {},
+                "required": {
+                    "MM_CROSS_PLANT_CM_MARA_SATNR": false,
+                    "MM_MATERIAL_IS_CONFIGURABLE_MARA_KZKFG": false,
+                    "MM_VARIANT": false
+                },
+                "editable": {
+                    "MM_CROSS_PLANT_CM_MARA_SATNR": false,
+                    "MM_MATERIAL_IS_CONFIGURABLE_MARA_KZKFG": false,
+                    "MM_VARIANT": false
+                }
+            }
+        },
+        "AdditionalUOM": {
+            "searchMaterial": "",
+            "UOMData": [],
+            "newUOMData": {
+                "data": {},
+                "valueState": {}
+            },
+            "altUomListItem": {
+                "editSelectedPath": "",
+                "editRowClicked": false,
+                "addBtnClicked": false,
+                "editUomBtnClicked": false,
+                "intialRowIndex": "0",
+                "rowIndex": ""
+            },
+            "filteredAltUomDropdown": [],
+            "altUomDefaultFieldVals": {}
+        },
+        "AdditionalData": {
+            "selectedAdditionalTab": "Description",
+            "descriptionData": {
+                "data": [],
+                "ODescAddOrUpdate": {},
+                "descriptionDialogTitle": "",
+                "bDescLanguageCode": true,
+                "descLanguageValueStateText": "",
+                "descLanguageValueState": "None",
+                "descNoteValueStateText": "",
+                "descNoteValueState": "None",
+                "descAddBtnEnabled": false,
+                "descMandatoryLanguage": [],
+                "descMandatory": false
+            },
+            "basicDataText": {
+                "data": [],
+                "basicTextAddOrUpdate": {},
+                "basicTextDialogTitle": "",
+                "bBasicDataTextLanguageCode": true,
+                "basicTextLanguageValueStateText": "",
+                "basicTextLanguageValueState": "None",
+                "basicTextNoteValueStateText": "",
+                "basicTextNoteValueState": "None",
+                "basicTextAddBtnEnabled": false,
+                "basicTextMandatoryLanguage": [],
+                "basicTextMandatory": false
+            },
+            "additionalUom": {}
+        },
+        "Classification": {
+            "clsAsgnmntClassValueStateText": "",
+            "clsAsgnmntClassValueState": "None",
+            "Classtype": "001",
+            "classnum": "",
+            "classList": [],
+            "classDependentFields": {
+                "GMDM":{
+                    "MM_EDITABLE": {
+                        "1":{
+                            "API_FROM_MULTI_APPROVED_MNFR": false,
+                            "TEMP_NATIONAL_CODE_IT": false,
+                            "INJ_PROD_TYPE": false,
+                            "LEVO_EXTRA_GRANULAR": false,
+                            "KDCRELEVANT": false,
+                            "SHELF_LIFE": false,
+                            "A_STDWATER": false,
+                            "B_STDSOLVENT": false,
+                            "TRADE": false,
+                            "LOGISTIC_DATA": false,
+                            "LAETUS_CODE": false,
+                            "SHELFLIFE_FR_MONTHS": false,
+                            "SUNSET_LAUNCH_PRODUCT": false,
+                            "ALLOW_FOC": false,
+                            "CRM_ORDER": false,
+                            "PL_REGULATORY_STATUS": false,
+                            "C_STDPOTENCY": false,
+                            "ADDITIONAL_REGULATORY_REF_IT": false
+                        },
+                        "2": {
+                            "API_FROM_MULTI_APPROVED_MNFR": false,
+                            "TEMP_NATIONAL_CODE_IT": false,
+                            "INJ_PROD_TYPE": false,
+                            "LEVO_EXTRA_GRANULAR": false,
+                            "KDCRELEVANT": false,
+                            "SHELF_LIFE": false,
+                            "A_STDWATER": false,
+                            "B_STDSOLVENT": false,
+                            "TRADE": false,
+                            "LOGISTIC_DATA": false,
+                            "LAETUS_CODE": false,
+                            "SHELFLIFE_FR_MONTHS": false,
+                            "SUNSET_LAUNCH_PRODUCT": false,
+                            "ALLOW_FOC": false,
+                            "CRM_ORDER": false,
+                            "PL_REGULATORY_STATUS": false,
+                            "C_STDPOTENCY": false,
+                            "ADDITIONAL_REGULATORY_REF_IT": false
+                        }
+                    }
+                }
+            },
+            "classificationItemEditable": false,
+            "editClassification": {
+                "isEditPerformed": false,
+                "isNewAddedClass": false,
+                "editSelectedClassNum": null
+            }
+        },
+        "SystemDropdown": []
+    },
+    "AggregatedSystemDetails": {},
+    "SystemPropertyDetails": {},
+    "languageData": {
+        "data": []
+    },
+    "GeneralData": {
+        "wfContextAtGMDMTask": {
+            "viewSource": "",
+            "response": {}
+        },
+        "selectedRowData": {},
+        "missingMandatoryFields": [],
+        "systemsForSyndication": [],
+        "oldMaterialDetailsData": {},
+        "materialData": {},
+        "materialDataCopy": {},
+        "refMaterialNumber": null,
+        "copyToSystem": null,
+        "checkBoxSelected": false,
+        "setBasicDataDefaultValue": {}
+    },
+    "materialChangeHistory": {
+        "eSignLog": [],
+        "requestLog": [],
+        "changeLog": {
+            "searchItem": null,
+            "logList": []
+        }
+    },
+    "changeLogSummary": {
+        "changeLogSummaryList": []
+    },
+    "PaginationDetailsMatChangeLog": {
+        "totalPages": 1,
+        "currentPage": 1,
+        "rowsPerPage": 10,
+        "selectRowsPerPage": 10,
+        "totalrecords": 0,
+        "totalPagesArray": [],
+        "trayDetails": {
+            "start": 1,
+            "end": 5
+        },
+        "inputValue": "",
+        "footerVisible": false,
+        "fromRequestMangementPage": true,
+        "possibleRowsPerPage": [
+            {
+                "key": 10
+            },
+            {
+                "key": 20
+            },
+            {
+                "key": 50
+            },
+            {
+                "key": 100
+            }
+        ]
+    },
+    "DocComments": {
+        "docsCommentsFlagRepository": false,
+        "docsCommentsFlagCreateProj": false
+    }
+}

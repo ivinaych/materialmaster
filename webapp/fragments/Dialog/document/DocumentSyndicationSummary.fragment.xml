@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:uiTable="sap.ui.table">
+    <Dialog horizontalScrolling="false" draggable="true" title="{i18n>documentSelectedForSyndication}" class="MM_FragmentHeader" id="id_DocumentSyndicationSummary" contentWidth="30%" >
+        <Table items="{docCommentModel>/documents/syndicateDocumentList}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None" noDataText="{i18n>NoDocumentsMarkedForSyndication}" >
+            <columns>
+                <Column hAlign="Begin" mergeDuplicates="true">
+                    <Text text="{i18n>fileName}" />
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="{i18n>systemId}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{docCommentModel>documentName}" class=""/>
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['docCommentModel>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class=""/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button text="{i18n>close}" press="onCloseDocumentSyndicationSummary" type="Emphasized" class="MM_BtnEmphasized"></Button>
+            <Button text="{i18n>okText}" press="onPressOkDocumentSyndicationSummary" type="Emphasized" class="MM_BtnEmphasized" enabled="{=${docCommentModel>/documents/syndicateDocumentList}.length>0?true:false}" ></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

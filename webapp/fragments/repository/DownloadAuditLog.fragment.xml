@@ -1,0 +1,71 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="60%" showHeader="true" id="id_Repo_DownloadAuditLog" class="sapUiSizeCompact" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <main:Icon class="sapUiTinyMargin" name="sap-icon://download" />
+                    <Title level="H5" titleStyle="H5" text="{i18n>downloadAuditLog}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" tooltip="{i18n>close}" press="onCloseAuditLogDownload"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <l:Grid defaultSpan="XL3 L3 M6 S6" hSpacing="2" class="sapUiSmallMargin" binding="{Repository>/RepoAuditLogDownload/downloadParams}">
+            <VBox>
+                    <Label text="{i18n>materialNumber}" class="MM_Label"/>
+                    <!-- <MultiComboBox selectedKeys="" selectionChange="" selectionFinish="" items="{Repository>MaterialSearchHelpSet}" class="MM_MultiComboBox"> 
+                        <core:Item text="{Repository>materialNumber}"/>
+                    </MultiComboBox> -->
+                    <!-- <Input value="{Repository>materialNumber}" class="MM_InputText" placeholder="{i18n>enterMaterialNumber}"/> -->
+                    <MultiInput id="id_MultiInputMatNo" placeholder="{i18n>enterMaterialNumber}" type="Number" autocomplete="false" showValueHelp="false"
+                    liveChange="ongetMaterialNumber" showSuggestion="true" suggestionItems="{Repository>/MaterialSearchHelpSet}" startSuggestion="2" tokenUpdate="onTokenUpdateMatNoAuditLog">
+                        <suggestionItems>
+                            <core:ListItem key="{Repository>materialNumber}" text="{Repository>materialNumber}" additionalText="{Repository>fieldDesc}"/>
+                        </suggestionItems>
+                    </MultiInput>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>fieldName}" class="MM_Label" />
+                    <!-- <Input value="{Repository>fieldName}" class="MM_InputText" placeholder="{i18n>enterFieldName}"/> -->
+                    <ComboBox placeholder="{i18n>enterFieldName}" selectedKey="{Repository>fieldName}" value="{Repository>fieldNameValue}" width="100%" class="MM_ComboBox" items="{path: 'Repository>/RepoAuditLogDownload/fieldNameHelpSet', length: 1000}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                        <core:ListItem key="{Repository>attribute}" text="{path:'Repository>attribute_value', formatter: '.formatter.changeFilterTextValue'}"/>
+                    </ComboBox>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>oldValue}" class="MM_Label" />
+                    <Input value="{Repository>oldValue}" class="MM_InputText" placeholder="{i18n>enterOldValue}"/>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>newValue}" class="MM_Label" />
+                    <Input value="{Repository>newValue}" class="MM_InputText" placeholder="{i18n>enterNewValue}"/>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>requestID}" class="MM_Label" />
+                    <Input value="{Repository>requestNumber}" class="MM_InputText" placeholder="{i18n>enterRequestID}" type="Number"/>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>updatedBy}" class="MM_Label"/>
+                    <ComboBox placeholder="{i18n>enterUpdatedBy}" width="100%" class="MM_ComboBox" items="{Repository>/RepoAuditLogDownload/updatedByHelpSet}" selectedKey="{Repository>updatedById}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                        <core:ListItem key="{Repository>userEmail}" text="{Repository>userEmail}" additionalText="{Repository>userName}"/>
+                    </ComboBox>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>updatedOnDateRange}  {i18n>gmt} " class="MM_Label"/>
+                    <DateRangeSelection value="{Repository>updatedOn}" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd - yyyy-mm-dd" valueFormat="yyyy-MM-dd" class="MM_ComboBox"/>
+                </VBox>
+            </l:Grid>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>clear}" type="Default" class="MM_BtnDefault " press="onClearAuditLog" />
+                <Button text="{i18n>download}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadAuditLog"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

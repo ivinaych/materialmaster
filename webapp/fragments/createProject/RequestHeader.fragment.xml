@@ -1,0 +1,149 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>requestHeader}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL4 L4 M6 S12" binding="{CreateProject>/RequestHeader/data}" class="MM_Grid">
+                    <VBox>
+                        <Label text="{i18n>requestType}" class="MM_Label" required="true" />
+                        <!-- If Request Type is not Editable, then Drop down should  contain System Extension option for display the request type if it's spawed for System Exntension-->
+                        <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectRequestType}" selectedKey="{CreateProject>requestType}" valueState="{CreateProject>/RequestHeader/valueState/requestType}" editable="{CreateProject>/RequestHeader/editable/requestType}" showSecondaryValues="false" items="{LookupModel>/requestType}" selectionChange="onSelectRequestType" visible="{= ${CreateProject>/RequestHeader/editable/requestType} === false ? true : false}" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUEST_TYPE_DESCRIPTION}"/>
+                        </ComboBox>
+                        <!-- If Request Type is Editable, then Drop down should not contain System Extension option for user to select-->
+                        <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectRequestType}" selectedKey="{CreateProject>requestType}" valueState="{CreateProject>/RequestHeader/valueState/requestType}" editable="{CreateProject>/RequestHeader/editable/requestType}" showSecondaryValues="false" items="{path: 'LookupModel>/requestType', filters: [{path: 'MM_KEY', operator: 'NE', value1: 6 }]}" selectionChange="onSelectRequestType" visible="{CreateProject>/RequestHeader/editable/requestType}" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUEST_TYPE_DESCRIPTION}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>reqSubType}" class="MM_Label" required="true" />
+                        <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectreqSubType}" selectedKey="{CreateProject>reqSubType}" valueState="{CreateProject>/RequestHeader/valueState/reqSubType}" editable="{CreateProject>/RequestHeader/editable/reqSubType}" showSecondaryValues="false" items="{LookupModel>/reqSubType}" selectionChange="onSelectRequestSubType" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_SUB_REQUEST_DESC}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>materialType}" class="MM_Label" required="true"/>
+                        <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectMaterialType}" selectedKey="{CreateProject>materialType}" valueState="{CreateProject>/RequestHeader/valueState/materialType}" editable="{CreateProject>/RequestHeader/editable/materialType}" showSecondaryValues="true" filterSecondaryValues= "true" items="{LookupModel>/requestSpecificLookups/materialType}" selectionChange="onSelectMaterialType" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_MATERIAL_TYPE_SAP_CODE} - {LookupModel>MM_MATERIAL_TYPE_DESCRIPTION}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>requestDescription}" class="MM_Label" required="true"/>
+                        <Input class="MM_InputText" placeholder="{i18n>enterRequestDesc}" value="{CreateProject>requestDescription}" valueState="{CreateProject>/RequestHeader/valueState/requestDescription}" editable="{CreateProject>/RequestHeader/editable/requestDescription}" liveChange="onLiveCheckRequestDesc"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>requestorOrganization}" class="MM_Label" required="true"/>
+                        <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectRequestorOrganization}" selectedKey="{CreateProject>requestorOrganization}" valueState="{CreateProject>/RequestHeader/valueState/requestorOrganization}" editable="{CreateProject>/RequestHeader/editable/requestorOrganization}" showSecondaryValues="true" filterSecondaryValues= "true" items="{LookupModel>/requestorOrganization}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation" >
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUESTOR_ORG_REF_LIST_CODE} - {LookupModel>MM_REQUESTOR_ORG_REF_LIST_DESC}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>priority}" selected="{CreateProject>priority}" class="MM_CheckBox" editable="{parts:['CreateProject>/RequestHeader/data/requestStatus', 'CreateProject>/GeneralData/isUserRequestOwner'],formatter: '.formatter.fnReqHeaderPriorityEditable'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>requestStatus}" class="MM_Label" />
+                        <Input value="{parts:['CreateProject>requestStatus', 'LookupModel>/requestStatus'],formatter: '.formatter.getStatustext'}" class="MM_InputText" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>createdOn} {i18n>gmt} " class="MM_Label"/>
+                        <DatePicker value="{CreateProject>createdOn}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd HH:mm:ss" class="MM_DatePicker" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>createdBy}" class="MM_Label" />
+                        <Input value="{CreateProject>createdBy}" class="MM_InputText" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>changedOn} {i18n>gmt} " class="MM_Label"/>
+                        <DatePicker value="{CreateProject>changedOn}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd HH:mm:ss" class="MM_DatePicker" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>changedby}" class="MM_Label" />
+                        <Input value="{CreateProject>changedBy}" class="MM_InputText" editable="false"/>
+                    </VBox>
+                    <VBox visible="{parts:['CreateProject>/RequestHeader/data/parentRequestNumber'],formatter: '.formatter.fnParentRootReqFieldVisibility'}">
+                        <Label text="{i18n>parentRequestNumber}" class="MM_Label" />
+                        <Input value="{CreateProject>parentRequestNumber}" class="MM_InputText" editable="false"/>
+                    </VBox>
+                    <VBox visible="{parts:['CreateProject>/RequestHeader/data/rootRequestNumber'],formatter: '.formatter.fnParentRootReqFieldVisibility'}">
+                        <Label text="{i18n>rootRequestNumber}" class="MM_Label" />
+                        <Input value="{CreateProject>rootRequestNumber}" class="MM_InputText" editable="false"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom" visible="{CreateProject>/RequestHeader/childRequestDetails/visible}">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>childRequestDetails}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <Table items="{CreateProject>/RequestHeader/childRequestDetails/data}" noDataText="{i18n>noChildRequestsAvailable}" mode="None" alternateRowColors="false" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>requestNumber}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>requestDescription}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>materialNo}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>requestMaterialSyndicationStatus}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>requestTypeId}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>requestStatusId}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdBy}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdOn} {i18n>gmt} "/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{CreateProject>requestNumber}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>requestDescription}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>materialNumber}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{parts:['CreateProject>materialStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{parts:['CreateProject>requestTypeId', 'LookupModel>/requestType'],formatter: '.formatter.getRequestTypetext'}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{parts:['CreateProject>requestStatusId', 'LookupModel>/requestStatus'],formatter: '.formatter.getStatustext'}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>createdBy}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>createdOn}" class=""/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

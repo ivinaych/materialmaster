@@ -1,0 +1,95 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:main="sap.ui.webc.main">
+    <Dialog contentWidth="80%" showHeader="true" id="id_Repo_AdvanceSearch" class="sapUiSizeCompact" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <main:Icon class="sapUiTinyMargin" name="sap-icon://add-filter" />
+                    <Title level="H5" titleStyle="H5" text="{i18n>advanceFilter}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized" press="onAddAdvanceFilterOption"/>
+                    <Button icon="sap-icon://decline" tooltip="{i18n>close}" press="onCloseDynamicSearch"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+
+            <!-- <Panel expandable="true" expanded="true" width="auto" class="MM_panel sapUiTinyMargin"> -->
+            <!-- <headerToolbar>
+                    <OverflowToolbar style="Clear" class="MM_panelHeader_toolBar">
+                        <main:Icon class="sapUiTinyMargin" name="sap-icon://add-filter" />
+                        <Title text="{i18n>advanceFilter}" />
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onAddAdvanceFilterOption"/>
+                    </OverflowToolbar>
+                </headerToolbar> -->
+            <!-- <content> -->
+            <VBox class="sapUiTinyMarginTop sapUiSmallMarginBeginEnd">
+
+                <Table items="{Repository>/FilterOptions/AdvanceFilter}" class="MM_table  sapUiTinyMarginTop" sticky="ColumnHeaders">
+
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>uiSection}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>fieldName}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>searchType}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>value}" class="" />
+                        </Column>
+                        <Column hAlign="Center" width="10%">
+                            <Text text="{i18n>action}" class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <HBox>
+                                    <ComboBox selectedKey="{Repository>viewId}" class="MM_ComboBox" width="100%" placeholder="{i18n>uiSection}" items="{LookupModel>/RepositoryAdvFilter/viewList}" change="onChangeViewIdSelection" visible="{= ${Repository>viewIdVisible} === true}">
+                                        <core:ListItem key="{LookupModel>key}" text="{LookupModel>value}"/>
+                                    </ComboBox>
+                                    <Input value="{Repository>viewIdFinal}" editable="false" visible="{= ${Repository>viewIdVisible} === false}"/>
+                                </HBox>
+                                <HBox>
+                                    <ComboBox value="{Repository>fieldName}" selectedKey="{Repository>fieldKey}" items="{Repository>fieldNameList}" change="onChangeFieldSelection" width="100%" class="MM_ComboBox" placeholder="{i18n>selectFieldName}" editable="{Repository>bFieldType}" visible="{= ${Repository>bFieldType} === true}">
+                                        <core:ListItem key="{Repository>attribute}" text="{path:'Repository>attribute_value', formatter: '.formatter.changeFilterTextValue'}"/>
+                                    </ComboBox>
+                                    <Input value="{Repository>fieldNameFinal}" editable="false" visible="{= ${Repository>bFieldType} === false}"/>
+                                </HBox>
+                            </cells>
+                            <cells>
+                                <Select selectedKey="{Repository>key_searchType}" items="{LookupModel>/advanceFilter_searchType}" width="70%" class="MM_ComboBox">
+                                    <core:ListItem key="{LookupModel>type}" text="{LookupModel>desc}"/>
+                                </Select>
+                            </cells>
+                            <cells>
+                                <Input value="{Repository>fieldValue}" placeholder="{path: 'Repository>key_searchType', formatter: '.formatter.advFilterPlaceHolderText'}" class="MM_InputText"/>
+                            </cells>
+                            <cells>
+                                <Button icon="sap-icon://delete" press="onDeleteAFData" class="MM_BtnDefault"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+            <!-- </content>
+            </Panel> -->
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <!-- <Button text="{i18n>materialDataDownload}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadAdvSearchData"/> -->
+                <Button text="{i18n>clear}" type="Default" class="MM_BtnDefault " press="onClearFilterData" />
+                <Button text="{i18n>search}" type="Emphasized" class="MM_BtnEmphasized" press="onRepositoryAdvanceFilter"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

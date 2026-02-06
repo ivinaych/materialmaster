@@ -1,0 +1,24 @@
+<mvc:View controllerName="com.viatris.materialmaster.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    <tnt:ToolPage class="MM_ToolPage">
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" selectedKey="{oAppModel>/sideNavigation/setSelectedKey}" itemSelect="onItemSelect" class="MM_SideNavigation" visible="{oAppModel>/sideNavigation/visible}" expanded="{oAppModel>/sideNavigation/expandable}">
+                <tnt:NavigationList class="MM_SideNavList ">
+                    <tnt:NavigationListItem key="PageRequestManagement" text="{i18n>requestManagement}" icon="{oAppModel>/sideNavigation/icon/RequestManagement}" visible="{oAppModel>/sideNavigation/sidePanelItemVisibility/RequestManagement}" class="MM_SideNavList" />
+                    <tnt:NavigationListItem key="PageMassRequest" text="{i18n>massRequest}" icon="{oAppModel>/sideNavigation/icon/MassRequest}" visible="{oAppModel>/sideNavigation/sidePanelItemVisibility/MassRequest}" class="MM_SideNavList" />
+                    <tnt:NavigationListItem key="PageRepository" text="{i18n>repository}" icon="{oAppModel>/sideNavigation/icon/Repository}" visible="{oAppModel>/sideNavigation/sidePanelItemVisibility/Repository}" class="MM_SideNavList" />
+                </tnt:NavigationList>
+                <!-- <tnt:fixedItem>
+                    <tnt:NavigationList>
+                        <tnt:NavigationListItem text="version 0.0.1" icon="sap-icon://document-text" />
+                    </tnt:NavigationList>
+                </tnt:fixedItem> -->
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer id="side_Navigation_Content" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

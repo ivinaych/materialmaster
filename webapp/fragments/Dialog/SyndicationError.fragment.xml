@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact ">
+    <Dialog id="idSAPerror" showHeader="true" verticalScrolling="true" contentHeight="50%" contentWidth="auto" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H5" titleStyle="H5" text="{i18n>sapErrorList}" class="MM_Title"/>
+                </contentLeft>
+            </Bar>
+        </customHeader>
+        <content>
+            <Table width="auto" items="{CreateProject>/GeneralData/SAPerror/errorList}" class="MM_table sapUiMediumMargin sapUiMediumMarginEnd" fixedLayout="false" growing="true" noDataText="{i18n>NoError}">
+                <columns>
+                    <Column visible="{parts:['CreateProject>/GeneralData/SAPerror/errorFor' ],formatter: '.formatter.fnGetSystemVisibleClErrorFrag'}">
+                        <Text text="{i18n>system}"/>
+                    </Column>
+                    <Column visible="{parts:['CreateProject>/GeneralData/SAPerror/errorFor'],formatter: '.formatter.fnGetPlantVisibleClErrorFrag'}">
+                        <Text text="{i18n>plant}"/>
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>errorDetails}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <Text text="{parts:['CreateProject>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{CreateProject>plantID}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{CreateProject>message}" class="" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>ok}" type="Emphasized" press="onCloseDialogSAPError" class="MM_BtnEmphasized"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

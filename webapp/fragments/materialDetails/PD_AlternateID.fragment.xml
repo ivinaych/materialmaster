@@ -1,0 +1,78 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox id="alternateIdVBoxId">
+        <Toolbar class="MM_HideUnderline">
+            <ToolbarSpacer />
+            <Button icon="sap-icon://add" text="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onClickAddNewAlternateID" enabled="{MaterialDetails>/ProductDataStatic/alternateID/alternateIDBtns/visible}"/>
+        </Toolbar>
+        <Table items="{MaterialDetails>/ProductDataStatic/alternateID/selectedIDs}" noDataText="{i18n>NoAlternateIDsAvailable}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+            <columns>
+                <Column hAlign="Begin" >
+                    <Text text="Active"/>
+                </Column>
+                <Column hAlign="Begin" visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.getVisibleForRepoitory'}">
+                    <Text text="{i18n>reqaltID}"/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="{i18n>repoAltID}"/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="{i18n>Alternate_ID_Type}"/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="{i18n>Alternate_ID_Type_Country}"/>
+                </Column>
+                <Column hAlign="Begin">
+                    <Text text="{i18n>Field_Value}"/>
+                </Column>
+                <Column hAlign="Begin" width="10%">
+                    <Text text="{i18n>action}"/>
+                </Column>
+
+            </columns>
+            <items>
+                <ColumnListItem type="Inactive"
+                    highlight="{= ${MaterialDetails>isDeleted} ? 'Error' : 'None' }">
+                    <cells>
+                        <CheckBox select="onAltIDSelectionChange" selected="{MaterialDetails>isActive}" enabled="{parts:[{path:'oAppModel>/taskDetails/wfTaskType'}, {path:'MaterialDetails>/ProductDataStatic/alternateID/alternateIDBtns/visible'}, {path:'oAppModel>/sideNavigation/currentView'}], formatter:'.formatter.altIdStatusModifier'}" />                   
+                    </cells>
+                    <cells>
+                        <Text text="{MaterialDetails>Request_Row_Id}" class=""/>
+                    </cells>
+                    <cells>
+                        <Text text="{MaterialDetails>Repository_Row_ID}" class=""/>
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['MaterialDetails>Alternate_ID_Type', 'LookupModel>/MM_ALTERNATE_ID_TYPE_REF_LIST'], formatter:'.formatter.getAlternateIdTypeText'}" class=""/>
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['MaterialDetails>Alternate_ID_Type_Country', 'LookupModel>/MM_COUNTRY_REF_LIST'], formatter:'.formatter.getAlternateIdCountry'}" class=""/>
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['MaterialDetails>Field_Value', 'LookupModel>/MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST'], formatter:'.formatter.getAlternateIdFieldText'}" class=""/>
+                    </cells>
+                    <cells>
+                    <!-- When isDeleted is true -->
+                    <HBox>
+                    <ObjectStatus
+                        visible="{= ${MaterialDetails>isDeleted} === true }"
+                        text="Deleted"
+                        state="Error"
+                        icon="sap-icon://cancel"
+                        active="false"/>
+                            <HBox visible="{= !${MaterialDetails>isDeleted} }" class="MM_SpaceAround">
+                            <!-- When isDeleted is false -->
+                            <OverflowToolbar class="MM_OverflowToolbar">
+                                <OverflowToolbarButton icon="sap-icon://edit" text="{i18n>edit}" tooltip="{i18n>edit}" press="onClickEditID" class="MM_OverflowBtn" enabled="{MaterialDetails>/ProductDataStatic/alternateID/alternateIDBtns/visible}"/>
+                                <OverflowToolbarButton icon="sap-icon://delete" text="{i18n>delete}" tooltip="{i18n>delete}" press="onDeleteAlternateID" class="MM_OverflowBtn" enabled="{parts: ['MaterialDetails>/ProductDataStatic/alternateID/alternateIDBtns/visible', 'MaterialDetails>MM_NEWLY_ADDED', 'MaterialDetails>isModified', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnEnableDelete_AlternateID'}"/>
+                            </OverflowToolbar>
+                            </HBox>
+                        </HBox>
+                    </cells>
+
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

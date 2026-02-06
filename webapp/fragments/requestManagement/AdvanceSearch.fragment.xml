@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:main="sap.ui.webc.main">
+    <Dialog contentWidth="80%" showHeader="true" id="id_RequestManagement_AdvanceSearch" class="sapUiSizeCompact" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <main:Icon class="sapUiTinyMargin" name="sap-icon://add-filter" />
+                    <Title level="H5" titleStyle="H5" text="{i18n>advanceFilter}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized" press="onAddAdvanceFilterOption"/>
+                    <Button icon="sap-icon://decline" tooltip="{i18n>close}" press="onCloseDynamicSearch"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+
+           
+            <VBox class="sapUiTinyMarginTop sapUiSmallMarginBeginEnd">
+
+                <Table items="{RequestManagement>/FilterOptions/AdvanceFilter}" class="MM_table  sapUiTinyMarginTop" sticky="ColumnHeaders">
+
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>uiSection}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>fieldName}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>searchType}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>value}" class="" />
+                        </Column>
+                        <Column hAlign="Center" width="10%">
+                            <Text text="{i18n>action}" class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <HBox>
+                                    <ComboBox selectedKey="{RequestManagement>viewId}" class="MM_ComboBox" width="100%" placeholder="{i18n>uiSection}" items="{LookupModel>/RequestMgmtAdvFilter/viewList}" change="onChangeViewIdSelection" visible="{= ${RequestManagement>viewIdVisible} === true}">
+                                        <core:ListItem key="{LookupModel>key}" text="{LookupModel>value}"/>
+                                    </ComboBox>
+                                    <Input value="{RequestManagement>viewIdFinal}" editable="false" visible="{= ${RequestManagement>viewIdVisible} === false}"/>
+                                </HBox>
+                                <HBox>
+                                    <ComboBox value="{RequestManagement>fieldName}" selectedKey="{RequestManagement>fieldKey}" items="{RequestManagement>fieldNameList}" change="onChangeFieldSelection" width="100%" class="MM_ComboBox" placeholder="{i18n>selectFieldName}" editable="{RequestManagement>bFieldType}" visible="{= ${RequestManagement>bFieldType} === true}">
+                                        <core:ListItem key="{RequestManagement>attribute}" text="{path: 'RequestManagement>attribute_value', formatter: '.formatter.changeFilterTextValue'}"/>
+                                    </ComboBox>
+                                    <Input value="{RequestManagement>fieldNameFinal}" editable="false" visible="{= ${RequestManagement>bFieldType} === false}"/>
+                                </HBox>
+                            </cells>
+                            <cells>
+                                <Select selectedKey="{RequestManagement>key_searchType}" items="{LookupModel>/advanceFilter_searchType}" width="70%" class="MM_ComboBox">
+                                    <core:ListItem key="{LookupModel>type}" text="{LookupModel>desc}"/>
+                                </Select>
+                            </cells>
+                            <cells>
+                                <Input value="{RequestManagement>fieldValue}" placeholder="{path: 'RequestManagement>key_searchType', formatter: '.formatter.advFilterPlaceHolderText'}" class="MM_InputText"/>
+                            </cells>
+                            <cells>
+                                <Button icon="sap-icon://delete" press="onDeleteAFData" class="MM_BtnDefault"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+            <!-- </content>
+            </Panel> -->
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <!-- <Button text="{i18n>materialDataDownload}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadAdvSearchData"/> -->
+                <Button text="{i18n>clear}" type="Default" class="MM_BtnDefault " press="onClearFilterData" />
+                <Button text="{i18n>search}" type="Emphasized" class="MM_BtnEmphasized" press="onRequestManagementAdvanceFilter"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

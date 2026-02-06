@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <table:Table rows="{CreateProject>/MaterialList/materialList}" rowSelectionChange="onClickMaterialListitem" id="createProjectMaterialListId" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="5" class="MM_UiTable MaterialListTable sapUiTinyMarginBottom MM_UiTableCopy">
+            <table:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>materialList}"/>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onAddMaterialList" enabled="{CreateProject>/MaterialList/addBtnEnable}" visible="{parts:['oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestStatus', 'CreateProject>/GeneralData/isUserRequestOwner'],formatter: '.formatter.fnVisible_AaddBtn_ML'}"/>
+                </OverflowToolbar>
+            </table:extension>
+            <table:columns>
+                <table:Column width="8%">
+                    <Label text="{i18n>included}" />
+                    <table:template>
+                        <CheckBox selected="{CreateProject>included}" enabled="{parts:['CreateProject>included','CreateProject>materialStatusId','oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId'],formatter: '.formatter.toEnableIncludeColumn'}" select="fnToExcludeMaterial">
+                             <customData>
+                                <core:CustomData 
+                                    key="isEnabled" 
+                                    value="{= ${parts:['CreateProject>included','CreateProject>materialStatusId','oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId'], formatter: '.formatter.toEnableIncludeColumn'} ? 'true' : 'false' }" 
+                                    writeToDom="true" 
+                                />
+                            </customData>
+                        </CheckBox>
+                    </table:template>
+                </table:Column>
+                <table:Column>
+                    <Label text="{i18n>lineNumber}" />
+                    <table:template>
+                        <Label text="{CreateProject>line}" />
+                    </table:template>
+                </table:Column>
+                <table:Column >
+                    <Label text="{i18n>materialType}" />
+                    <table:template>
+                        <Text text="{parts:['CreateProject>materialTypeId', 'LookupModel>/materialType'],formatter: '.formatter.getMaterialTypetext'}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column >
+                    <Label text="{i18n>materialNumber}" />
+                    <table:template>
+                        <Text text="{CreateProject>materialNumber}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column >
+                    <Label text="{i18n>globalMaterialDescription}" />
+                    <table:template>
+                        <Text text="{CreateProject>materialDesc}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column>
+                    <Label text="{i18n>requestMaterialSyndicationStatus}" />
+                    <table:template>
+                        <Text text="{parts:['CreateProject>materialStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column visible="{parts:['oAppModel>/sideNavigation/currentView', 'CreateProject>/RequestHeader/data/requestType'], formatter: '.formatter.fnSetVisibleRepoStatus'}">
+                    <Label text="{parts: ['oAppModel>/sideNavigation/currentView'], formatter: '.formatter.fnGetLabelNameForRepoMAterialStatus'}"/>
+                    <table:template>
+                        <Text text="{parts:['CreateProject>repositoryStatusId', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column width="7%" visible="{parts:['CreateProject>/RequestHeader/data/requestStatus', 'oAppModel>/taskDetails/wfTaskType'],formatter: '.formatter.fnToValidatedColumVisibility'}">
+                    <Label text="{i18n>validationStatus}" />
+                    <table:template>
+                        <ObjectStatus class="sapUiTinyMarginTop" icon="{= ${CreateProject>validated} ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}" state="{path: 'CreateProject>validated', formatter: '.formatter.formatValidationState'}"/>
+                    </table:template>
+                </table:Column>
+                <table:Column width="10%" visible="{parts:['CreateProject>/RequestHeader/data/requestStatus', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/GeneralData/isUserRequestOwner'],formatter: '.formatter.fnToActionColumVisibility'}">
+                    <Label text="{i18n>action}" />
+                    <table:template>
+                        <OverflowToolbar class="MM_OverflowToolbar">
+                            <OverflowToolbarButton icon="sap-icon://save" text ="{i18n>saveAsDraft}" tooltip="{i18n>saveAsDraft}" class="MM_OverflowBtn" press="onSaveasDraftMaterialList" enabled="{parts:['CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId', 'CreateProject>enability/save'],formatter: '.formatter.fnSetEnableforSelectedRow'}" visible = "{CreateProject>visibility/save}"/>
+                            <OverflowToolbarButton icon="sap-icon://validate" text ="{i18n>validateAndSave}" tooltip="{i18n>validateAndSave}" class="MM_OverflowBtn"  press="onSaveMaterialList" enabled="{parts:['CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId', 'CreateProject>enability/validate'],formatter: '.formatter.fnSetEnableforSelectedRow'}" visible = "{CreateProject>visibility/validate}"/>
+                            <OverflowToolbarButton icon="sap-icon://add-activity" text ="{i18n>commitToRepo}" tooltip="{i18n>commitToRepo}" class="MM_OverflowBtn"  press="onPressCommitToRepo" enabled="{parts:['CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId', 'CreateProject>validated', 'CreateProject>enability/commitToRepo'],formatter: '.formatter.fnSetEnableforSelectedRowWithValidation'}" visible = "{CreateProject>visibility/commitToRepo}"/>
+                            <OverflowToolbarButton icon="sap-icon://synchronize" text ="{i18n>syndicate}" tooltip="{i18n>syndicate}" class="MM_OverflowBtn"  press="onSyndicateBtn" enabled="{parts:['CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId', 'CreateProject>validated', 'CreateProject>enability/syndicate'],formatter: '.formatter.fnSetEnableforSelectedRowWithValidation'}" visible = "{CreateProject>visibility/syndicate}"/>
+                            <OverflowToolbarButton icon="sap-icon://delete" text ="{i18n>delete}" tooltip="{i18n>delete}" class="MM_OverflowBtn" press="onRemoveMaterialList" enabled="{parts:['CreateProject>/MaterialList/selectedPath', 'CreateProject>materialListId', 'CreateProject>enability/delete'],formatter: '.formatter.fnSetEnableforSelectedRow'}" visible = "{CreateProject>visibility/delete}"/>
+                            <!-- <OverflowToolbarButton icon="sap-icon://signature" tooltip="{i18n>eSign}" press="onPressEsignbtn"/> -->
+                        </OverflowToolbar>
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+        <VBox visible="{CreateProject>/MaterialList/visible/MaterialDetails}">
+            <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.MaterialDetails" type="XML"/>
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

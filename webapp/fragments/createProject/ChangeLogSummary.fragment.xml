@@ -1,0 +1,87 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core">
+
+    <Dialog contentHeight="70%" contentWidth="90%" showHeader="true" id="id_RequestChangeLogSummary" draggable="true" stretchOnPhone="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H6" text="{i18n>listOfChanges}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" press="onCloseRequestChangeLogSummary"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiSmallMargin" height="100%">
+                <ScrollContainer width="100%" height="100%" vertical="true" horizontal="false">
+                    <Table
+                        items="{CreateProject>/changeLogSummary/changeLogSummaryList}"
+                        mode="SingleSelectMaster"
+                        class="MM_table sapUiTinyMargin MM_UiTableCopy"
+                        width="98%"
+                        alternateRowColors="true">
+
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear" class="sapUiTinyMarginBottom">
+                                <ToolbarSpacer />
+                                <Title text="{i18n>lineNoMatNo} :" level="H6" titleStyle="H6" class="MM_Title MM_TitleTaskName"/>
+                                <Select
+                                    forceSelection="true"
+                                    selectedKey="{CreateProject>/changeLogSummary/selectedLineNoMatListId}"
+                                    change="onChangeLineNoMatNo"
+                                    items="{CreateProject>/changeLogSummary/lineNoMatNoLookup}">
+                                    <core:ListItem key="{CreateProject>Key}" text="{CreateProject>Text}" />
+                                </Select>
+                            </OverflowToolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <Column width="auto"><Text text="{i18n>materialNumber}" /></Column>
+                            <Column width="10%"><Text text="{i18n>requestNumber}" /></Column>
+                            <Column width="10%"><Text text="{i18n>systemId}" /></Column>
+                            <Column width="auto"><Text text="{i18n>uiView}" /></Column>
+                            <Column width="auto"><Text text="{i18n>additionalInfo}" /></Column>
+                            <Column width="auto"><Text text="{i18n>fieldName}" /></Column>
+                            <Column width="auto"><Text text="{i18n>oldValue}" /></Column>
+                            <Column width="auto"><Text text="{i18n>newValue}" /></Column>
+                            <Column width="auto"><Text text="{i18n>updatedBy}" /></Column>
+                            <Column width="auto"><Text text="{i18n>updatedOn} {i18n>gmt}" /></Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{CreateProject>materialNumber}" wrapping="true"/>
+                                    <Text text="{CreateProject>requestNumber}" wrapping="true"/>
+                                    <Text text="{parts: ['CreateProject>systemID', 'LookupModel>/MM_SYSTEM_REF_LIST'], formatter: '.formatter.getSystemText'}" wrapping="true"/>
+                                    <Text text="{parts: ['CreateProject>uiView'], formatter: '.formatter.geti18nName'}" wrapping="true"/>
+                                    <Text text="{CreateProject>addInfo}" wrapping="true"/>
+                                    <Text text="{parts: ['CreateProject>fieldName', 'LookupModel>/attributeListProdData'], formatter: '.formatter.getFieldNameFromi18OrAttributeService'}" wrapping="true"/>
+                                    <Text text="{parts: ['CreateProject>fieldName', 'CreateProject>oldValue'], formatter: '.formatter.getRequestChangeNewValue'}" wrapping="true"/>
+                                    <Text text="{parts: ['CreateProject>fieldName', 'CreateProject>newValue'], formatter: '.formatter.getRequestChangeNewValue'}" wrapping="true"/>
+                                    <Text text="{CreateProject>changedBy}" wrapping="true"/>
+                                    <Text text="{CreateProject>changedOn}" wrapping="true"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+
+                    </Table>
+                </ScrollContainer>
+            </VBox>
+        </content>
+
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer/>
+                    <Button text="{i18n>ok}" press="onCloseRequestChangeLogSummary" class="MM_BtnEmphasized" type="Emphasized"/>
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

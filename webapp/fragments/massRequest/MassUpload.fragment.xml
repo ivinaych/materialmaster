@@ -1,0 +1,81 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:u="sap.ui.unified"
+    xmlns:uiTable="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <VBox>
+        <Panel expandable="true" expanded="true" width="auto" binding="{CreateMassRequest>/MassUpload}" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>attributesList}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                </OverflowToolbar>
+            </headerToolbar>
+            <l:Grid defaultSpan="XL4 L4 M6 S12" class="MM_Grid">
+                <VBox visible="{parts:['CreateMassRequest>/RequestHeader/data/requestType'], formatter:'.formatter.fnMassUIViewVisible'}">
+                    <Label text="{i18n>uiSection}" class="MM_Label" required="true"/>
+                    <ComboBox selectedKey="{CreateMassRequest>templateRef/uiView}" class="MM_ComboBox" width="100%" placeholder="{i18n>select} {i18n>uiSection}" items="{LookupModel>/MassRequest/viewList}" change="onSelectedViewType" editable="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateMassRequest>/MassUpload/documentsRef/attachmentcount', 'CreateMassRequest>/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnMassUploadFieldEnability'}" valueState="{CreateMassRequest>/MassUploadMandFields/valueState/uiView}">
+                        <core:ListItem key="{LookupModel>key}" text="{LookupModel>value}" />
+                    </ComboBox>
+                </VBox>
+                <VBox visible="{parts:['CreateMassRequest>templateRef/uiView', 'CreateMassRequest>/RequestHeader/data/requestType'], formatter:'.formatter.massAttributesVisibility'}">
+                    <Label text="{i18n>attributes}" class="MM_Label" required="true"/>
+                    <MultiComboBox id="mcmbMassAttributes" selectedKeys="{CreateMassRequest>templateRef/attributesList}" items="{LookupModel>/MassRequest/attributeList}" class="MM_MultiComboBox" selectionChange="onSelectAttributeList" editable="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateMassRequest>/MassUpload/documentsRef/attachmentcount', 'CreateMassRequest>/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnMassUploadFieldEnability'}" showSelectAll="true" valueState="{CreateMassRequest>/MassUploadMandFields/valueState/attributeList}"> 
+                        <core:Item key="{LookupModel>attribute}" text="{path: 'LookupModel>attribute_value', formatter: '.formatter.changeFilterTextValue'}" customData:fieldType="{LookupModel>uiFieldType}" customData:attributeValue="{LookupModel>attribute_value}" />
+                    </MultiComboBox>
+                </VBox>
+                <VBox>
+                    <Label text="{i18n>system}" class="MM_Label" required="{parts:['CreateMassRequest>/MassUpload/templateRef/uiView'], formatter:'.formatter.fnSetMassUploadSystemRequired'}" />
+                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectSystemId}" selectedKey="{CreateMassRequest>templateRef/systemId}" showSecondaryValues="true" items="{LookupModel>/MM_SYSTEM_REF_LIST}" selectionChange="onSelectMassSystemId" editable="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus','CreateMassRequest>/MassUpload/documentsRef/attachmentcount', 'CreateMassRequest>/MassUpload/templateRef/uiView', 'CreateMassRequest>/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnVisibleMassTargetSystem'}" valueState="{CreateMassRequest>/MassUploadMandFields/valueState/targetSystem}" change="fnHandleComboboxValidation">
+                        <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_SYSTEM_REF_LIST_DESC}"/>
+                    </ComboBox>
+                </VBox>
+                <VBox visible="{parts:['CreateMassRequest>/RequestHeader/data/requestType'], formatter:'.formatter.fnMassMarkForSyndVisiblility'}">
+                    <Label text="{i18n>markForSyndication}" class="MM_Label"/>
+                    <Switch state="{CreateMassRequest>templateRef/syndicationState}" customTextOff="{i18n>SwitchAction_No}" enabled="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateMassRequest>/MassUpload/documentsRef/attachmentcount', 'CreateMassRequest>/isUserRequestOwner', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnMassUploadFieldEnability'}"/>
+                </VBox>
+            </l:Grid>
+            <Toolbar class="MM_HideUnderline sapUiTinyMarginBottom" visible="{parts:['CreateMassRequest>/isUserRequestOwner', 'CreateMassRequest>/RequestHeader/data/requestStatus', 'oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnRequestorMassVisible'}">
+                <!-- <Button text="{i18n>downloadTemplate}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadTemplate"  visible="{= ${CreateMassRequest>/RequestHeader/data/requestStatus} === 1}"/> -->
+                <Button text="{i18n>downloadTemplate}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadTemplate"  visible="{parts:['CreateMassRequest>/RequestHeader/data/requestStatus'], formatter:'.formatter.massDownloadBtnVisibility'}"/>
+                <Button text="{i18n>downloadData}" type="Emphasized" class="MM_BtnEmphasized" press="ondownloadMassRequestData"  visible="{parts:['CreateMassRequest>/MassUpload/templateRef/uiView', 'CreateMassRequest>/RequestHeader/data/requestStatus', 'CreateMassRequest>/RequestHeader/data/requestType'], formatter:'.formatter.fnMassDownloadReqDataVisibility'}"/>
+                <ToolbarSpacer />
+                <u:FileUploader class="sapUiTinyMarginEnd MM_FileUploader" id="massFileUploader" buttonText="Browse" buttonOnly="false" name="myFileUpload" beforeDialogOpen="fnBeforeSelectDialog" change="uploadCompleteMassData" visible="{parts:['oAppModel>/taskDetails/wfTaskType', 'CreateMassRequest>/RequestHeader/data/requestStatus'], formatter:'.formatter.massUploadBtnVisibility'}" />
+                <!-- <Button text="{parts:['oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.changeMassUploadBtnText'}" type="Emphasized" class="MM_BtnEmphasized" press="onUploadMassData" visible="{= ${CreateMassRequest>/RequestHeader/data/requestStatus} === 1}"></Button> -->
+                 <Button text="{parts:['oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.changeMassUploadBtnText'}" type="Emphasized" class="MM_BtnEmphasized" press="onUploadMassData" visible="{parts:['oAppModel>/taskDetails/wfTaskType', 'CreateMassRequest>/RequestHeader/data/requestStatus'], formatter:'.formatter.massUploadBtnVisibility'}"></Button>
+            </Toolbar>
+            <uiTable:Table rows="{CreateMassRequest>documentsRef/documentsList}" selectionMode="None" class="MM_UiTable sapUiTinyMargin" visibleRowCount="5">
+                <uiTable:columns>
+                    <uiTable:Column width="40%">
+                        <Label text="{i18n>fileName}" />
+                        <uiTable:template>
+                            <HBox>
+                                <main:Icon class="MM_IconColor sapUiTinyMarginEnd" name="{parts:['massDocumentModel>documentType'], formatter:'.formatter.getDocumenticon'}"/>
+                                <Link text="{CreateMassRequest>documentName}" press="onDownloadMassExcelFile" />
+                            </HBox>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="20%">
+                        <Label text="{i18n>documentType}" />
+                        <uiTable:template>
+                            <Text text="{CreateMassRequest>massRequestDocType}" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="20%">
+                        <Label text="{i18n>Uploadedby}" />
+                        <uiTable:template>
+                            <Text text="{CreateMassRequest>createdBy}" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column width="15%">
+                        <Label text="{i18n>Uploadedon}" />
+                        <uiTable:template>
+                            <Text text="{CreateMassRequest>createdOn}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                </uiTable:columns>
+            </uiTable:Table>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

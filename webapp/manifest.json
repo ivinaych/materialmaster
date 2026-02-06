@@ -1,0 +1,398 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "com.viatris.materialmaster",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "MaterialMaster",
+                    "icon": "sap-icon://business-objects-mobile",
+                    "action": "display"
+                }
+            }
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.9.3",
+            "toolsId": "a8f5e9f9-afaa-472d-ae39-434a4342586e"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/MM_ODATA/sap/opu/odata/sap/ZMM_LOOKUPS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "mainService2": {
+                "uri": "/MM_ODATA/sap/opu/odata/sap/ZMM_MATERIAL_API_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "mainService3": {
+                "uri": "/MM_ODATA/sap/opu/odata/sap/ZMM_LOOKUPS_SRV;o=SAP_NEECC/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "mainService4": {
+                "uri": "/MM_ODATA/sap/opu/odata/sap/ZMM_MATERIAL_API_SRV;o=SAP_NEECC/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "allSystemOdataService": {
+              "uri": "/MM_ODATA/sap/opu/odata/SAP/ZMM_MATERIAL_API_SRV;mo/",
+              "type": "OData",
+              "settings": {
+                "annotations": [],
+                "localUri": "localService/metadata.xml",
+                "odataVersion": "2.0"
+              }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.platform.cf": {
+        "ui5VersionNumber": "1.120.37"
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.120.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.table": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.viatris.materialmaster.i18n.i18n"
+                }
+            },
+            "oAppModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/AppData.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "RequestManagement": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/RequestManagement.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "CreateProject": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/CreateProject.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "MaterialDetails": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/MaterialDetails.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "MassRequest": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/MassRequest.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "CreateMassRequest": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/CreateMassRequest.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "LookupModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/LookupData.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "oFragmentModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/FragmentDetails.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "Repository": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/Repository.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "DownloadData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "localData/DownloadData.json",
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "ZapiMaterialOModel": {
+                "dataSource": "mainService",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "ZapiMaterialNEDModel": {
+                "dataSource": "mainService3",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "ZapiOdataModel": {
+                "dataSource": "mainService2",
+                "type": "sap.ui.model.odata.ODataModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "ZapiOdataNEDModel": {
+                "dataSource": "mainService4",
+                "type": "sap.ui.model.odata.ODataModel",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "oDataModelAllSystem": {
+              "dataSource": "allSystemOdataService",
+              "type": "sap.ui.model.odata.ODataModel",
+              "preload": true,
+              "settings": {
+                "defaultBindingMode": "TwoWay"
+              }
+            },
+            "oDocumentModel": {
+              "dataSource": "mainService2",
+              "type": "sap.ui.model.odata.v2.ODataModel",
+              "preload": true,
+              "settings": {
+                "defaultBindingMode": "TwoWay"
+              }
+            },
+            "oDocumentModelNED": {
+              "dataSource": "mainService4",
+              "type": "sap.ui.model.odata.v2.ODataModel",
+              "preload": true,
+              "settings": {
+                "defaultBindingMode": "TwoWay"
+              }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.viatris.materialmaster.view",
+                "controlAggregation": "pages",
+                "controlId": "side_Navigation_Content",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "App",
+                    "pattern": "",
+                    "target": [
+                        "RequestManagement"
+                    ]
+                },
+                {
+                    "name": "RequestManagement",
+                    "pattern": "RequestManagement",
+                    "target": [
+                        "RequestManagement"
+                    ]
+                },
+                {
+                    "name": "Repository",
+                    "pattern": "Repository",
+                    "target": [
+                        "Repository"
+                    ]
+                },
+                {
+                    "name": "CreateProject",
+                    "pattern": "CreateProject",
+                    "target": [
+                        "CreateProject"
+                    ]
+                },
+                {
+                    "name": "MassRequest",
+                    "pattern": "MassRequest",
+                    "target": [
+                        "MassRequest"
+                    ]
+                },
+                {
+                    "name": "CreateMassRequest",
+                    "pattern": "CreateMassRequest",
+                    "target": [
+                        "CreateMassRequest"
+                    ]
+                },
+                {
+                    "name": "SystemDetails",
+                    "pattern": "SystemDetails/{targetSystem}",
+                    "target": [
+                        "SystemDetails"
+                    ]
+                },
+                {
+                    "name": "WFTaskHomePage",
+                    "pattern": "WFTaskHomePage",
+                    "target": [
+                        "WFTaskHomePage"
+                    ]
+                },
+                {
+                    "name": "NotFoundPage",
+                    "pattern": "NotFoundPage",
+                    "target": [
+                        "NotFoundPage"
+                    ]
+                }
+            ],
+            "targets": {
+                "RequestManagement": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "RequestManagement",
+                    "viewName": "RequestManagement"
+                },
+                "Repository": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Repository",
+                    "viewName": "Repository"
+                },
+                "CreateProject": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateProject",
+                    "viewName": "CreateProject"
+                },
+                "MassRequest": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MassRequest",
+                    "viewName": "MassRequest"
+                },
+                "CreateMassRequest": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "CreateMassRequest",
+                    "viewName": "CreateMassRequest"
+                },
+                "SystemDetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "SystemDetails",
+                    "viewName": "SystemDetails"
+                },
+                "WFTaskHomePage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "WFTaskHomePage",
+                    "viewName": "WFTaskHomePage"
+                },
+                "NotFoundPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "NotFoundPage",
+                    "viewName": "NotFoundPage"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.viatris.materialmaster.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "comviatrismaterialmaster"
+    }
+}

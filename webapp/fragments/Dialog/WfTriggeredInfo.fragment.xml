@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="auto" horizontalScrolling="false" draggable="true" title="{i18n>workflowTriggeredInformation}" class="MM_FragmentHeader" id="id_WfTriggeredInfo">
+        <List items="{path: 'CreateProject>/wfParallelRequestResponses', sorter: { path: 'status', group: true , descending: true}}">
+            <StandardListItem title="{CreateProject>msg}" icon="sap-icon://begin" class=""/>
+        </List>
+        <buttons>
+            <Button text="{i18n>okText}" press="onOkWfTriggeredInfo" type="Emphasized" class="MM_BtnEmphasized"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

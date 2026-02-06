@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="50%" showHeader="true" id="id_AddNewAlternateID" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H4" text="{i18n>AlternateId}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" type="Default" class="MM_BtnDefault" press="onCancelAlternateId"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:Form>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer binding="{MaterialDetails>/ProductDataStatic/alternateID/newIDData}">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>Alternate_ID_Type}">
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectAlternateIdType}" selectedKey="{MaterialDetails>Alternate_ID_Type}" items="{MaterialDetails>/ProductDataStatic/alternateID/listofFilteredIDs}" showSecondaryValues="true" filterSecondaryValues= "false" selectionChange="onSelectNewAlternateId" editable="{= ${MaterialDetails>/ProductDataStatic/alternateID/newIDData/scenario} === 'add' || ${MaterialDetails>/ProductDataStatic/alternateID/newIDData/scenario} === 'edit'}" change="fnHandleComboboxValidation">
+                                        <core:ListItem key="{MaterialDetails>MM_KEY}" text="{MaterialDetails>MM_ALTERNATE_ID_TYPE_REF_LIST_CODE} - {MaterialDetails>MM_ALTERNATE_ID_TYPE_REF_LIST_DESC}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Field_Value}" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue} ? ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue}.length > 0 ? true : false : false}">
+                            
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectAlternateFieldValue}" selectedKey="{MaterialDetails>Field_Value}" items="{MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue}" editable="true" showSecondaryValues="true" filterSecondaryValues= "false" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue}.length > 0 ? true : false }" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                                        <core:ListItem key="{MaterialDetails>MM_KEY}" text="{MaterialDetails>MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST_CODE} - {MaterialDetails>MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST_DESC}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Field_Value}" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue} ? ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue}.length === 0 ? true : false : true}">
+                                <f:fields>
+                                    <Input value="{MaterialDetails>Field_Value}" placeholder="{i18n>inputAlternateFieldValue}" class="MM_InputText" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/listOfFieldValue}.length === 0 ? true : false }" maxLength="100" liveChange="onAddingMandatoryValue" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>Alternate_ID_Type_Country}">
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectAlternateIdCountry}" selectedKey="{MaterialDetails>Alternate_ID_Type_Country}" items="{LookupModel>/MM_COUNTRY_REF_LIST}" editable="true" showSecondaryValues="true" filterSecondaryValues= "false" change="handleSelectedValue" selectionChange="onAddingMandatoryValue" >
+                                        <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_COUNTRY_REF_LIST_CODE} - {LookupModel>MM_COUNTRY_REF_LIST_DESC}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/newIDData/scenario} === 'add'}" press="fnAddNewAlternateIdData"></Button>
+                <Button text="{i18n>Update}" type="Emphasized" class="MM_BtnEmphasized" visible="{= ${MaterialDetails>/ProductDataStatic/alternateID/newIDData/scenario} !== 'add'}" press="fnUpdateExistingAlternateIdData"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

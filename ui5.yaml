@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: com.viatris.materialmaster
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /MM_ODATA
+            pathPrefix: /
+            destination: mm-fiori-odata-basic
+            url: http://fgd.dev:443
+          - path: /MM_JAVA_MASS
+            pathPrefix: /
+            destination: viatris-mm-mass-java
+            url: https://MaterialMasterMass.cfapps.us21.hana.ondemand.com
+          - path: /MM_JAVA
+            pathPrefix: /
+            destination: viatris-mm-java
+            url: https://MaterialMaster.cfapps.us21.hana.ondemand.com
+          - path: /MM_WORKFLOW
+            pathPrefix: /
+            destination: viatris-mm-workflow
+            url: https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/public/workflow
+          - path: /MM_WORKRULE/
+            pathPrefix: /
+            destination: vm-wr-services
+            url: https://cw-workrules-services.cfapps.us21.hana.ondemand.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: com.viatris.materialmaster
+        ui5Theme: sap_horizon

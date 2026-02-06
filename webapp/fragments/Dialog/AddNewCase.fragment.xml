@@ -1,0 +1,82 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="50%" showHeader="true" id="id_AddNewCase" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H4" text="{i18n>Cases}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" type="Default" class="MM_BtnDefault" press="onCancelCaseId"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:Form>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer binding="{caseModel>/newCase}">
+                        <f:formElements>
+
+                            <f:FormElement label="{i18n>caseId}">
+                                <f:fields>
+                                    <Input editable="false" value="{caseModel>caseId}" class="MM_InputText"  maxLength="{MaterialDetails>/ProductDataStatic/alternateID/Max_Value_Field_Value}" />
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="{i18n>caseType}">
+                                <f:fields>
+                                    <ComboBox id="id_caseType" width="100%" class="MM_ComboBox" placeholder="{i18n>selectCaseType}" selectedKey="{caseModel>caseType}" items="{LookupModel>/MM_CASE_TYPE_REF_LIST}" showSecondaryValues="true" filterSecondaryValues= "false" selectionChange="" change="fnHandleComboboxValidation">
+                                        <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_CASE_TYPE_REF_LIST_DESC}" />
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="{i18n>comment}">
+                                <f:fields>
+                                    <TextArea id="id_caseComment" value="{caseModel>comment}" placeholder="{i18n>enterYourComment}" class="MM_InputText"  maxLength="200" />
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="{i18n>followUpDate}">
+                                <f:fields>
+                                   
+                                    <DatePicker id="id_caseFollowUpDate" value="{caseModel>followUpDate}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd" class="MM_DatePicker" />
+                                </f:fields>
+                            </f:FormElement>
+
+                             <f:FormElement label="{i18n>resolvedDate}">
+                                <f:fields>
+                                   
+                                    <DatePicker id="id_caseResolvedDate" value="{caseModel>resolvedDate}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd" class="MM_DatePicker" />
+                                </f:fields>
+                            </f:FormElement>
+
+                            <f:FormElement label="{i18n>caseStatus}">
+                                <f:fields>
+                                    <Select id="id_caseStatus" width="100%" class="MM_Select" selectedKey="{caseModel>caseStatus}" items="{LookupModel>/MM_CASE_STATUS_REF_LIST}" showSecondaryValues="true" >
+                                        <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_CASE_STATUS_REF_LIST_DESC}" />
+                                    </Select>
+                                    
+                                </f:fields>
+                            </f:FormElement>
+
+                            
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized"  press="fnAddNewCaseData" visible="{= ${caseModel>/newCase/scenario} === 'add'}" ></Button>
+                <Button text="{i18n>Update}" type="Emphasized" class="MM_BtnEmphasized" visible="{= ${caseModel>/newCase/scenario} !== 'add'}" press="fnUpdateExistingCaseData"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

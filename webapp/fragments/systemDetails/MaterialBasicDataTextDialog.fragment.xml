@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<Dialog title="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextDialogTitle}" id="id_Material_BasicDataText" draggable="true">
+		<content>
+			<f:SimpleForm editable="true" layout="ColumnLayout" columnsM="1" columnsL="1" columnsXL="2">
+				<f:content>
+					<Label text= "{i18n>languageCode}" class="MM_Label" required="true"/>
+					<ComboBox value="" selectedKey="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddOrUpdate/MM_LANGUAGE}" items="{
+						path: 'LookupModel>/selectedSystemDataDropdown/MM_FILTERED_LANGUAGE_BASICDATATEXT',
+						filters: [{path: 'LanguageName', operator: 'NE', value1: 'Z1' }]
+						}" 
+					
+					showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>selectLanguageCode}"  editable="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/bBasicDataTextLanguageCode}"  change="changeBasicTextLanguageCode" valueState="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextLanguageValueState}" valueStateText="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextLanguageValueStateText}">
+						<core:ListItem key="{LookupModel>LanguageName}" text="{LookupModel>LanguageName} - {LookupModel>Descrption}"/>
+					</ComboBox>
+					<Label text= "{i18n>MM_MATERIAL_LONG_DESC_STXH_TDNAME}" class="MM_Label"  required="true"/>
+					<TextArea value="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddOrUpdate/MM_MATERIAL_LONG_DESC_STXH_TDNAME}" maxLength="500" rows="4" cols="20" change="changeMaterialBasicText" valueState="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextNoteValueState}" valueStateText="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextNoteValueStateText}"></TextArea>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button text="{i18n>Ok}" press="pressBasicDataTextDialogOk" />
+					<Button text="{i18n>Cancel}" press="pressBasicDataTextDialogCancel" ariaHasPopup="Dialog" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

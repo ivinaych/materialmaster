@@ -1,0 +1,104 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox visible="{CreateProject>/WorkflowDetails/visibility/showWorkflowDetails}">
+        <VBox>
+            <OverflowToolbar class="MM_OverflowToolbar">
+                <Title text="{i18n>processDetails}" class="MM_Title sapUiSmallMarginBeginEnd" level="H5" titleStyle="H5"></Title>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://refresh" type="Default" tooltip= "{i18n>refresh}" press="onRefreshWorkflow" class="MM_BtnDefault"/>
+            </OverflowToolbar>
+            <Panel width="auto" class="MM_panel sapUiSmallMarginBeginEnd" binding="{CreateProject>/WorkflowDetails/processDetails}">
+                <content>
+                    <HBox class="MM_MaterialDetailHeaderPanel">
+                        <VBox>
+                            <Label text="{i18n>requestNumber}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateProject>businessKey}" class=""/>
+                        </VBox>
+                        <VBox >
+                            <Label text="{i18n>processName}" class="MM_NotificationLabel"/>
+                            <Text text="{parts:['CreateProject>/RequestHeader/data/requestType', 'LookupModel>/requestType'],formatter: '.formatter.getRequestTypetext'}" class="" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>status}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateProject>status}" class=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>startedAt} {i18n>gmt} " class="MM_NotificationLabel"/>
+                            <Text text="{path: 'CreateProject>startedAt', formatter:'.formatter.onGetDateFormat'}" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>startedBy}" class="MM_NotificationLabel"/>
+                            <Text text="{CreateProject>startedBy}" class=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>completedAt} {i18n>gmt} " class="MM_NotificationLabel"/>
+                            <Text text="{path: 'CreateProject>completedAt', formatter:'.formatter.onGetDateFormat'}" />
+                        </VBox>
+                    </HBox>
+                </content>
+            </Panel>
+        </VBox>
+        <VBox>
+            <Title text="{i18n>taskDetails}" class="MM_Title sapUiSmallMarginBeginEnd sapUiSmallMarginTop" level="H5" titleStyle="H5"></Title>
+            <VBox class="sapUiSmallMarginBeginEnd MM_TableContainer">
+                <Table items="{CreateProject>/WorkflowDetails/taskDetails}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>taskName}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>taskGroup}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>taskOwners}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>status}" class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdAt} {i18n>gmt} " class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>dueDate} {i18n>gmt} " class="" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>completedAt} {i18n>gmt} " class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press="">
+                            <cells>
+                                <Text text="{parts:['CreateProject>description'], formatter: '.formatter.geti18nName'}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>attributes/0/value}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>processor}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{CreateProject>status}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateProject>createdAt', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateProject>dueDate', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                            <cells>
+                                <Text text="{path: 'CreateProject>completedAt', formatter:'.formatter.onGetDateFormat'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </VBox>
+    </VBox>
+    <VBox visible="{CreateProject>/WorkflowDetails/visibility/showChildRequestMessage}">
+        <MessageStrip text="{i18n>workflowDetailsInfoForParentReq}" type="Information" showIcon="true"/>
+    </VBox>
+    <VBox visible="{CreateProject>/WorkflowDetails/visibility/showNoWorkflowTasksMessage}">
+        <MessageStrip text="{i18n>workflowDetailsInfoForNoWorkflowTriggered}" type="Information" showIcon="true"/>
+    </VBox>
+</core:FragmentDefinition>

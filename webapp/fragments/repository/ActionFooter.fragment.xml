@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <OverflowToolbar visible="{Repository>/MaterialSelected/isMaterialDetailsVisible}">
+        <HBox>
+            <Button text="{i18n>editProductData}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'ProductData')" visible="{parts:[{value: 'ProductData'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editOrganizationalData}" type="Default" class="MM_BtnDefault sapUiTinyMarginEnd" press="onClickEditBtn($event,'Org_Data')" visible="{parts:[{value: 'Org_Data'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>extendOrg_Data}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'extendOrg_Data')" visible="{parts:[{value: 'Org_Data'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editBasicData1}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'BasicData1')" visible="{parts:[{value: 'BasicData1'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editBasicData2}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'BasicData2')" visible="{parts:[{value: 'BasicData2'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <!-- <Button text="{i18n>editAdditionalData}" type="Default" class="MM_BtnDefault" press="" visible="{parts:[{value: 'AdditionalData'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/> -->
+            <Button text="{i18n>editClassification}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'Classification')" visible="{parts:[{value: 'Classification'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{value: ''},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editDescription}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'Description')" visible="{parts:[{value: 'Description'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{path : 'MaterialDetails>/AdditionalData/selectedAdditionalTab'},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editBasicDataText}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'BasicDataText')" visible="{parts:[{value: 'BasicDataText'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{path : 'MaterialDetails>/AdditionalData/selectedAdditionalTab'},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+            <Button text="{i18n>editUOM}" type="Default" class="MM_BtnDefault" press="onClickEditBtn($event,'UnitsOfMeasure')" visible="{parts:[{value: 'UnitsOfMeasure'},{path:'Repository>/MaterialSelected/selectedMaterialDetailsTab'},{path : 'MaterialDetails>/AdditionalData/selectedAdditionalTab'},{path : 'Repository>/MaterialSelected/submitBtnEnabled'}],  formatter:'.formatter.forRepo_MDEditButtonVisiblity'}"/>
+        </HBox>
+        <ToolbarSpacer />
+        <HBox>
+            <Button text="{i18n>cancelChange}" type="Emphasized" class="MM_BtnDefault sapUiTinyMarginEnd" press="onCancelRepository" visible="{Repository>/MaterialSelected/submitBtnEnabled}"/>
+            <Button text="{i18n>submitChange}" type="Emphasized" press="onSubmitRepository" class="MM_BtnEmphasized" enabled="{Repository>/MaterialSelected/submitBtnEnabled}"/>
+        </HBox>
+    </OverflowToolbar>
+</core:FragmentDefinition>

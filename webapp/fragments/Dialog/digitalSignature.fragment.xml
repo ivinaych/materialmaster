@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentHeight="30%" contentWidth="60%" showHeader="true" id="id_digitalSignature" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H4" text="{i18n>digitalSignature}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" press="onCancelDigitalSignature"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:Form editable="false">
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>userId}">
+                                <f:fields>
+                                    <Input value="{CreateProject>/eSign/data/userId}" class="MM_InputText" required="true" valueState="{CreateProject>/eSign/valueState/userId}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>password}">
+                                <f:fields>
+                                    <Input value="{CreateProject>/eSign/data/password}" class="MM_InputText" required="true" type="Password" change="fnEncryptPassword" valueState="{CreateProject>/eSign/valueState/password}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>reason}">
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" required="true" placeholder="{i18n>selectReason}" selectedKey="{CreateProject>/eSign/data/remark}" items="{LookupModel>/MM_ESIGN_REMARKS_REF_LIST}" valueState="{CreateProject>/eSign/valueState/remark}" change="fnHandleComboboxValidation">
+                                        <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_ESIGN_REMARKS_REF_LIST_DESC}" />
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>okLogin}" type="Emphasized" class="MM_BtnEmphasized" press="onValidateDigitalSignature"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="50%" showHeader="true" id="id_AddNewPlants" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H4" text="{i18n>Plants}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" type="Default" class="MM_BtnDefault" press="onCancelAddPlant"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:Form>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer binding="{MaterialDetails>/OrganizationalData/newPlantData}">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>plant}">
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectPlant}" selectedKey="{MaterialDetails>MM_PLANT_ID}" items="{MaterialDetails>/OrganizationalData/listofFilteredPlants}" editable="{MaterialDetails>/OrganizationalData/addPlantClicked}" valueState="{MaterialDetails>/OrganizationalData/addNewPlant/valueState/plant}" showSecondaryValues="true" filterSecondaryValues= "true" selectionChange="onSelectNewPlantID" change="fnHandleComboboxValidation">
+                                        <core:ListItem key="{MaterialDetails>MM_KEY}" text="{MaterialDetails>MM_PLANT_REF_LIST_CODE} - {MaterialDetails>MM_PLANT_REF_LIST_DESC}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>system}">
+                                <f:fields>
+                                    <Input value="{parts:['MaterialDetails>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class="MM_InputText" editable="{MaterialDetails>targetSystemBtnEditability}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>profitCenter}">
+                                <f:fields>
+                                    <!-- <Input value="{MaterialDetails>profitCenterId}" class="MM_InputText" editable="{MaterialDetails>profitCenterBtnEditability}"/> -->
+                                    <Input id="profitCenterInput" value="{MaterialDetails>profitCenterId}" class="MM_InputText" editable="{= ${MaterialDetails>MM_PLANT_ID} ? true : false}" liveChange="fnHandleInputProfitCenter" valueState="{MaterialDetails>/OrganizationalData/addNewPlant/valueState/profitCenter}" showSuggestion="true" suggest="onSuggestProfitCenter" suggestionItems="{MaterialDetails>/OrganizationalData/ProfitCenterSuggestedLookup}" suggestionItemSelected="fnSuggestedProfitCenterSelected" autocomplete="false" startSuggestion="3">
+                                        <!-- startSuggestion="4" -->
+                                        <suggestionItems>
+                                            <core:ListItem key="{MaterialDetails>ProfitCtnr}" text="{MaterialDetails>ProfitCtnr}" additionalText="{MaterialDetails>ProfitCentreName}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>batchManagement}">
+                                <f:fields>
+                                    <Switch state="{MaterialDetails>batchManagement}" customTextOn="{i18n>SwitchAction_Yes}" customTextOff="{i18n>SwitchAction_No}" enabled="{MaterialDetails>batchManagementBtnEnability}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>plantSpecificMatStatus}">
+                                <f:fields>
+                                    <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>select} {i18n>plantSpecificMatStatus}" selectedKey="{MaterialDetails>plantSpecificMatStatus}" items="{MaterialDetails>/OrganizationalData/listofPlantSpccificMatList}" showSecondaryValues="true" filterSecondaryValues= "true" selectionChange="" change="fnHandleComboboxValidation" editable="false">
+                                        <core:ListItem key="{MaterialDetails>MaterialStatus}" text="{MaterialDetails>MaterialStatus} - {MaterialDetails>Description}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized" visible="{MaterialDetails>/OrganizationalData/addPlantClicked}" press="fnAddNewPlantData"></Button>
+                <Button text="{i18n>Update}" type="Emphasized" class="MM_BtnEmphasized" visible="{MaterialDetails>/OrganizationalData/editPlantClicked}" press="fnUpdateExistingPlantData"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

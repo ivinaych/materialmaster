@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="70%" horizontalScrolling="false" draggable="true" title="{i18n>listOfMissingMandatoryFieldsAndUIErrors}" class="MM_FragmentHeader" id="id_MD_MissingMandatoryField">
+        <List items="{path: 'MaterialDetails>/GeneralData/missingMandatoryFields', sorter: { path: 'tabName', group: true , descending: false}}">
+            <StandardListItem title="{MaterialDetails>fieldName}" icon="sap-icon://begin" class=""/>
+        </List>
+        <buttons>
+            <Button text="{i18n>okText}" press="onConfirmMandatoryMissingFields" type="Emphasized" class="sigBtnEmphasized"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

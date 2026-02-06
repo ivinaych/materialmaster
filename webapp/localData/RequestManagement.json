@@ -1,0 +1,27 @@
+{
+    "fromRequestMangementPage" : false,
+    "source": "",
+    "FilterDetails": {},
+    "RequestDetailList": [],
+    "PaginationDetails": {
+        "totalPages": 1,
+        "currentPage": 1,
+        "rowsPerPage": 10,
+        "selectRowsPerPage": 10,
+        "totalrecords": 0,
+        "totalPagesArray":[],
+        "trayDetails":{
+            "start":1,
+            "end":5
+        },
+        "footerVisible":false,
+        "fromRequestMangementPage":true,
+        "possibleRowsPerPage":[{"key":10},{"key":20},{"key":50},{"key":100}]
+    },
+    "FilterOptions": {
+        "AdvanceFilter": [],
+        "All_FilterFields": [],
+        "Applicable_FilterFields": [],
+        "BasicFilter": {}
+    }
+}

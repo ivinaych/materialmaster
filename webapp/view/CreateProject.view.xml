@@ -1,0 +1,56 @@
+<mvc:View controllerName="com.viatris.materialmaster.controller.CreateProject"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:table="sap.ui.table"
+    xmlns:tnt="sap.tnt">
+    <Page showHeader="true" enableScrolling="true" class="MM_Page">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" press="onGoBack" class="MM_BtnDefault_noBorder" visible="{parts:['oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.fnCreateProjectBackBtn'}"/>
+                    <Title level="H5" titleStyle="H5" text="{i18n>requestNo} {CreateProject>/RequestHeader/data/requestNumber}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Title level="H5" titleStyle="H5" text="{oAppModel>/taskDetails/wfTaskName}" class="MM_Title MM_TitleTaskName" visible="{parts:['oAppModel>/taskDetails/wfTaskName'], formatter:'.formatter.fnShowWfTaskName'}"></Title>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <IconTabBar stretchContentHeight="true" backgroundDesign="Transparent" headerMode="Inline" applyContentPadding="false" expanded="{device>/isNoPhone}" expandable="false" class="MM_IconTabBar" selectedKey="{CreateProject>/selectedCreateProjectTab}" select="onPressIconTabBar">
+                <items>
+                    <IconTabFilter icon="sap-icon://notes" text="{i18n>requestHeader}" key="requestHeader" class="MM_IconTabFilter">
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.RequestHeader" type="XML" />
+                        </ScrollContainer>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://clinical-task-tracker" text="{i18n>materialList}" key="materialList" enabled="{parts:['CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.MaterialList" type="XML" />
+                        </ScrollContainer>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://comment" text="{i18n>reqComments}" key="comments" enabled="{parts:['CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.Comments" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+                    <IconTabFilter icon="sap-icon://inspect" text="{i18n>requestChangeHistory}" key="requestChangeHistory" enabled="{parts:['CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}">
+						<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+							<core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.RequestChangeHistory" type="XML" />
+						</ScrollContainer>
+					</IconTabFilter>
+                    <IconTabFilter icon="sap-icon://workflow-tasks" text="{i18n>workflowDetails}" key="workflowDetails" enabled="{parts:['CreateProject>/RequestHeader/data/requestNumber'], formatter:'.formatter.requestNoExist'}" visible="{CreateProject>/WorkflowDetails/visibility/showWorkflowDetailsTab}">
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.WorkflowDetails" type="XML" />
+                        </ScrollContainer>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <footer>
+            <core:Fragment fragmentName="com.viatris.materialmaster.fragments.createProject.ActionFooter" type="XML"/>
+        </footer>
+    </Page>
+</mvc:View>

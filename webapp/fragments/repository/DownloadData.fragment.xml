@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:main="sap.ui.webc.main">
+    <Dialog contentWidth="80%" showHeader="true" id="id_Repository_DownloadData" class="sapUiSizeCompact" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <main:Icon class="sapUiTinyMargin" name="sap-icon://download" />
+                    <Title level="H5" titleStyle="H5" text="{i18n>downloadData}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <!-- <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Emphasized" class="MM_BtnEmphasized" press="onAddAdvanceFilterOption"/> -->
+                    <Button icon="sap-icon://decline" tooltip="{i18n>close}" press="onCloseDownloadData"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+
+         <Label text= "{i18n>SelectTheItemsYouWantTODownload}" class="MM_Label sapUiSmallMargin"/>
+
+            <List id="DownloadDataListRepo" mode="MultiSelect" includeItemInSelection="true" selectionChange="onItemPressOfDownloadData" items="{DownloadData>/repository/title}" >
+                <StandardListItem title="{parts:['DownloadData>key'], formatter:'.formatter.geti18nName'}" selected="{DownloadData>selected}" />
+                
+            </List>
+
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <!-- <Button text="{i18n>materialDataDownload}" type="Emphasized" class="MM_BtnEmphasized" press="onDownloadAdvSearchData"/> -->
+                <!-- <Button text="{i18n>clear}" type="Default" class="MM_BtnDefault " press="onClearSelection" /> -->
+                <Button text="{i18n>downloadData}" type="Emphasized" class="MM_BtnEmphasized" press="onClickDownloadData"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

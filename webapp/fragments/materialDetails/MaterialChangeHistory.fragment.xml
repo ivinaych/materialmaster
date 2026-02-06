@@ -1,0 +1,300 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>eSignLog}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <VBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTop MM_TableContainer">
+                    <Table items="{MaterialDetails>/materialChangeHistory/eSignLog}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                        <columns>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>materialNumber}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestNo}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>eSignedBy}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>eSignedOn} {i18n>gmt} " class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>reason}" class="" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{MaterialDetails>materialNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>requestNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>esignBy}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>esignedOn}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>esignRemarks', 'LookupModel>/MM_ESIGN_REMARKS_REF_LIST'], formatter:'.formatter.getESignRemarksDescription'}" class=""/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </content>
+        </Panel>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>materialRequestLog}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <!-- <Button text="{i18n>downloadExcel}" type="Emphasized" class="MM_BtnEmphasized" press="onExportExcelchangelog"></Button> -->
+                <VBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTop MM_TableContainer">
+                    <Table items="{MaterialDetails>/materialChangeHistory/requestLog}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                        <columns>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>materialNumber}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestNo}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestType}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestStatus}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>createdOn} {i18n>gmt}" class="" />
+                            </Column>
+                            <!-- <Column hAlign="Begin">
+                                <Text text="{i18n>materialStatus}" class="" />
+                            </Column> -->
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{MaterialDetails>materialNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>requestNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestTypeId', 'LookupModel>/allRequestType'],formatter: '.formatter.getRequestTypetext'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestStatusId', 'LookupModel>/requestStatus'],formatter: '.formatter.getStatustext'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>createdOn}" class="" />
+                                </cells>
+                                <!-- <cells>
+                                    <Text text="{parts:['MaterialDetails>materialStatus', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class="" />
+                                </cells> -->
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </content>
+        </Panel>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom" visible="{parts:['oAppModel>/sideNavigation/currentView'],formatter: '.formatter.attributeChangePanelVisible'}">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>activeAttributeChanges}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <!-- <Button text="{i18n>downloadExcel}" type="Emphasized" class="MM_BtnEmphasized" press="onExportExcelchangelog"></Button> -->
+                <VBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTop MM_TableContainer">
+                    <Table items="{MaterialDetails>/materialChangeHistory/activeAttibuteChanges}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders"
+                        growing="true" growingThreshold="10" growingScrollToLoad="false">
+                        <columns>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestNumber}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestStatusId}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>requestTypeId}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>parentRequestNumber}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>materialNumber}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>attributeName}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>uiView}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>systemId}" class="" />
+                            </Column>
+                            <Column hAlign="Begin">
+                                <Text text="{i18n>plantCode}" class="" />
+                            </Column>
+                            <!-- <Column hAlign="Begin">
+                                <Text text="{i18n>materialStatus}" class="" />
+                            </Column> -->
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{MaterialDetails>requestNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestStatusId', 'LookupModel>/requestStatus'],formatter: '.formatter.getStatustext'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>requestTypeId', 'LookupModel>/requestType'],formatter: '.formatter.getRequestTypetext'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>parentRequestNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>materialNumber}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts: ['MaterialDetails>attributeName', 'LookupModel>/attributeListProdData'], formatter: '.formatter.getFieldNameFromi18OrAttributeService'}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>uiView'],formatter: '.formatter.geti18nName'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{parts:['MaterialDetails>systemId', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class="" />
+                                </cells>
+                                <cells>
+                                    <Text text="{MaterialDetails>plantCode}" class="" />
+                                </cells>
+                                <!-- <cells>
+                                    <Text text="{parts:['MaterialDetails>materialStatus', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}" class="" />
+                                </cells> -->
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </content>
+        </Panel>
+        <Panel expandable="true" width="auto" expanded="true" class="MM_panel sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>materialChangeLog}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <VBox>
+                    <Toolbar class="MM_HideUnderline">
+                        <ToolbarSpacer />
+                        <SearchField width="auto" placeholder="{i18n>searchByFieldName}" search="onSearchMatChangeLog" class="MM_SearchField" />
+                    </Toolbar>
+                    <VBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTop MM_TableContainer">
+                        <Table items="{MaterialDetails>/materialChangeHistory/changeLog/logList}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                            <columns>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>materialNumber}" class="" />
+                                </Column>
+                                <Column hAlign="Begin" visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnSetVisibleRepoStatusCol'}">
+                                    <Text text="{i18n>requestNumber}" class=""/>
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>systemId}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>uiView}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>additionalInfo}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>fieldName}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>oldValue}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>newValue}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>updatedBy}" class="" />
+                                </Column>
+                                <Column hAlign="Begin">
+                                    <Text text="{i18n>updatedOn} {i18n>gmt} " class="" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{MaterialDetails>materialNumber}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{MaterialDetails>requestNumber}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{parts:['MaterialDetails>systemID', 'LookupModel>/MM_SYSTEM_REF_LIST'],formatter: '.formatter.getSystemText'}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <!-- <Text text="{MaterialDetails>uiView}" class="" /> -->
+                                        <Text text="{parts:['MaterialDetails>uiView'],formatter: '.formatter.geti18nName'}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{MaterialDetails>addInfo}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{parts: ['MaterialDetails>fieldName', 'LookupModel>/attributeListProdData'], formatter: '.formatter.getFieldNameFromi18OrAttributeService'}" class=""/>
+                                    </cells>
+                                    <cells>
+                                        <Text text="{parts:['MaterialDetails>fieldName', 'MaterialDetails>oldValue'],formatter: '.formatter.getRequestChangeNewValue'}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{parts:['MaterialDetails>fieldName', 'MaterialDetails>newValue'],formatter: '.formatter.getRequestChangeNewValue'}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{MaterialDetails>changedBy}" class="" />
+                                    </cells>
+                                    <cells>
+                                        <Text text="{MaterialDetails>changedOn}" class="" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </VBox>
+                    <OverflowToolbar binding="{MaterialDetails>/PaginationDetailsMatChangeLog}" visible="{MaterialDetails>/PaginationDetailsMatChangeLog/footerVisible}">
+                        <Label text="{i18n>showingPage} {MaterialDetails>currentPage} {i18n>ofText} {MaterialDetails>totalPages}" textDirection="RTL" design="Bold"/>
+                        <ToolbarSpacer/>
+                        <HBox renderType="Bare" alignItems="Center" class="MM_PaginationBox_HBox">
+                            <Button icon="sap-icon://nav-back" enabled="{parts:['MaterialDetails>currentPage'], formatter:'.formatter.enableLeftNavButton'}" class="MM_PaginationNavButton" press="onPrevPageMatChangeLog"/>
+                            <HBox renderType="Bare" alignItems="Center" items="{MaterialDetails>totalPagesArray}">
+                                <Link text="{MaterialDetails>page}" press="onPageClickMatChangeLog" fieldGroupIds="iD_PageNumber" class="MM_PaginationLinkColor" wrapping="true"/>
+                            </HBox>
+                            <Button icon="sap-icon://navigation-right-arrow" enabled="{parts:['MaterialDetails>currentPage','MaterialDetails>totalPages'], formatter:'.formatter.enableRightNavButton'}" class="MM_PaginationNavButton" press="onNextPageMatChangeLog"/>
+                        </HBox>
+                        <HBox class="sapUiSmallMargin">
+                            <Label text="{i18n>selectRowsPerPage}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+                            <Select items="{MaterialDetails>possibleRowsPerPage}" selectedKey="{MaterialDetails>selectRowsPerPage}" change="onSelectPageSizeMatChangeLog">
+                                <core:Item text="{MaterialDetails>key}"/>
+                            </Select>
+                        </HBox>
+                    </OverflowToolbar>
+                </VBox>
+            </content>
+        </Panel>
+
+    </VBox>
+</core:FragmentDefinition>

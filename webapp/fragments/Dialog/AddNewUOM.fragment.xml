@@ -1,0 +1,184 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentHeight="80%" contentWidth="80%" showHeader="true" id="id_AddNewUOM" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H5" titleStyle="H5" text="{i18n>UNIT_OF_MEASURE}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" tooltip="close" press="fnCloseAddNewUOMPopUp"/>
+                     <!-- visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/addBtnClicked'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" -->
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <l:VerticalLayout class="sapUiTinyMargin">
+                <l:Grid defaultSpan="XL3 L3 M6 S6" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/AdditionalUOM/newUOMData}">
+                    <VBox>
+                        <Label text="{i18n>MM_DENOMINATOR_MARM_UMREN}" tooltip="{i18n>MM_DENOMINATOR_MARM_UMREN}" class="MM_Label" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_DENOMINATOR_MARM_UMREN}" class="MM_InputText" placeholder="" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_ALTERNATE_UNIT_MARM_MEINH}" tooltip="{i18n>MM_ALTERNATE_UNIT_MARM_MEINH}" class="MM_Label" wrapping="false" required="true"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH}" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS', 'MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/editUomBtnClicked'],formatter: '.formatter.fnAltUnitFieldEditability'}" valueState="{MaterialDetails>valueState/MM_ALTERNATE_UNIT_MARM_MEINH}" class="MM_ComboBox" width="100%" placeholder="" items="{MaterialDetails>/SystemDetails/AdditionalUOM/filteredAltUomDropdown}" showSecondaryValues="true" filterSecondaryValues= "true" selectionChange ="onChangeAltUnit" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{MaterialDetails>IntMeasUnit}" text="{MaterialDetails>IntMeasUnit} - {MaterialDetails>MeasUnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}" tooltip="{i18n>MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}" class="MM_Label" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}" class="MM_InputText" placeholder="" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}" tooltip="{i18n>MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}" class="MM_Label" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}" class="MM_InputText" placeholder="" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_NUMERATOR_MARM_UMREZ}" tooltip="{i18n>MM_NUMERATOR_MARM_UMREZ}" class="MM_Label" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_NUMERATOR_MARM_UMREZ}" class="MM_InputText" placeholder="" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" tooltip="{i18n>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" class="MM_Label" wrapping="false" required="true"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" editable="false" valueState="{MaterialDetails>valueState/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" class="MM_ComboBox" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>IntMeasUnit}" text="{LookupModel>IntMeasUnit} - {LookupModel>MeasUnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}" tooltip="{i18n>MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}" class="MM_Label" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}" class="MM_InputText" placeholder="" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_EAN_UPC_MARM_EAN11}" tooltip="{i18n>MM_EAN_UPC_MARM_EAN11}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_EAN_UPC_MARM_EAN11}" class="MM_InputText" placeholder="" liveChange="onChangeEanUpc" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_EAN_VARIANT_MARM_GTIN_VARIANT}" tooltip="{i18n>MM_EAN_VARIANT_MARM_GTIN_VARIANT}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_EAN_VARIANT_MARM_GTIN_VARIANT}" class="MM_InputText" placeholder="" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_CN_MARM_NUMTP}" tooltip="{i18n>MM_CN_MARM_NUMTP}" class="MM_Label" required="false" wrapping="false"/>
+                        <!-- <Input value="{MaterialDetails>data/MM_CN_MARM_NUMTP}" class="MM_InputText" placeholder="" liveChange ="onChangeeanCategory" /> -->
+                         <ComboBox selectedKey="{MaterialDetails>data/MM_CN_MARM_NUMTP}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_EAN_CATEGORY_MARA_NUMTP}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" selectionChange ="onChangeeanCategory" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>EAN}" text="{LookupModel>EAN} - {LookupModel>Descrption}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_AU_MARM_PRFZ}" tooltip="{i18n>MM_AU_MARM_PRFZ}" selected="{MaterialDetails>data/MM_AU_MARM_PRFZ}" class="MM_CheckBox" editable= "false" width="50%" />
+                    </VBox>
+                    <VBox>
+                        <Label text="" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_A_MARM_ZEANS}" tooltip="{i18n>MM_A_MARM_ZEANS}" selected="{MaterialDetails>data/MM_A_MARM_ZEANS}" class="MM_CheckBox" editable= "false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_LENGTH_MARM_LAENG}" tooltip="{i18n>MM_LENGTH_MARM_LAENG}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_LENGTH_MARM_LAENG}" class="MM_InputText" placeholder="" />
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_WIDTH_MARM_BREIT}" tooltip="{i18n>MM_WIDTH_MARM_BREIT}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_WIDTH_MARM_BREIT}" class="MM_InputText" placeholder="" />
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_HEIGHT_MARM_HOEHE}" tooltip="{i18n>MM_HEIGHT_MARM_HOEHE}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_HEIGHT_MARM_HOEHE}" class="MM_InputText" placeholder="" />
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_UNIT_OF_DIMENSION_MARM_MEABM}" tooltip="{i18n>MM_UNIT_OF_DIMENSION_MARM_MEABM}" class="MM_Label" required="false" wrapping="false" />
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_UNIT_OF_DIMENSION_MARM_MEABM}" class="MM_ComboBox" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>IntMeasUnit}" text="{LookupModel>IntMeasUnit} - {LookupModel>MeasUnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_VOLUME_MARM_VOLUM}" tooltip="{i18n>MM_VOLUME_MARM_VOLUM}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_VOLUME_MARM_VOLUM}" class="MM_InputText" placeholder="" liveChange="onChangeVolume" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_VOLUME_UNIT_MARM_VOLEH}" tooltip="{i18n>MM_VOLUME_UNIT_MARM_VOLEH}" class="MM_Label" required="false" wrapping="false"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_VOLUME_UNIT_MARM_VOLEH}" class="MM_ComboBox" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/MM_VOLUME_UNIT_MARM_VOLEH}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}">
+                            <core:ListItem key="{LookupModel>Volumeunit}" text="{LookupModel>Volumeunit} - {LookupModel>UnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_GROSS_WEIGHT_MARM_BRGEW}" tooltip="{i18n>MM_GROSS_WEIGHT_MARM_BRGEW}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_GROSS_WEIGHT_MARM_BRGEW}" class="MM_InputText" placeholder="" liveChange="onChangeGrossWeight" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_NET_WEIGHT_MARM_NTGEW}" tooltip="{i18n>MM_NET_WEIGHT_MARM_NTGEW}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_NET_WEIGHT_MARM_NTGEW}" class="MM_InputText" placeholder="" liveChange="onChangeNetWeight" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_WEIGHT_UNIT_MARM_GEWEI}" tooltip="{i18n>MM_WEIGHT_UNIT_MARM_GEWEI}" class="MM_Label" required="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType'],formatter: '.formatter.fnWeightUnitRequired'}" wrapping="false"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_WEIGHT_UNIT_MARM_GEWEI}" class="MM_ComboBox" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/MM_WEIGHT_UNIT_MARM_GEWEI}" showSecondaryValues="true" filterSecondaryValues= "true" valueState="{MaterialDetails>valueState/MM_WEIGHT_UNIT_MARM_GEWEI}" change="fnHandleComboboxValidation" editable="{parts:['MaterialDetails>data/MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARA_MEINS'],formatter: '.formatter.fnAltUomDefaultRowEditability'}">
+                            <core:ListItem key="{LookupModel>Weightunit}" text="{LookupModel>Weightunit} - {LookupModel>UnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_NUMBER_MARM_AZSUB}" tooltip="{i18n>MM_NUMBER_MARM_AZSUB}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_NUMBER_MARM_AZSUB}" class="MM_InputText" placeholder="" editable="false" />
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_LUN_MARM_MESUB}" tooltip="{i18n>MM_LUN_MARM_MESUB}" class="MM_Label" required="false" wrapping="false"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_LUN_MARM_MESUB}" class="MM_ComboBox" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" showSecondaryValues="true" filterSecondaryValues= "true" editable="false" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>IntMeasUnit}" text="{LookupModel>IntMeasUnit} - {LookupModel>MeasUnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_GTIN_MARM_STTPEC_GTIN}" tooltip="{i18n>MM_GTIN_MARM_STTPEC_GTIN}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_GTIN_MARM_STTPEC_GTIN}"  editable="false" class="MM_InputText" placeholder=""/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}" tooltip="{i18n>MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}" class="MM_Label" required="false" wrapping="false"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}" class="MM_ComboBox"  editable="false" width="100%" placeholder="" items="{LookupModel>/selectedSystemDataDropdown/SerialNumberManagtypeSet}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>SnumberMangeType}" text="{LookupModel>SnumberMangeType} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}" tooltip="{i18n>MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}" class="MM_InputText" placeholder="" editable = "false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_NATIONAL_CODE_MARM_STTPEC_NCODE}" tooltip="{i18n>MM_NATIONAL_CODE_MARM_STTPEC_NCODE}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_NATIONAL_CODE_MARM_STTPEC_NCODE}" class="MM_InputText" placeholder=""/>
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" tooltip="{i18n>MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" class="MM_Label" required="false" wrapping="false"/>
+                        <!-- <ComboBox selectedKey="{MaterialDetails>data/MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" class="MM_ComboBox" width="100%" placeholder="" items="" change="fnHandleComboboxValidation">
+                            <core:ListItem key="" text="" />
+                        </ComboBox> -->
+                        <Input value="{MaterialDetails>data/MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" class="MM_ComboBox" placeholder=""/>
+
+                    </VBox>
+                    <VBox>
+                        <Label text="{i18n>MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}" tooltip="{i18n>MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}" class="MM_Label" required="false" wrapping="false"/>
+                        <Input value="{MaterialDetails>data/MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}" class="MM_InputText"  editable="false" placeholder="" />
+                    </VBox>
+                    <VBox>
+                        <Label text="" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" tooltip="{i18n>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" selected="{MaterialDetails>data/MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" class="MM_CheckBox" wrapping="false" editable="false"/>
+                    </VBox>
+                    <VBox>
+                        <Label text="" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" tooltip="{i18n>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" selected="{MaterialDetails>data/MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" class="MM_CheckBox" editable="false"/>
+                    </VBox>
+                </l:Grid>
+            </l:VerticalLayout>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <!-- <Button text="{i18n>delete}" press="fnDeleteExistingUOMData" visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/editRowClicked','MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/rowIndex'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" class="MM_BtnEmphasized" type="Emphasized"/>
+                    <Button text="{i18n>ok}" press="fnChangeExistingUOMData" visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/editRowClicked'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" class="MM_BtnEmphasized" type="Emphasized"/>
+                    <Button text="{i18n>submit}" press="fnAddNewUOMData" visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/addBtnClicked'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" class="MM_BtnEmphasized" type="Emphasized"/> -->
+
+                    <!-- <Button text="{i18n>delete}" press="fnDeleteExistingUOMData" visible="true" class="MM_BtnEmphasized" type="Emphasized"/> -->
+                    <Button text="{i18n>ok}" press="fnChangeExistingUOMData" visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/editUomBtnClicked'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" class="MM_BtnEmphasized" type="Emphasized"/>
+                    <Button text="{i18n>submit}" press="fnAddNewUOMData" visible="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/addBtnClicked'],formatter: '.formatter.actionBtnAddNewUomVisibility'}" class="MM_BtnEmphasized" type="Emphasized"/>
+                    <Button text="{i18n>cancel}" press="pressAddUomDialogCancel"/>
+
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

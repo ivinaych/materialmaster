@@ -1,0 +1,269 @@
+<core:FragmentDefinition xmlns:variants="sap.ui.comp.variants"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <Panel expandable="true" width="auto" headerText="{i18n>generalData}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>generalData}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/generalData}">
+                    <VBox>
+                        <Label text= "{i18n>MM_INDUSTRY_SECTOR_MARA_MBRSH}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_INDUSTRY_SECTOR_MARA_MBRSH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_INDUSTRY_SECTOR_MARA_MBRSH}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_INDUSTRY_SECTOR_MARA_MBRSH}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_INDUSTRY_SECTOR_MARA_MBRSH}" valueState="{MaterialDetails>valueState/MM_INDUSTRY_SECTOR_MARA_MBRSH}" editable="{path: 'MaterialDetails>editable/MM_INDUSTRY_SECTOR_MARA_MBRSH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>IndustrySectorCode}" text="{LookupModel>IndustrySectorCode} - {LookupModel>IndustryDescr}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" selectionChange="onChangeBasicDataBaseUom" width="100%" items="{LookupModel>/selectedRulesSystemDataDropdown/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" valueState="{MaterialDetails>valueState/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS}" editable= "{path: 'MaterialDetails>editable/MM_BASE_UNIT_OF_MEASURE_MARM_MEINS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>IntMeasUnit} - {LookupModel>MeasUnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox> 
+                        <Label text= "{i18n>MM_MATERIAL_GROUP_MARA_MATKL}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_MATERIAL_GROUP_MARA_MATKL', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_MATERIAL_GROUP_MARA_MATKL}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_MATERIAL_GROUP_MARA_MATKL}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_MATERIAL_GROUP_MARA_MATKL}" valueState="{MaterialDetails>valueState/MM_MATERIAL_GROUP_MARA_MATKL}" editable= "{path: 'MaterialDetails>editable/MM_MATERIAL_GROUP_MARA_MATKL', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MaterialGroupCode}" text="{LookupModel>MaterialGroupCode} - {LookupModel>MatlGrpDesc}"/>
+                        </ComboBox>
+
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_OLD_MATERIAL_NUMBER_MARA_BISMT}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_OLD_MATERIAL_NUMBER_MARA_BISMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_OLD_MATERIAL_NUMBER_MARA_BISMT}" width="100%" maxLength="18" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_OLD_MATERIAL_NUMBER_MARA_BISMT}" valueState="{MaterialDetails>valueState/MM_OLD_MATERIAL_NUMBER_MARA_BISMT}" editable= "{path: 'MaterialDetails>editable/MM_OLD_MATERIAL_NUMBER_MARA_BISMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue" />
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_DIVISION_MARA_SPART}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DIVISION_MARA_SPART', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_DIVISION_MARA_SPART}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_DIVISION_MARA_SPART}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_DIVISION_MARA_SPART}" valueState="{MaterialDetails>valueState/MM_DIVISION_MARA_SPART}" editable= "{path: 'MaterialDetails>editable/MM_DIVISION_MARA_SPART', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>DivisionCode}" text="{LookupModel>DivisionCode} - {LookupModel>Name}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR}" valueState="{MaterialDetails>valueState/MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR}" editable= "{path: 'MaterialDetails>editable/MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>LabOffice}" text="{LookupModel>LabOffice} - {LookupModel>LaboratoryDesc}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PRODUCT_ALLOCATION_MARA_KOSCH}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PRODUCT_ALLOCATION_MARA_KOSCH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_PRODUCT_ALLOCATION_MARA_KOSCH}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_PRODUCT_ALLOCATION_MARA_KOSCH}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_PRODUCT_ALLOCATION_MARA_KOSCH}" valueState="{MaterialDetails>valueState/MM_PRODUCT_ALLOCATION_MARA_KOSCH}" editable= "{path: 'MaterialDetails>editable/MM_PRODUCT_ALLOCATION_MARA_KOSCH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>ProdAllocation}" text="{LookupModel>ProdAllocation} - {LookupModel>Descrption}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PRODUCT_HIERARCHY_MARA_PRDHA}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PRODUCT_HIERARCHY_MARA_PRDHA', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PRODUCT_HIERARCHY_MARA_PRDHA}" width="100%" maxLength="18" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PRODUCT_HIERARCHY_MARA_PRDHA}" valueState="{MaterialDetails>valueState/MM_PRODUCT_HIERARCHY_MARA_PRDHA}" editable= "{path: 'MaterialDetails>editable/MM_PRODUCT_HIERARCHY_MARA_PRDHA', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE}" valueState="{MaterialDetails>valueState/MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE}" editable="{path: 'MaterialDetails>editable/MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"  selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MaterialStatus}" text="{parts:['LookupModel>MaterialStatus', 'LookupModel>Description'], formatter:'.formatter.fnHandleXPlantText'}"/>
+                            <!-- {LookupModel>MaterialStatus} - {LookupModel>Description} -->
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_VALID_FROM_MARA_DATAB}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_VALID_FROM_MARA_DATAB', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <DatePicker value="{MaterialDetails>data/MM_VALID_FROM_MARA_DATAB}" valueFormat="yyyy-MM-dd HH:mm:ss" displayFormat="yyyy-MM-dd" placeholder="{i18n>dateFormat}" class="MM_DatePicker" change="" valueState="{MaterialDetails>valueState/MM_VALID_FROM_MARA_DATAB}" editable= "{path: 'MaterialDetails>editable/MM_VALID_FROM_MARA_DATAB', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_ASSIGN_EFFECT_VALS_MARA_KZEFF}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_ASSIGN_EFFECT_VALS_MARA_KZEFF', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable="{path: 'MaterialDetails>editable/MM_ASSIGN_EFFECT_VALS_MARA_KZEFF', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox 
+                        selectedKey="{MaterialDetails>data/MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA}" 
+                        width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" 
+                        placeholder="{i18n>select} {i18n>MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA}" 
+                        valueState="{MaterialDetails>valueState/MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA}" 
+                        editable= "{path: 'MaterialDetails>editable/MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"  
+                        selectionChange="onAddingMandatoryValue" 
+                        change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>ItemCatGroup}" text="{LookupModel>ItemCatGroup} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <layoutData>
+                            <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                        <Label 
+                        text= "{i18n>MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG}" 
+                        class="MM_Label" 
+                        required="{path: 'MaterialDetails>required/MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox 
+                        selectedKey="{MaterialDetails>data/MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG}" 
+                        width="100%" 
+                        items="{LookupModel>/selectedSystemDataDropdown/MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG}" 
+                        showSecondaryValues="true" 
+                        filterSecondaryValues= "true" 
+                        class="MM_ComboBox" 
+                        placeholder="{i18n>select} {i18n>MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG}" 
+                        valueState="{MaterialDetails>valueState/MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG}" 
+                        editable= "{path: 'MaterialDetails>editable/MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" 
+                        selectionChange="onAddingMandatoryValue" 
+                        change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>ExtMatlGroup}" text="{LookupModel>ExtMatlGroup} - {LookupModel>ExtMatlGroupDesc}"/>
+                        </ComboBox>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>matAuthGroup}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>matAuthGroup}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/matAuthGroup}">
+                    <VBox>
+                        <Label text= "{i18n>MM_AUTHORIZATION_GROUP_MARA_BEGRU}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_AUTHORIZATION_GROUP_MARA_BEGRU', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_AUTHORIZATION_GROUP_MARA_BEGRU}" width="100%" maxLength="4" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_AUTHORIZATION_GROUP_MARA_BEGRU}" valueState="{MaterialDetails>valueState/MM_AUTHORIZATION_GROUP_MARA_BEGRU}" editable= "{path: 'MaterialDetails>editable/MM_AUTHORIZATION_GROUP_MARA_BEGRU', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>dimensionsEans}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>dimensionsEans}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/dimensionsEans}">
+                    <VBox>
+                        <Label text= "{i18n>MM_GROSS_WEIGHT_MARA_BRGEW}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_GROSS_WEIGHT_MARA_BRGEW', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_GROSS_WEIGHT_MARA_BRGEW}" width="100%" class="MM_InputText" type="Number" maxLength="13" placeholder="{i18n>enter} {i18n>MM_GROSS_WEIGHT_MARA_BRGEW}" valueState="{MaterialDetails>valueState/MM_GROSS_WEIGHT_MARA_BRGEW}" editable= "{path: 'MaterialDetails>editable/MM_GROSS_WEIGHT_MARA_BRGEW', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" change="onChangeBasicDataGrossWeight" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_WEIGHT_UNIT_MARM_GEWEI}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_WEIGHT_UNIT_MARM_GEWEI', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_WEIGHT_UNIT_MARM_GEWEI}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_WEIGHT_UNIT_MARM_GEWEI}" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_WEIGHT_UNIT_MARM_GEWEI}" showSecondaryValues="true" filterSecondaryValues= "true" valueState="{MaterialDetails>valueState/MM_WEIGHT_UNIT_MARM_GEWEI}"  editable= "{path: 'MaterialDetails>editable/MM_WEIGHT_UNIT_MARM_GEWEI', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onChangeWeightUnit" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>Weightunit}" text="{LookupModel>Weightunit} - {LookupModel>UnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_NET_WEIGHT_MARA_NTGEW}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_NET_WEIGHT_MARA_NTGEW', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_NET_WEIGHT_MARA_NTGEW}" width="100%" type="Number" maxLength="13" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_NET_WEIGHT_MARA_NTGEW}" valueState="{MaterialDetails>valueState/MM_NET_WEIGHT_MARA_NTGEW}" editable= "{path: 'MaterialDetails>editable/MM_NET_WEIGHT_MARA_NTGEW', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" change="onChangeBasicDataNetWeight"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_VOLUME_MARM_VOLUM}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_VOLUME_MARM_VOLUM', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_VOLUME_MARM_VOLUM}" width="100%" type="Number" maxLength="13" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_VOLUME_MARM_VOLUM}" valueState="{MaterialDetails>valueState/MM_VOLUME_MARM_VOLUM}" editable= "{path: 'MaterialDetails>editable/MM_VOLUME_MARM_VOLUM', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onChangeVolume" change="onChangeBasicDataVolume"/>
+                    </VBox> 
+                    <VBox>
+                        <Label text= "{i18n>MM_VOLUME_UNIT_MARM_VOLEH}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_VOLUME_UNIT_MARM_VOLEH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_VOLUME_UNIT_MARM_VOLEH}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_VOLUME_UNIT_MARM_VOLEH}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_VOLUME_UNIT_MARM_VOLEH}" valueState="{MaterialDetails>valueState/MM_VOLUME_UNIT_MARM_VOLEH}" editable= "{path: 'MaterialDetails>editable/MM_VOLUME_UNIT_MARM_VOLEH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange ="onChangeVolumeUnit" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>Volumeunit}" text="{LookupModel>Volumeunit} - {LookupModel>UnitText}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_SIZE_DIMENSIONS_MARA_GROES}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_SIZE_DIMENSIONS_MARA_GROES', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_SIZE_DIMENSIONS_MARA_GROES}" width="100%" maxLength="32" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_SIZE_DIMENSIONS_MARA_GROES}" valueState="{MaterialDetails>valueState/MM_SIZE_DIMENSIONS_MARA_GROES}" editable= "{path: 'MaterialDetails>editable/MM_SIZE_DIMENSIONS_MARA_GROES', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue" />
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_EAN_UPC_MARA_EAN11}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_EAN_UPC_MARA_EAN11', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_EAN_UPC_MARA_EAN11}" width="100%" class="MM_InputText" maxLength="18" placeholder="{i18n>enter} {i18n>MM_EAN_UPC_MARA_EAN11}" valueState="{MaterialDetails>valueState/MM_EAN_UPC_MARA_EAN11}" editable= "{path: 'MaterialDetails>editable/MM_EAN_UPC_MARA_EAN11', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" change="onChangeBasicDataEAN" liveChange="onAddingMandatoryValue" />
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_EAN_CATEGORY_MARA_NUMTP}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_EAN_CATEGORY_MARA_NUMTP', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_EAN_CATEGORY_MARA_NUMTP}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_EAN_CATEGORY_MARA_NUMTP}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_EAN_CATEGORY_MARA_NUMTP}" valueState="{MaterialDetails>valueState/MM_EAN_CATEGORY_MARA_NUMTP}" editable= "{path: 'MaterialDetails>editable/MM_EAN_CATEGORY_MARA_NUMTP', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange ="onChangeBasicDataEANCat" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>EAN}" text="{LookupModel>EAN} - {LookupModel>Descrption}"/>
+                        </ComboBox>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>packagingMatData}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>packagingMatData}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/packagingMatData}">
+                    <VBox>
+                        <Label text= "{i18n>MM_MATL_GRP_PACK_MATLS_MARA_MAGRV}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_MATL_GRP_PACK_MATLS_MARA_MAGRV', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_MATL_GRP_PACK_MATLS_MARA_MAGRV}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_MATL_GRP_PACK_MATLS_MARA_MAGRV}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_MATL_GRP_PACK_MATLS_MARA_MAGRV}" valueState="{MaterialDetails>valueState/MM_MATL_GRP_PACK_MATLS_MARA_MAGRV}" editable= "{path: 'MaterialDetails>editable/MM_MATL_GRP_PACK_MATLS_MARA_MAGRV', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>MaterialGrpPackmaterial}" text="{LookupModel>MaterialGrpPackmaterial} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_REF_MAT_FOR_PCKG_MARA_RMATP}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_REF_MAT_FOR_PCKG_MARA_RMATP', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_REF_MAT_FOR_PCKG_MARA_RMATP}" width="100%" maxLength="10" class="MM_InputText" showSuggestion="true" suggestionItems="{LookupModel>/refMaterial}" maxSuggestionWidth="30%" liveChange="onLiveSearchRefMaterial" placeholder="{i18n>enter} {i18n>MM_REF_MAT_FOR_PCKG_MARA_RMATP}" valueState="{MaterialDetails>valueState/MM_REF_MAT_FOR_PCKG_MARA_RMATP}" editable= "{path: 'MaterialDetails>editable/MM_REF_MAT_FOR_PCKG_MARA_RMATP', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}">
+                            <suggestionItems>
+                                <core:ListItem text="{LookupModel>MaterialNumber}"/>
+                            </suggestionItems>
+                        </Input>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>advTrackTrace}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>advTrackTrace}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/advTrackTrace}">
+                    <VBox>
+                        <Label text= "{i18n>MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE}" valueState="{MaterialDetails>valueState/MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE}" editable= "{path: 'MaterialDetails>editable/MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>Type}" text="{LookupModel>Type} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF}" valueState="{MaterialDetails>valueState/MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF}" editable= "{path: 'MaterialDetails>editable/MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>CountryCode}" text="{LookupModel>CountryCode} - {LookupModel>CountryName}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT}" width="100%" maxLength="10" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT}" valueState="{MaterialDetails>valueState/MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT}" editable= "{path: 'MaterialDetails>editable/MM_PRODUCT_CATEGORY_MARA_STTPEC_PRDCAT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_SYNCHRONIZATION_ACTIVE_MARA_STTPEC_SYNCACT}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_SYNCHRONIZATION_ACTIVE_MARA_STTPEC_SYNCACT', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_SYNCHRONIZATION_ACTIVE_MARA_STTPEC_SYNCACT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_LAST_SYNCHRONIZED_MARA_DATS}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_LAST_SYNCHRONIZED_MARA_DATS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <!-- <DatePicker value="{path: 'MaterialDetails>data/MM_LAST_SYNCHRONIZED_MARA_DATS', formatter:'.formatter.onSetLastSynchronizedValue'}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" placeholder="{i18n>enter} {i18n>MM_LAST_SYNCHRONIZED_MARA_DATS}" class="MM_DatePicker" change="" valueState="{MaterialDetails>valueState/MM_LAST_SYNCHRONIZED_MARA_DATS}" editable= "{path: 'MaterialDetails>editable/MM_LAST_SYNCHRONIZED_MARA_DATS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/> -->
+                    <DatePicker value="{MaterialDetails>data/MM_LAST_SYNCHRONIZED_MARA_DATS}" valueFormat="yyyy-MM-dd HH:mm:ss" displayFormat="yyyy-MM-dd" placeholder="{i18n>enter} {i18n>MM_LAST_SYNCHRONIZED_MARA_DATS}" class="MM_DatePicker" change="" valueState="{MaterialDetails>valueState/MM_LAST_SYNCHRONIZED_MARA_DATS}" editable= "{path: 'MaterialDetails>editable/MM_LAST_SYNCHRONIZED_MARA_DATS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+        
+         <!-- Need to be added later -->
+        <Panel expandable="true" width="auto" headerText="{i18n>shippingData}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>shippingData}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData1/shippingData}">
+                    <VBox>
+                        <Label text= "{i18n>MM_TRANSPORTATION_GROUP_MARA_TRAGR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_TRANSPORTATION_GROUP_MARA_TRAGR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_TRANSPORTATION_GROUP_MARA_TRAGR}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_TRANSPORTATION_GROUP_MARA_TRAGR}" showSecondaryValues="true" filterSecondaryValues= "true" class="MM_ComboBox" placeholder="{i18n>select} {i18n>MM_TRANSPORTATION_GROUP_MARA_TRAGR}" valueState="{MaterialDetails>valueState/MM_TRANSPORTATION_GROUP_MARA_TRAGR}" editable= "{parts: ['oAppModel>/sideNavigation/currentView', 'CreateProject>/RequestHeader/data/requestType', 'MaterialDetails>/OrganizationalData/selectedPlants', 'MaterialDetails>/SystemData/targetSystem', 'Repository>/MaterialSelected/repoSubmitFor', 'MaterialDetails>editable/MM_TRANSPORTATION_GROUP_MARA_TRAGR'], formatter:'.formatter.fnSetEditabilityforTransGrp'}" selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>Tragr}" text="{LookupModel>Tragr} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

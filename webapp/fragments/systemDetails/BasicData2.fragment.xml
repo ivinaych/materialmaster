@@ -1,0 +1,139 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+    <VBox >
+        <Panel expandable="true" width="auto" headerText="{i18n>otherData}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>otherData}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData2/otherData}">
+                    <VBox>
+                        <Label text= "{i18n>MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH}" width="100%" maxLength="18" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH}" valueState="{MaterialDetails>valueState/MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH}" editable= "{path: 'MaterialDetails>editable/MM_PRODUCTION_INSPECTION_MEMO_MARA_FERTH', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"  liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT}" width="100%" maxLength="4" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT}" valueState="{MaterialDetails>valueState/MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT}" editable= "{path: 'MaterialDetails>editable/MM_PAGE_FORMAT_OF_PRODUCTION_MEMO_MARA_FORMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_IND_DESCRIPTION_MARA_NORMT}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_IND_DESCRIPTION_MARA_NORMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_IND_DESCRIPTION_MARA_NORMT}" width="100%" maxLength="18" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_IND_DESCRIPTION_MARA_NORMT}" valueState="{MaterialDetails>valueState/MM_IND_DESCRIPTION_MARA_NORMT}" editable= "{path: 'MaterialDetails>editable/MM_IND_DESCRIPTION_MARA_NORMT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_CAD_INDICATOR_MARA_CADKZ}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_CAD_INDICATOR_MARA_CADKZ', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_CAD_INDICATOR_MARA_CADKZ', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_BASIC_MATERIAL_MARA_WRKST}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_BASIC_MATERIAL_MARA_WRKST', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_BASIC_MATERIAL_MARA_WRKST}" width="100%" maxLength="48" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_BASIC_MATERIAL_MARA_WRKST}" valueState="{MaterialDetails>valueState/MM_BASIC_MATERIAL_MARA_WRKST}" editable= "{path: 'MaterialDetails>editable/MM_BASIC_MATERIAL_MARA_WRKST', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_MEDIUM_MARA_MEDIUM}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_MEDIUM_MARA_MEDIUM', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_MEDIUM_MARA_MEDIUM}" width="100%" maxLength="6" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_MEDIUM_MARA_MEDIUM}" valueState="{MaterialDetails>valueState/MM_MEDIUM_MARA_MEDIUM}" editable= "{path: 'MaterialDetails>editable/MM_MEDIUM_MARA_MEDIUM', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>environment}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>environment}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData2/environment}">
+                    <VBox>
+                        <Label text= "{i18n>MM_DG_INDICATOR_PROFILE_MARA_PROFL}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DG_INDICATOR_PROFILE_MARA_PROFL', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <ComboBox selectedKey="{MaterialDetails>data/MM_DG_INDICATOR_PROFILE_MARA_PROFL}" width="100%" items="{LookupModel>/selectedSystemDataDropdown/MM_DG_INDICATOR_PROFILE_MARA_PROFL}"  class="MM_ComboBox" showSecondaryValues="true" filterSecondaryValues= "true" placeholder="{i18n>select} {i18n>MM_DG_INDICATOR_PROFILE_MARA_PROFL}" valueState="{MaterialDetails>valueState/MM_DG_INDICATOR_PROFILE_MARA_PROFL}" editable= "{path: 'MaterialDetails>editable/MM_DG_INDICATOR_PROFILE_MARA_PROFL', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"  selectionChange="onAddingMandatoryValue" change="fnHandleComboboxValidation">
+                            <core:ListItem key="{LookupModel>DGIndProfile}" text="{LookupModel>DGIndProfile} - {LookupModel>Description}"/>
+                        </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_ENVIRONMENTALLY_RELEVANT_MARA_KZUMW}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_ENVIRONMENTALLY_RELEVANT_MARA_KZUMW', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_ENVIRONMENTALLY_RELEVANT_MARA_KZUMW', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_IN_BULK_LIQUID_MARA_ILOOS}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_IN_BULK_LIQUID_MARA_ILOOS', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_IN_BULK_LIQUID_MARA_ILOOS', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_HIGHLY_VISCOS_MARA_IHIVI}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_HIGHLY_VISCOS_MARA_IHIVI', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_HIGHLY_VISCOS_MARA_IHIVI', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+        <Panel expandable="true" width="auto" headerText="{i18n>designdrawing}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>designdrawing}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData2/designdrawing}">
+                    <VBox>
+                        <Label text= "{i18n>MM_DOCUMENT_MARA_ZEINR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DOCUMENT_MARA_ZEINR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_DOCUMENT_MARA_ZEINR}" width="100%" maxLength="22" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_DOCUMENT_MARA_ZEINR}" valueState="{MaterialDetails>valueState/MM_DOCUMENT_MARA_ZEINR}" editable= "{path: 'MaterialDetails>editable/MM_DOCUMENT_MARA_ZEINR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue" />
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_DOCUMENT_TYPE_MARA_ZEIAR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DOCUMENT_TYPE_MARA_ZEIAR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_DOCUMENT_TYPE_MARA_ZEIAR}" width="100%" maxLength="3" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_DOCUMENT_TYPE_MARA_ZEIAR}" valueState="{MaterialDetails>valueState/MM_DOCUMENT_TYPE_MARA_ZEIAR}" editable= "{path: 'MaterialDetails>editable/MM_DOCUMENT_TYPE_MARA_ZEIAR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_DOCUMENT_VERSION_MARA_ZEIVR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DOCUMENT_VERSION_MARA_ZEIVR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_DOCUMENT_VERSION_MARA_ZEIVR}" width="100%" maxLength="2" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_DOCUMENT_VERSION_MARA_ZEIVR}" valueState="{MaterialDetails>valueState/MM_DOCUMENT_VERSION_MARA_ZEIVR}" editable= "{path: 'MaterialDetails>editable/MM_DOCUMENT_VERSION_MARA_ZEIVR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PAGE_NUMBER_MARA_BLATT}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PAGE_NUMBER_MARA_BLATT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PAGE_NUMBER_MARA_BLATT}" width="100%" maxLength="3" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PAGE_NUMBER_MARA_BLATT}" valueState="{MaterialDetails>valueState/MM_PAGE_NUMBER_MARA_BLATT}" editable= "{path: 'MaterialDetails>editable/MM_PAGE_NUMBER_MARA_BLATT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_DOC_CH_NO_MARA_AESZN}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_DOC_CH_NO_MARA_AESZN', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_DOC_CH_NO_MARA_AESZN}" width="100%" maxLength="6" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_DOC_CH_NO_MARA_AESZN}" valueState="{MaterialDetails>valueState/MM_DOC_CH_NO_MARA_AESZN}" editable= "{path: 'MaterialDetails>editable/MM_DOC_CH_NO_MARA_AESZN', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO}" width="100%" maxLength="4" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO}" valueState="{MaterialDetails>valueState/MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO}" editable= "{path: 'MaterialDetails>editable/MM_PAGE_FORMAT_OF_DOCUMENT_MARA_ZEIFO', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "{i18n>MM_NO_SHEETS_MARA_BLANZ}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_NO_SHEETS_MARA_BLANZ', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_NO_SHEETS_MARA_BLANZ}" width="100%" type="Number" maxLength="3" class="MM_InputText" placeholder="{i18n>enter} {i18n>MM_NO_SHEETS_MARA_BLANZ}" valueState="{MaterialDetails>valueState/MM_NO_SHEETS_MARA_BLANZ}" editable="{path: 'MaterialDetails>editable/MM_NO_SHEETS_MARA_BLANZ', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+
+        <Panel expandable="true" width="auto" headerText="{i18n>clientSpecificConfig}" expanded="true" class="MM_panel sapUiSmallMarginEnd sapUiTinyMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar style="Clear">
+                    <Title text="{i18n>clientSpecificConfig}" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <content>
+                <l:Grid defaultSpan="XL3 L3 M6 S12" class="MM_Grid" binding="{MaterialDetails>/SystemDetails/basicData2/clientSpecificConfig}">
+                    <VBox>
+                        <Label text= "{i18n>MM_CROSS_PLANT_CM_MARA_SATNR}" class="MM_Label" required="{path: 'MaterialDetails>required/MM_CROSS_PLANT_CM_MARA_SATNR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                        <Input value="{MaterialDetails>data/MM_CROSS_PLANT_CM_MARA_SATNR}" width="100%" maxLength="18" class="MM_InputText" valueState="{MaterialDetails>valueState/MM_CROSS_PLANT_CM_MARA_SATNR}" editable= "{path: 'MaterialDetails>editable/MM_CROSS_PLANT_CM_MARA_SATNR', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}" liveChange="onAddingMandatoryValue"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_MATERIAL_IS_CONFIGURABLE_MARA_KZKFG}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_MATERIAL_IS_CONFIGURABLE_MARA_KZKFG', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_MATERIAL_IS_CONFIGURABLE_MARA_KZKFG', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                    <VBox>
+                        <Label text= "" class="MM_Label"/>
+                        <CheckBox text="{i18n>MM_VARIANT}" select="onSelectCheckbox" selected="{path: 'MaterialDetails>data/MM_VARIANT', formatter:'.formatter.onSetBooleanValue'}" class="MM_CheckBox" editable= "{path: 'MaterialDetails>editable/MM_VARIANT', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                    </VBox>
+                </l:Grid>
+            </content>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="{i18n>assigmentClassTitle}"  id="id_Classification_AssClass" draggable="true">
+        <content>
+            <f:SimpleForm editable="true" layout="ColumnLayout" columnsM="1" columnsL="1" columnsXL="2">
+                <f:content>
+                    <Label text= "{i18n>SAPClass}" class="MM_Label" required="true"/>
+                    <ComboBox id="cmbAssignmentClass" selectedKey="{MaterialDetails>/SystemDetails/Classification/classnum}" placeholder="{i18n>selectClass}" class="MM_ComboBox" width="100%" items="{LookupModel>/selectedSystemClassList}"
+                    valueState="{MaterialDetails>/SystemDetails/Classification/clsAsgnmntClassValueState}" valueStateText="{MaterialDetails>/SystemDetails/Classification/clsAsgnmntClassValueStateText}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                        <core:ListItem key="{LookupModel>classnum}" text="{LookupModel>classnum}" additionalText="{LookupModel>Descrption}" />
+                    </ComboBox>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="{i18n>okText}" press="pressAssignmentClassDialogOk" />
+                    <Button text="{i18n>cancelLogin}" press="pressAssignmentClassDialogCancel" ariaHasPopup="Dialog" />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

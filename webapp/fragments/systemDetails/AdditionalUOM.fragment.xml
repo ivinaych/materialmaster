@@ -1,0 +1,238 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <table:Table rows="{MaterialDetails>/SystemDetails/AdditionalUOM/UOMData}"  visibleRowCount="5" class="MM_UiTable" selectionMode="None" selectionBehavior="RowOnly">
+            <table:extension>
+                <OverflowToolbar>
+                    <content>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" text="{i18n>Add}" type="Default" press="onAddAdditionalUOM" class="MM_BtnDefault_No_Border" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemData/repositorySystemStatusId', 'MaterialDetails>/SystemDetails/AdditionalData/additionalUom/addUomAddBtnEnabled'],formatter: '.formatter.fnAltUomAddButtonEnable'}"/>
+                    </content>
+                </OverflowToolbar>
+            </table:extension>
+            <table:columns>
+                <table:Column width="150px" tooltip="{i18n>MM_DENOMINATOR_MARM_UMREN}">
+                    <Label text="{i18n>MM_DENOMINATOR_MARM_UMREN}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_DENOMINATOR_MARM_UMREN}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_ALTERNATE_UNIT_MARM_MEINH}">
+                    <Label text="{i18n>MM_ALTERNATE_UNIT_MARM_MEINH}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_ALTERNATE_UNIT_MARM_MEINH}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="150px" tooltip="{i18n>MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}">
+                    <Label text="{i18n>MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_ALT_UNIT_ISO_MARM_LREMEI_ISO}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}">
+                    <Label text="{i18n>MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_MEASUREMENT_UNIT_TEXT_AUN_MARM_MSEHT}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="150px" tooltip="{i18n>MM_NUMERATOR_MARM_UMREZ}">
+                    <Label text="{i18n>MM_NUMERATOR_MARM_UMREZ}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_NUMERATOR_MARM_UMREZ}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}">
+                    <Label text="{i18n>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}">
+                    <Label text="{i18n>MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_MEASUREMENT_UNIT_TEXT_BUN_MARM_MSEHT}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_EAN_UPC_MARM_EAN11}">
+                    <Label text="{i18n>MM_EAN_UPC_MARM_EAN11}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_EAN_UPC_MARM_EAN11}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_EAN_VARIANT_MARM_GTIN_VARIANT}">
+                    <Label text="{i18n>MM_EAN_VARIANT_MARM_GTIN_VARIANT}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_EAN_VARIANT_MARM_GTIN_VARIANT}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_CN_MARM_NUMTP}">
+                    <Label text="{i18n>MM_CN_MARM_NUMTP}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_CN_MARM_NUMTP}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_AU_MARM_PRFZ}">
+                    <Label text="{i18n>MM_AU_MARM_PRFZ}" />
+                    <table:template>
+                        <!-- <Text text="{MaterialDetails>MM_AU_MARM_PRFZ}" class="" /> -->
+                        <!-- <CheckBox selected="{MaterialDetails>MM_AU_MARM_PRFZ}" displayOnly="true"/> -->
+                        <Switch state="{MaterialDetails>MM_AU_MARM_PRFZ}" enabled="false" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_A_MARM_ZEANS}">
+                    <Label text="{i18n>MM_A_MARM_ZEANS}" />
+                    <table:template>
+                        <!-- <Text text="{MaterialDetails>MM_A_MARM_ZEANS}" class="" /> -->
+                        <!-- <CheckBox selected="{MaterialDetails>MM_A_MARM_ZEANS}" displayOnly="true"/> -->
+                        <Switch state="{MaterialDetails>MM_A_MARM_ZEANS}" enabled="false" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_LENGTH_MARM_LAENG}">
+                    <Label text="{i18n>MM_LENGTH_MARM_LAENG}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_LENGTH_MARM_LAENG}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_WIDTH_MARM_BREIT}">
+                    <Label text="{i18n>MM_WIDTH_MARM_BREIT}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_WIDTH_MARM_BREIT}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_HEIGHT_MARM_HOEHE}">
+                    <Label text="{i18n>MM_HEIGHT_MARM_HOEHE}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_HEIGHT_MARM_HOEHE}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="150px" tooltip="{i18n>MM_UNIT_OF_DIMENSION_MARM_MEABM}">
+                    <Label text="{i18n>MM_UNIT_OF_DIMENSION_MARM_MEABM}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_UNIT_OF_DIMENSION_MARM_MEABM}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_VOLUME_MARM_VOLUM}">
+                    <Label text="{i18n>MM_VOLUME_MARM_VOLUM}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_VOLUME_MARM_VOLUM}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_VOLUME_UNIT_MARM_VOLEH}">
+                    <Label text="{i18n>MM_VOLUME_UNIT_MARM_VOLEH}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_VOLUME_UNIT_MARM_VOLEH}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_GROSS_WEIGHT_MARM_BRGEW}">
+                    <Label text="{i18n>MM_GROSS_WEIGHT_MARM_BRGEW}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_GROSS_WEIGHT_MARM_BRGEW}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_NET_WEIGHT_MARM_NTGEW}">
+                    <Label text="{i18n>MM_NET_WEIGHT_MARM_NTGEW}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_NET_WEIGHT_MARM_NTGEW}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_WEIGHT_UNIT_MARM_GEWEI}">
+                    <Label text="{i18n>MM_WEIGHT_UNIT_MARM_GEWEI}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_WEIGHT_UNIT_MARM_GEWEI}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_NUMBER_MARM_AZSUB}">
+                    <Label text="{i18n>MM_NUMBER_MARM_AZSUB}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_NUMBER_MARM_AZSUB}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_LUN_MARM_MESUB}">
+                    <Label text="{i18n>MM_LUN_MARM_MESUB}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_LUN_MARM_MESUB}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_GTIN_MARM_STTPEC_GTIN}">
+                    <Label text="{i18n>MM_GTIN_MARM_STTPEC_GTIN}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_GTIN_MARM_STTPEC_GTIN}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}">
+                    <Label text="{i18n>MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_SER_NUM_MANAG_TYPE_MARM_STTPEC_SERNO_MANAGED}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}">
+                    <Label text="{i18n>MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_BP_TO_PROVIDE_SER_NUMB_MARM_STTPEC_SERNO_PROV_BUP}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="150px" tooltip="{i18n>MM_NATIONAL_CODE_MARM_STTPEC_NCODE}">
+                    <Label text="{i18n>MM_NATIONAL_CODE_MARM_STTPEC_NCODE}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_NATIONAL_CODE_MARM_STTPEC_NCODE}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="100px" tooltip="{i18n>MM_N_CODE_T_MARM_STTPEC_NCODE_TY}">
+                    <Label text="{i18n>MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_N_CODE_T_MARM_STTPEC_NCODE_TY}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="150px" tooltip="{i18n>MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}">
+                    <Label text="{i18n>MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}" />
+                    <table:template>
+                        <Text text="{MaterialDetails>MM_REGISTRATION_CODE_MARM_STTPEC_RCODE}" class="" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}">
+                    <Label text="{i18n>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" />
+                    <table:template>
+                        <!-- <Text text="{MaterialDetails>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" class="" /> -->
+                        <!-- <CheckBox selected="{MaterialDetails>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" displayOnly="true"/> -->
+                        <Switch state="{MaterialDetails>MM_SERIALIZATION_INDICATOR_MARM_STTPEC_SERUSE}" enabled="false" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px" tooltip="{i18n>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}">
+                    <Label text="{i18n>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" />
+                    <table:template>
+                        <!-- <Text text="{MaterialDetails>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" class="" /> -->
+                        <!-- <CheckBox selected="{MaterialDetails>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" displayOnly="true"/> -->
+                        <Switch state="{MaterialDetails>MM_UOM_SYNC_ACTIVE_FLAG_MARM_STTPEC_UOM_SYNC}" enabled="false" />
+                    </table:template>
+                </table:Column>
+                <table:Column width="200px">
+                    <Label text="{i18n>action}" />
+                    <table:template>
+                        <OverflowToolbar class="MM_OverflowToolbar">
+                            <HBox>
+                                <ObjectStatus
+                                        visible="{= ${MaterialDetails>isDeleted} === true }"
+                                        text="Deleted"
+                                        state="Error"
+                                        icon="sap-icon://cancel"
+                                        active="false" />
+                            <HBox visible="{= !${MaterialDetails>isDeleted} }">
+                                <OverflowToolbarButton icon="sap-icon://edit" tooltip="{i18n>edit}" class="MM_OverflowBtn" press="oneditAltUom" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemData/repositorySystemStatusId', 'MaterialDetails>/SystemDetails/AdditionalData/additionalUom/addUomAddBtnEnabled'],formatter: '.formatter.fnAltUomEditButtonEnable'}"/>
+                                <OverflowToolbarButton icon="sap-icon://delete" tooltip="{i18n>delete}" class="MM_OverflowBtn" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'MaterialDetails>MM_ALTERNATE_UNIT_MARM_MEINH','MaterialDetails>MM_BASE_UNIT_OF_MEASURE_MARA_MEINS', 'MaterialDetails>newlyAdded', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemData/repositorySystemStatusId', 'MaterialDetails>isModified', 'MaterialDetails>/SystemDetails/AdditionalData/additionalUom/addUomAddBtnEnabled'],formatter: '.formatter.fnAltUomDelButtonEnable'}" press="onDeleteAltUom"/>
+                            <!-- enabled="{parts:['MaterialDetails>/SystemDetails/AdditionalUOM/altUomListItem/intialRowIndex'],formatter: '.formatter.delBtnAddNewUomVisibility'}" -->
+                            </HBox>
+                            </HBox>
+                        </OverflowToolbar>
+                    </table:template>
+                </table:Column>
+            </table:columns>
+            <table:rowSettingsTemplate>
+                <table:RowSettings highlight="{= ${MaterialDetails>isDeleted} ? 'Error' : 'None' }" />
+            </table:rowSettingsTemplate>
+        </table:Table>
+    </VBox>
+
+</core:FragmentDefinition>

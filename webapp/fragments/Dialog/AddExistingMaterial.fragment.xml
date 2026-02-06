@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="11%" showHeader="true" id="id_addExistingMaterial" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H5" titleStyle="H5" text="{i18n>addExistingMaterial}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    	<core:Icon src="sap-icon://decline" class="size3" press="onCloseAddExistingMaterial"></core:Icon>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <l:Grid defaultSpan="XL12 L12 M12 S12" binding="{CreateProject>/MaterialList}" class="MM_Grid">
+                <VBox>
+                    <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                        <core:Icon src="sap-icon://information" size="0.9rem" color="#434242" class="sapUiTinyMarginTop sapUiTinyMarginEnd"></core:Icon>
+                        <Text text="Select Material Number to proceed further" class="MM_InformationTooltipText"/>
+                    </HBox>
+                    <Label text="{i18n>materialNumber}" class="MM_Label sapUiTinyMarginTop" />
+                    <Input value="{CreateProject>existingMaterial/materialNo}" class="MM_InputText" placeholder="{i18n>addMaterialNumber}" type="Number" autocomplete="false" liveChange="ongetMaterialNumber" suggestionItemSelected="addMaterialSuggestionItemSelected" showSuggestion="true" suggestionItems="{CreateProject>existingMaterial/MaterialSearchHelpSet}" startSuggestion="2">
+                        <suggestionItems>
+                            <core:ListItem text="{CreateProject>materialNumber}" additionalText="{CreateProject>fieldDesc}"/>
+                        </suggestionItems>
+                    </Input>
+                </VBox>
+            </l:Grid>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>okText}" type="Emphasized" enabled="{CreateProject>/MaterialList/editable/materialSearchOkBtnEditable}" class="MM_BtnEmphasized" press="onOkAddExistingMaterial"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

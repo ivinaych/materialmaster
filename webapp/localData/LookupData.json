@@ -1,0 +1,949 @@
+{
+    "requestSpecificLookups": {},
+    "repoSpecificLookups": {},
+    "oDataLookups": {},
+    "classificationClassList": {},
+    "selectedSystemClassList": {},
+    "selectedSystemDataDropdown": [],
+    "allowedClassList":{
+        "1": [
+            "GMDM"
+        ],
+        "2": [
+            "MATERIAL_CLASS_RE", 
+            "MATERIAL_CLASS_FG"  
+        ]
+    },
+    "systemDetailsRulesList": [
+        {
+            "decisionTableName": "MM_BASE_UOM_RULE",
+            "bindingPath": "MM_BASE_UNIT_OF_MEASURE_MARM_MEINS"
+        }
+    ],
+    "rulesLookups": {},
+    "selectedRulesSystemDataDropdown": [],
+    "rulesList": [
+        {
+            "tableName": "MM_REQUEST_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_REQUEST_TYPE_REF_LIST.MM_REQUEST_TYPE_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_REQUEST_TYPE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "filterString": null,
+            "modelPath": "requestType"
+        },
+        {
+            "tableName": "MM_REQUEST_STATUS_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_REQUEST_STATUS_REF_LIST.MM_REQUEST_STATUS_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_REQUEST_STATUS_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "filterString": null,
+            "modelPath": "requestStatus"
+        },
+        {
+            "tableName": "MM_MATERIAL_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MATERIAL_TYPE_REF_LIST.MM_MATERIAL_TYPE_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MATERIAL_TYPE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "materialType"
+        },
+        {
+            "tableName": "MM_MATERIAL_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MATERIAL_TYPE_REF_LIST.MM_MATERIAL_TYPE_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MATERIAL_TYPE_REF_LIST.MM_APPLICABLE_IN",
+                    "operator": "like",
+                    "value": "%Request%"
+                },
+                {
+                    "column": "MM_MATERIAL_TYPE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "requestSpecificLookups/materialType"
+        },
+        {
+            "tableName": "MM_MATERIAL_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MATERIAL_TYPE_REF_LIST.MM_MATERIAL_TYPE_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MATERIAL_TYPE_REF_LIST.MM_APPLICABLE_IN",
+                    "operator": "like",
+                    "value": "%Repository%"
+                },
+                {
+                    "column": "MM_MATERIAL_TYPE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "repoSpecificLookups/materialType"
+        },
+        {
+            "tableName": "MM_MATERIAL_STATUS_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MATERIAL_STATUS_REF_LIST.MM_MATERIAL_STATUS_DESCRIPTION": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MATERIAL_STATUS_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "materialStatus"
+        },
+        {
+            "tableName": "MM_REQUESTOR_ORG_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_REQUESTOR_ORG_REF_LIST.MM_REQUESTOR_ORG_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_REQUESTOR_ORG_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "requestorOrganization"
+        },
+        {
+            "tableName": "MM_SYSTEM_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_SYSTEM_REF_LIST.MM_SYSTEM_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_SYSTEM_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_SYSTEM_REF_LIST"
+        },
+        {
+            "tableName": "MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST.MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST"
+        },
+        {
+            "tableName": "MM_ALTERNATE_ID_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_ALTERNATE_ID_TYPE_REF_LIST.MM_ALTERNATE_ID_TYPE_REF_LIST_DESC": "ASC"
+            },
+            "modelPath": "MM_ALTERNATE_ID_TYPE_REF_LIST"
+        },
+        {
+            "tableName": "MM_PLANT_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_PLANT_REF_LIST.MM_PLANT_REF_LIST_DESC": "ASC"
+            },
+            "modelPath": "MM_PLANT_REF_LIST"
+        },
+        {
+            "tableName": "MM_MATERIAL_LIFE_CYCLE_STATUS_MAPPING_RULE",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemFilters": [
+                {
+                    "column": "MM_MATERIAL_LIFE_CYCLE_STATUS_MAPPING_RULE.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_MATERIAL_LIFE_CYCLE_STATUS_MAPPING_RULE"
+        },
+        {
+            "tableName": "MM_COUNTRY_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_COUNTRY_REF_LIST.MM_COUNTRY_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_COUNTRY_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_COUNTRY_REF_LIST"
+        },
+        {
+            "tableName": "MM_CASE_TYPE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemFilters": [
+                {
+                    "column": "MM_CASE_TYPE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_CASE_TYPE_REF_LIST"
+        },
+        {
+            "tableName": "MM_CASE_STATUS_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_CASE_STATUS_REF_LIST.MM_CASE_STATUS_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_CASE_STATUS_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_CASE_STATUS_REF_LIST"
+        },
+        {
+            "tableName": "MM_ESIGN_REMARKS_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_ESIGN_REMARKS_REF_LIST.MM_ESIGN_REMARKS_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_ESIGN_REMARKS_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "modelPath": "MM_ESIGN_REMARKS_REF_LIST"
+        }
+    ],
+    "repositorySearchRulesList": [
+        {
+            "tableName": "MM_LIVERY_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_LIVERY_REF_LIST.MM_LIVERY_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_LIVERY_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "filterString": null,
+            "modelPath": "Livery"
+        },
+        {
+            "tableName": "MM_MARKET_DEST_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MARKET_DEST_REF_LIST.MM_MARKET_DEST_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MARKET_DEST_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "filterString": null,
+            "modelPath": "Market_Destination"
+        },
+        {
+            "tableName": "MM_MOLECULE_REF_LIST",
+            "conditions": [
+                {
+                    "VIATRIS_MM_CONDITIONS.MM_SERIAL_NO": "*"
+                }
+            ],
+            "systemOrders": {
+                "MM_MOLECULE_REF_LIST.MM_MOLECULE_REF_LIST_DESC": "ASC"
+            },
+            "systemFilters": [
+                {
+                    "column": "MM_MOLECULE_REF_LIST.MM_ACTIVE",
+                    "operator": "like",
+                    "value": "%Yes%"
+                }
+            ],
+            "filterString": null,
+            "modelPath": "Molecule"
+        }
+    ],
+    "basicDataList": [
+        {
+            "url": "IndustrySectorSet",
+            "bindingPath": "MM_INDUSTRY_SECTOR_MARA_MBRSH",
+            "path_Code": "IndustrySectorCode",
+            "path_Desc": "IndustryDescr",
+            "path_AdditionalText": "IndustrySectorCode",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_INDUSTRY_SECTOR_MARA_MBRSH",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "BaseUomSet",
+            "bindingPath": "MM_BASE_UNIT_OF_MEASURE_MARM_MEINS",
+            "path_Code": "IntMeasUnit",
+            "path_Desc": "MeasUnitText",
+            "path_AdditionalText": "IntMeasUnit",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_BASE_UNIT_OF_MEASURE_MARM_MEINS",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "MaterialGroupSet",
+            "bindingPath": "MM_MATERIAL_GROUP_MARA_MATKL",
+            "path_Code": "MaterialGroupCode",
+            "path_Desc": "MatlGrpDesc",
+            "path_AdditionalText": "MaterialGroupCode",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_MATERIAL_GROUP_MARA_MATKL",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "GenItemCatGroupSet",
+            "bindingPath": "MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA",
+            "path_Code": "ItemCatGroup",
+            "path_Desc": "Description",
+            "path_AdditionalText": "ItemCatGroup",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_GENERAL_ITEM_CATEGORY_GROUP_MARA_MTPOS_MARA",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "LaboratoryDesignOfficeSet",
+            "bindingPath": "MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR",
+            "path_Code": "LabOffice",
+            "path_Desc": "LaboratoryDesc",
+            "path_AdditionalText": "LabOffice",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_LABORATORY_DESIGN_OFFICE_MARA_LABOR",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "LanguageSet",
+            "bindingPath": "MM_LANGUAGE"
+        },
+        {
+            "url": "CrossPlantMaterialStatusSet",
+            "bindingPath": "MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE",
+            "path_Code": "MaterialStatus",
+            "path_Desc": "Description",
+            "path_AdditionalText": "MaterialStatus",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_X_PLANT_MATERIAL_STATUS_MARA_MSTAE",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "DivisionSet",
+            "bindingPath": "MM_DIVISION_MARA_SPART",
+            "path_Code": "DivisionCode",
+            "path_Desc": "Name",
+            "path_AdditionalText": "DivisionCode",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_DIVISION_MARA_SPART",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "ExMaterialGroupSet",
+            "bindingPath": "MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG",
+            "path_Code":"ExtMatlGroup",
+            "path_Desc":"ExtMatlGroupDesc",
+            "path_AdditionalText": "ExtMatlGroup",
+            "fieldType":"Dropdown",
+            "fieldName":"MM_EXTERNAL_MATERIAL_GROUP_MARA_EXTWG",
+            "subGroup":"generalData"
+        },
+        {
+            "url": "ProductAllocationSet",
+            "bindingPath": "MM_PRODUCT_ALLOCATION_MARA_KOSCH",
+            "path_Code": "ProdAllocation",
+            "path_Desc": "Descrption",
+            "path_AdditionalText": "ProdAllocation",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_PRODUCT_ALLOCATION_MARA_KOSCH",
+            "subGroup": "generalData"
+        },
+        {
+            "url": "WeightUnitSet",
+            "bindingPath": "MM_WEIGHT_UNIT_MARM_GEWEI",
+            "path_Code": "Weightunit",
+            "path_Desc": "UnitText",
+            "path_AdditionalText": "Weightunit",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_WEIGHT_UNIT_MARM_GEWEI",
+            "subGroup": "dimensionsEans"
+        },
+        {
+            "url": "VolumeUnitSet",
+            "bindingPath": "MM_VOLUME_UNIT_MARM_VOLEH",
+            "path_Code": "Volumeunit",
+            "path_Desc": "UnitText",
+            "path_AdditionalText": "Volumeunit",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_VOLUME_UNIT_MARM_VOLEH",
+            "subGroup": "dimensionsEans"
+        },
+        {
+            "url": "EANcategorySet",
+            "bindingPath": "MM_EAN_CATEGORY_MARA_NUMTP",
+            "path_Code": "EAN",
+            "path_Desc": "Descrption",
+            "path_AdditionalText": "EAN",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_EAN_CATEGORY_MARA_NUMTP",
+            "subGroup": "dimensionsEans"
+        },
+        {
+            "url": "ProfRelCountrySet",
+            "bindingPath": "MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF",
+            "path_Code": "CountryCode",
+            "path_Desc": "CountryName",
+            "path_AdditionalText": "CountryCode",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_PROF_REL_COUNTRY_MARA_STTPEC_COUNTRY_REF",
+            "subGroup": "advTrackTrace"
+        },
+        {
+            "url": "SerialNumberManagtypeSet",
+            "bindingPath": "SerialNumberManagtypeSet"
+        },
+        {
+            "url": "DgIndcatorSet",
+            "bindingPath": "MM_DG_INDICATOR_PROFILE_MARA_PROFL",
+            "path_Code": "DGIndProfile",
+            "path_Desc": "Description",
+            "path_AdditionalText": "DGIndProfile",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_DG_INDICATOR_PROFILE_MARA_PROFL"
+        },
+        {
+            "url": "MatlGrpPackMatlsSet",
+            "bindingPath": "MM_MATL_GRP_PACK_MATLS_MARA_MAGRV",
+            "path_Code": "MaterialGrpPackmaterial",
+            "path_Desc": "Description",
+            "path_AdditionalText": "MaterialGrpPackmaterial",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_MATL_GRP_PACK_MATLS_MARA_MAGRV",
+            "subGroup": "packagingMatData"
+        },
+        {
+            "url": "SerializationTypeSet",
+            "bindingPath": "MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE",
+            "path_Code": "Type",
+            "path_Desc": "Description",
+            "path_AdditionalText": "Type",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_SERIALIZATION_TYPE_MARA_STTPEC_SERTYPE",
+            "subGroup": "advTrackTrace"
+        },
+        {
+            "url": "TransportationGrpSet",
+            "bindingPath": "MM_TRANSPORTATION_GROUP_MARA_TRAGR",
+            "path_Code": "Tragr",
+            "path_Desc": "Description",
+            "path_AdditionalText": "Type",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_TRANSPORTATION_GROUP_MARA_TRAGR",
+            "subGroup": "shippingData"
+        }
+    ],
+    "basicData2List": [
+        {
+            "url": "DgIndcatorSet",
+            "bindingPath": "MM_DG_INDICATOR_PROFILE_MARA_PROFL",
+            "path_Code": "DGIndProfile",
+            "path_Desc": "Description",
+            "path_AdditionalText": "DGIndProfile",
+            "fieldType": "Dropdown",
+            "fieldName": "MM_DG_INDICATOR_PROFILE_MARA_PROFL",
+            "subGroup": "environment"
+        }
+    ],
+    "fieldsList": [],
+    "advanceFilter_searchType": [
+        {
+            "type": "contains",
+            "desc": "Contains"
+        },
+        {
+            "type": "equals",
+            "desc": "Equals"
+        },
+        {
+            "type": "existIn",
+            "desc": "Exist In"
+        },
+        {
+            "type": "notEquals",
+            "desc": "Not Equals"
+        },
+        {
+            "type": "doesNotExistIn",
+            "desc": "Does Not Exist In"
+        },
+        {
+            "type": "notContains",
+            "desc": "Not Contains"
+        }
+    ],
+    "requestType": [],
+    "allRequestType": [],
+    "materialType": [],
+    "massRequestType": [],
+    "massRequestStatus": [],
+    "plantActiveStatus": [
+        {
+            "MM_KEY": 1,
+            "MM_PLANT_ACTIVE": "NEW"
+        },
+        {
+            "MM_KEY": 2,
+            "MM_PLANT_ACTIVE": "NO"
+        },
+        {
+            "MM_KEY": 3,
+            "MM_PLANT_ACTIVE": "YES"
+        }
+    ],
+    "valueHelpSet": {
+        "cInput_Type": {
+            "Integer": "Number",
+            "String": "Text",
+            "Password": "Password",
+            "Email": "Email",
+            "URL": "Url"
+        }
+    },
+    "esignRemark": [
+        {
+            "MM_ESIGN_KEY": 1,
+            "MM_ESIGN_DESC": "Approved"
+        }
+    ],
+    "Repository": {
+        "AdvSearchFieldsList": []
+    },
+    "RequestManagement": {
+        "AdvSearchFieldsList": [],
+        "MaterialActionsMapping": [
+            {
+                "actionID": "commit_To_Repo",
+                "actionText": "commitToRepo",
+                "commentsRequired": false,
+                "postToRepository": true
+            },
+            {
+                "actionID": "syndicate_Material",
+                "actionText": "syndicate_Material",
+                "commentsRequired": false,
+                "postToRepository": true
+            },
+            {
+                "actionID": "exclude_material",
+                "actionText": "excludeMaterial",
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": "exclude_system",
+                "actionText": "excludeSystem",
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": "exclude_plant",
+                "actionText": "excludePlant",
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": "include_plant",
+                "actionText": "includePlant",
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": "exclude_document",
+                "actionText": "excludeDocument",
+                "commentsRequired": true,
+                "postToRepository": true
+            }
+        ]
+    },
+    "WorkflowDetails": {
+        "taskNameMappings": [
+            {
+                "wfTaskType": "GMDM_WF_Task",
+                "definitionID": "usertask1@materialmasterworkflow"
+            },
+            {
+                "wfTaskType": "GQMD_WF_Task",
+                "definitionID": "usertask2@materialmasterworkflow"
+            },
+            {
+                "wfTaskType": "Flex_WF_Task",
+                "definitionID": "usertask5@materialmasterworkflow"
+            },
+            {
+                "wfTaskType": "Requester_Rework_WF_Task",
+                "definitionID": "usertask3@materialmasterworkflow"
+            },
+            {
+                "wfTaskType": "MassRequest_GMDM_WF_Task",
+                "definitionID": "usertask1@materialmassuploadworkflow"
+            }
+        ],
+        "taskActionMapping": [
+            {
+                "actionID": 1,
+                "actionText": "reSubmit",
+                "wfActionIDMapping": 1,
+                "completeWorkflow": false,
+                "commentsRequired": false,
+                "postToRepository": false
+            },
+            {
+                "actionID": 2,
+                "actionText": "approveTask",
+                "wfActionIDMapping": 1,
+                "completeWorkflow": false,
+                "commentsRequired": false,
+                "postToRepository": false
+            },
+            {
+                "actionID": 3,
+                "actionText": "completeRequest",
+                "wfActionIDMapping": 1,
+                "completeWorkflow": true,
+                "commentsRequired": true,
+                "postToRepository": true
+            },
+            {
+                "actionID": 4,
+                "actionText": "sendToGQMD",
+                "wfActionIDMapping": 1,
+                "completeWorkflow": false,
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": 5,
+                "actionText": "rejectTask",
+                "wfActionIDMapping": 2,
+                "completeWorkflow": false,
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": 6,
+                "actionText": "returnToRequestor",
+                "wfActionIDMapping": 3,
+                "completeWorkflow": false,
+                "commentsRequired": true,
+                "postToRepository": false
+            },
+            {
+                "actionID": 7,
+                "actionText": "returnToGMDM",
+                "wfActionIDMapping": 4,
+                "completeWorkflow": false,
+                "postToRepository": false
+            },
+            {
+                "actionID": 8,
+                "actionText": "cancelTask",
+                "wfActionIDMapping": 5,
+                "completeWorkflow": true,
+                "commentsRequired": true,
+                "postToRepository": false
+            }
+        ]
+    },
+    "MassRequest": {
+        "viewList": [
+            {
+                "key": "Product_Data",
+                "value": "Product Data"
+            },
+            {
+                "key": "Basic_Data_1",
+                "value": "Basic Data 1"
+            },
+            {
+                "key": "Basic_Data_2",
+                "value": "Basic Data 2"
+            },
+            {
+                "key": "Add_Data_Desc",
+                "value": "Additional Data - Description"
+            },
+            {
+                "key": "Add_Data_Basic_Data_Text",
+                "value": "Additional Data - Basic Data Text"
+            },
+            {
+                "key": "Add_Data_UoM",
+                "value": "Additional Data - Units of Measure"
+            },
+            {
+                "key": "Alternate_Id",
+                "value": "Alternate Id"
+            },
+            {
+                "key": "System_Data",
+                "value": "System Data"
+            }
+        ],
+        "attributeList": []
+    },
+    "RepositoryAdvFilter": {
+        "viewList": [
+            {
+                "key": "Product_Data",
+                "viewId": "PRODUCT_DATA",
+                "value": "Product Data"
+            },
+            {
+                "key": "Add_Data_Desc",
+                "viewId": "ADD_DATA_DESC",
+                "value": "Additional Data - Description"
+            },
+            {
+                "key": "Add_Data_Basic_Data_Text",
+                "viewId": "ADD_DATA_BASIC_DATA_TEXT",
+                "value": "Additional Data - Basic Data Text"
+            },
+            {
+                "key": "Alternate_Id",
+                "viewId": "ALTERNATE_ID",
+                "value": "Alternate Id"
+            },
+            {
+                "key": "Material_List",
+                "viewId": "MATERIAL_LIST",
+                "value": "Material List"
+            },
+            {
+                "key": "System_Data",
+                "viewId": "SYSTEM_DATA",
+                "value": "System Data"
+            }
+        ],
+        "attributeList": []
+    },
+    "RequestMgmtAdvFilter": {
+        "viewList": [
+            {
+                "key": "Product_Data",
+                "viewId": "PRODUCT_DATA",
+                "value": "Product Data"
+            },
+            {
+                "key": "Basic_Data_1",
+                "viewId": "BASIC_DATA1",
+                "value": "Basic Data 1"
+            },
+            {
+                "key": "Basic_Data_2",
+                "viewId": "BASIC_DATA2",
+                "value": "Basic Data 2"
+            },
+            {
+                "key": "Add_Data_Desc",
+                "viewId": "ADD_DATA_DESC",
+                "value": "Additional Data - Description"
+            },
+            {
+                "key": "Add_Data_Basic_Data_Text",
+                "viewId": "ADD_DATA_BASIC_DATA_TEXT",
+                "value": "Additional Data - Basic Data Text"
+            },
+            {
+                "key": "Alternate_Id",
+                "viewId": "ALTERNATE_ID",
+                "value": "Alternate Id"
+            },
+            {
+                "key": "Material_List",
+                "viewId": "MATERIAL_LIST",
+                "value": "Material List"
+            },
+            {
+                "key": "System_Data",
+                "viewId": "SYSTEM_DATA",
+                "value": "System Data"
+            }
+        ],
+        "attributeList": []
+    },
+    "oDataTargetSystemToId": {
+        "SAP_GBLECC": "1",
+        "SAP_NEECC": "2"
+    },
+    "oDataTargetSystemIdToModel": {
+        "1": "ZapiMaterialOModel",
+        "2": "ZapiMaterialNEDModel"
+    },
+    "oDataTargetSystemIdToModelClassification": {
+        "1": "ZapiOdataModel",
+        "2": "ZapiOdataNEDModel"
+    },
+    "SystemNameToId":{
+        "GEP": "1",
+        "RP1": "2"
+    },
+    "codeColumnNonMandRefList": {
+        "nonMandList": [
+            {
+                "refListName": "MM_MOLECULE_REF_LIST"
+            },
+            {
+                "refListName": "MM_SALT_REF_LIST"
+            },
+            {
+                "refListName": "MM_API_REF_LIST"
+            },
+            {
+                "refListName": "MM_BLISTER_FORM_REF_LIST"
+            },
+            {
+                "refListName": "MM_CASE_TYPE_REF_LIST"
+            },
+            {
+                "refListName": "MM_HYDRATE_FORM_REF_LIST"
+            },
+            {
+                "refListName": "MM_MATERIAL_STATUS_REF_LIST"
+            },
+            {
+                "refListName": "MM_POLYMORPHIC_FORM_REF_LIST"
+            },
+            {
+                "refListName": "MM_PRODUCT_TYPE_REF_LIST"
+            },
+            {
+                "refListName": "MM_PACK_TYPE_REF_LIST"
+            },
+            {
+                "refListName": "MM_STRENGTH_REF_LIST"
+            },
+            {
+                "refListName": "MM_PRODUCT_REF_LIST"
+            }
+        ]
+    }
+}

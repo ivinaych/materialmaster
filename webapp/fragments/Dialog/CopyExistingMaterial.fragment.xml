@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="11%" showHeader="true" id="id_copyExistingMaterial" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H5" titleStyle="H5" text="{i18n>searchReferenceMaterial}" class="MM_Title"/>
+                </contentLeft>
+                <contentRight>
+                    	<core:Icon src="sap-icon://decline" class="size3" press="onCloseCopyExistingMaterial"></core:Icon>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <CheckBox text="{i18n>doYouWantToCopyFromExistingMaterial}" selected="{CreateProject>/MaterialList/existingMaterial/checkBoxSelected}" class="MM_CheckBox" wrapping="true"/>
+            <l:Grid defaultSpan="XL12 L12 M12 S12" binding="{CreateProject>/MaterialList}" class="MM_Grid">
+                <VBox visible="{CreateProject>/MaterialList/existingMaterial/checkBoxSelected}">
+                    <Label text="{i18n>materialNumber}" class="MM_Label sapUiTinyMarginTop" />
+                    <Input value="{CreateProject>existingMaterial/materialNo}" class="MM_InputText" placeholder="{i18n>addMaterialNumber}" type="Number" autocomplete="false" liveChange="ongetMaterialNumber" suggestionItemSelected="addMaterialSuggestionItemSelected"
+                     showSuggestion="true" suggestionItems="{CreateProject>existingMaterial/MaterialSearchHelpSet}" startSuggestion="2">
+                        <suggestionItems>
+                            <core:ListItem text="{CreateProject>materialNumber}" additionalText="{CreateProject>fieldDesc}"/>
+                        </suggestionItems>
+                    </Input>
+                </VBox>
+            </l:Grid>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <!-- <Button text="{i18n>closeText}" type="Emphasized" class="MM_BtnDefault" press="onCloseAddExistingMaterial"></Button> -->
+                <Button text="{i18n>proceedWithoutReference}" type="Emphasized" class="MM_BtnEmphasized" visible="{path: 'CreateProject>/MaterialList/existingMaterial/checkBoxSelected', formatter: '.formatter.materialProceedBtnVisible'}" press="onProceedExistingMaterial"></Button>
+                <Button text="{i18n>copyText}" type="Emphasized" enabled="{CreateProject>/MaterialList/editable/materialSearchOkBtnEditable}" visible="{path: 'CreateProject>/MaterialList/existingMaterial/checkBoxSelected', formatter: '.formatter.materialCopyBtnVisible'}" class="MM_BtnEmphasized" press="onCopyExistingMaterial"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

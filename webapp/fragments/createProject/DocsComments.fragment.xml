@@ -1,0 +1,258 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:u="sap.ui.unified"
+    xmlns:uiTable="sap.ui.table"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <Panel visible="true" expandable="true" expanded="true" width="auto" binding="{docCommentModel>/documents}" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>documentsWithOpeningBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                    <Text emptyIndicatorMode="On" text="{docCommentModel>attachmentcount}" class="MM_Title"></Text>
+                    <Title text="{i18n>closingBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                </OverflowToolbar>
+            </headerToolbar>
+            <Toolbar class="MM_HideUnderline sapUiSmallMarginBeginEnd">
+                <Text text="{i18n>DocsInfo}" class=""></Text>
+                <ToolbarSpacer />
+                <u:FileUploader id="fileUploader" class="sapUiTinyMarginEnd MM_FileUploader" buttonText="Browse" buttonOnly="false" name="myFileUpload" change="UploadComplete" maximumFileSize="8MB" maximumFilenameLength="255" fileType="txt,jpg,pdf,doc,docx,xlsx,xls,csv,png,jpeg,jpg,eml,msg" enabled="{parts:['CreateProject>/MaterialList/selectedMaterialData/materialStatusId','oAppModel>/sideNavigation/currentView','Repository>/MaterialSelected/documentEditability','oAppModel>/taskDetails/wfTaskType', 'CreateProject>/GeneralData/isUserRequestOwner'], formatter:'.formatter.getFileUploadBtnEnability'}"/>
+                <Button text="{i18n>upload}" type="Emphasized" class="MM_BtnEmphasized" press="onUploadFileAttach" enabled="{parts:['CreateProject>/MaterialList/selectedMaterialData/materialStatusId','oAppModel>/sideNavigation/currentView','Repository>/MaterialSelected/documentEditability','oAppModel>/taskDetails/wfTaskType', 'CreateProject>/GeneralData/isUserRequestOwner'], formatter:'.formatter.getFileUploadBtnEnability'}" ></Button>
+                <Button text="{i18n>SyndicateDocument}" type="Emphasized" class="MM_BtnEmphasized" press="onPressSyndicateDocument" enabled="{parts:['CreateProject>/MaterialList/selectedMaterialData/syndicatedToSap','oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestType','docCommentModel>existingDoc','oAppModel>/sideNavigation/currentView','Repository>/MaterialSelected/documentEditability', 'CreateProject>/GeneralData/isUserRequestOwner','Repository>/MaterialSelected/repoSubmitFor'], formatter:'.formatter.getSyndicateDocumentButtonEnability'}" visible="{parts:['CreateProject>/MaterialList/selectedMaterialData/syndicatedToSap','oAppModel>/taskDetails/wfTaskType','CreateProject>/RequestHeader/data/requestType','docCommentModel>existingDoc','oAppModel>/sideNavigation/currentView','Repository>/MaterialSelected/documentEditability','Repository>/MaterialSelected/repoSubmitFor'], formatter:'.formatter.getSyndicateDocumentButtonVisibility'}" />
+            </Toolbar>
+            
+            <uiTable:Table rows="{docCommentModel>existingDoc}" visibleRowCount="{parts: ['docCommentModel>existingDoc'], formatter: '.formatter.getVisibleRowCount'}" selectionMode="None" class="MM_UiTable sapUiTinyMargin">
+                <uiTable:columns>
+                    <uiTable:Column >
+                        <Label text="{i18n>requestNumber}" />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>requestNumber}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column>
+                        <Label text="{i18n>fileName}" />
+                        <uiTable:template>
+                            <HBox>
+                                <main:Icon class="MM_IconColor sapUiTinyMarginEnd" name="{parts:['docCommentModel>documentType'], formatter:'.formatter.getDocumenticon'}"/>
+                                <Link text="{docCommentModel>documentName}" press="onDownloadDocumentFile" />
+                            </HBox>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column >
+                        <Label text="{i18n>Uploadedby}" />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>createdBy}" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column >
+                        <Label text="{i18n>Uploadedon} {i18n>gmt} " />
+                        <uiTable:template>
+                            <Text text="{docCommentModel>createdOn}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column >
+                        <Label text="{i18n>requestDocumentSyndicationStatus}" />
+                        <uiTable:template>
+                            <Text text="{parts:['docCommentModel>documentSyndicationStatus', 'LookupModel>/materialStatus'],formatter: '.formatter.getMaterialStatusText'}"/>
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column >
+                        <Label text="{i18n>systemStatus}" />
+                        <uiTable:template>
+                            <Link text="{i18n>ViewStatus}" press="onClickShowDocumentSystemStatus($event,${docCommentModel>dmsDocID})" />
+                        </uiTable:template>
+                    </uiTable:Column>
+                    <uiTable:Column >
+                        <Label text="{i18n>action}"/>
+                        <uiTable:template>
+                            <Button class="MM_IconColor sapUiTinyMargin" icon="sap-icon://delete" press="onDeleteDocument" 
+                            enabled="{parts:['oAppModel>/taskDetails/wfTaskInstanceId','docCommentModel>taskInstanceId','CreateProject>/MaterialList/selectedMaterialData/materialStatusId','docCommentModel>createdBy','oAppModel>/userdetails/userMailID','Repository>/MaterialSelected/documentEditability','oAppModel>/sideNavigation/currentView','docCommentModel>documentSyndicationStatus'], formatter:'.formatter.getDocumentDeleteEnability'}"
+                            />
+                        </uiTable:template>
+                    </uiTable:Column>
+                </uiTable:columns>
+            </uiTable:Table>
+        </Panel>
+
+        <Panel expandable="true" expanded="true" width="auto" binding="{docCommentModel>/comments}" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>commentsWithOpeningBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                    <Text emptyIndicatorMode="On" text="{docCommentModel>totalcomments}" class="MM_Title"></Text>
+                    <Title text="{i18n>closingBracket}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                </OverflowToolbar >
+            </headerToolbar>
+
+            <FeedInput value="{docCommentModel>newComment}" post="onPostComments" showIcon="false" placeholder="Enter a comment (Max-500 characters)" maxLength="500" enabled="{parts:['oAppModel>/sideNavigation/currentView', 'oAppModel>/taskDetails/wfTaskType', 'CreateProject>/RequestHeader/data/requestType', 'CreateProject>/MaterialList/selectedMaterialData/materialStatusId', 'Repository>/MaterialSelected/repoSubmitFor', 'CreateProject>/GeneralData/isUserRequestOwner', 'MaterialDetails>/SystemData/repositorySystemStatusId'],formatter: '.formatter.fnMatCommentFeedInputEnable'}"/>
+
+        <Table
+            items="{
+                path: 'docCommentModel>existingComments'
+            }"
+            mode="None"
+            class="MM_table sapUiTinyMargin MM_UiTableCopy"
+            growing="true"
+            growingThreshold="5"
+            width="98%">
+
+            <columns>
+                <Column visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnSetVisibleRepoStatusCol'}" width="10%">
+                    <header>
+                        <Label text="{i18n>materialNumber}" />
+                    </header>
+                </Column>
+
+                <Column visible="{parts:['oAppModel>/sideNavigation/currentView'], formatter:'.formatter.fnSetVisibleRepoStatusCol'}" width="10%">
+                    <header>
+                        <Label text="{i18n>requestNumber}" />
+                    </header>
+                </Column>
+
+                <Column>
+                    <header>
+                        <Label text="{i18n>comment}" />
+                    </header>
+                </Column>
+
+                <Column width="20%">
+                    <header>
+                        <Label text="{i18n>commentedBy}" />
+                    </header>
+                </Column>
+
+                <Column width="15%">
+                    <header>
+                        <Label text="{i18n>time}{i18n>gmt}" />
+                    </header>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <HBox>
+                            <Text wrapping="true" text="{docCommentModel>materialNumber}" />
+                        </HBox>
+
+                        <HBox>
+                            <Text wrapping="true" text="{docCommentModel>requestNumber}" />
+                        </HBox>
+
+                        <HBox>
+                            <Text wrapping="true" text="{docCommentModel>comment}" />
+                        </HBox>
+
+                        <Text wrapping="true" text="{docCommentModel>commentedBy}" />
+
+                        <Text wrapping="true" text="{docCommentModel>commentedOn}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+
+
+            <!-- <List showSeparators="Inner" items="{docCommentModel>result}" class="MM_List">
+                <FeedListItem class="MM_FeedListItem" showIcon="false" sender="{docCommentModel>commentedBy}" timestamp="{docCommentModel>commentedOn}" text="{docCommentModel>comment}" senderActive="false" convertLinksToAnchorTags="All" />
+            </List> -->
+        </Panel>
+
+        <Panel expandable="true" expanded="true" width="auto" class="MM_panel sapUiSmallMarginEnd sapUiSmallMarginBottom" visible="{parts:['CreateProject>/MaterialList/selectedMaterialData/materialListId','oAppModel>/sideNavigation/currentView','oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.getCaseVisibility'}">
+            <headerToolbar>
+                <OverflowToolbar class="">
+                    <Title text="{i18n>casesWithOpeningBracket}" class="MM_Title" level="H5" titleStyle="H5"/>
+                    <Text emptyIndicatorMode="On" text="{= ${caseModel>/totalCases} ? ${caseModel>/totalCases} : '0' }" class="MM_Title"/>
+                    <Title text="{i18n>closingBracket}" class="MM_Title" level="H5" titleStyle="H5"/>
+                </OverflowToolbar >
+            </headerToolbar>
+
+            <VBox>
+                <Toolbar class="MM_HideUnderline">
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://add" text="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onClickAddNewCases" enabled="{parts:['CreateProject>/MaterialList/selectedMaterialData/materialListId','oAppModel>/taskDetails/wfTaskType'], formatter:'.formatter.getCaseEditability'}" />
+                </Toolbar>
+                <Table items="{caseModel>/caseList}" noDataText="{i18n>NoCasesLogged}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                    <columns>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>caseId}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>caseType}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>comment}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>followUpDate}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>resolvedDate}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>caseStatus}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdBy}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>createdDate} {i18n>gmt} "/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>changedBy}"/>
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="{i18n>changedDate}"/>
+                        </Column>
+
+                        <Column hAlign="Begin" width="10%">
+                            <Text text="{i18n>action}"/>
+                        </Column>
+
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{caseModel>caseId}" class=""/>
+                            </cells>
+
+                            <cells>
+                                <Text text="{parts:['caseModel>caseType', 'LookupModel>/MM_CASE_TYPE_REF_LIST'], formatter:'.formatter.getCaseTypeText'}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>comment}" tooltip="{caseModel>comment}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>followUpDate}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>resolvedDate}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{parts:['caseModel>caseStatus', 'LookupModel>/MM_CASE_STATUS_REF_LIST'], formatter:'.formatter.getCaseStatusText'}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>createdBy}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>createdOn}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>changedBy}" class=""/>
+                            </cells>
+                            <cells>
+                                <Text text="{caseModel>changedOn}" class=""/>
+                            </cells>
+                            <cells>
+                                <OverflowToolbar class="MM_OverflowToolbar">
+                                    <OverflowToolbarButton icon="sap-icon://edit" text="{i18n>edit}" tooltip="{i18n>edit}" press="onClickEditCase" class="MM_OverflowBtn" enabled="{parts:['caseModel>caseStatus'], formatter:'.formatter.handleCaseEditButtonEnability'}" />
+                                </OverflowToolbar>
+                            </cells>
+
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

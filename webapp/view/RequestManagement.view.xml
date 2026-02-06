@@ -1,0 +1,192 @@
+<mvc:View controllerName="com.viatris.materialmaster.controller.RequestManagement"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:table="sap.ui.table"
+    xmlns:tnt="sap.tnt">
+    <Page showHeader="true" enableScrolling="true" class="MM_Page">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="{i18n>requestManagement}" class="MM_Title" level="H4" titleStyle="H4"></Title>
+                </contentLeft>
+                <contentRight>
+                    <Button text="{i18n>downloadRequestData}" type="Emphasized" class="MM_BtnEmphasized" press="onExportExcel"></Button>
+                    <Button text="{i18n>createRequest}" type="Emphasized" class="MM_BtnEmphasized" press="onCreateRequest"></Button>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <Panel expandable="true" expanded="true" width="auto" headerText="{i18n>filter}" class="MM_panel sapUiSmallMargin">
+                <headerToolbar>
+                    <OverflowToolbar style="Clear" class="MM_panelHeader_toolBar">
+                        <main:Icon class="sapUiTinyMargin" name="sap-icon://filter" />
+                        <Title text="{i18n>filter}" />
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <l:Grid defaultSpan="XL3 L3 M6 S6" hSpacing="2" class="sapUiTinyMarginBeginEnd" binding="{RequestManagement>/FilterOptions/BasicFilter}">
+                        <VBox>
+                            <Label text="{i18n>requestID}" class="MM_Label" />
+                            <Input value="{RequestManagement>requestID}" class="MM_InputText" placeholder="{i18n>enterRequestID}" type="Number"/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>requestDescription}" class="MM_Label" />
+                            <Input value="{RequestManagement>requestDescription}" class="MM_InputText" placeholder="{i18n>enterRequestDesc}" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>requestType}" class="MM_Label" />
+                            <ComboBox selectedKey="{RequestManagement>requestType}" class="MM_ComboBox" width="100%" placeholder="{i18n>selectRequestType}" items="{LookupModel>/requestType}" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUEST_TYPE_DESCRIPTION}" />
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>requestStatus}" class="MM_Label" />
+                            <ComboBox selectedKey="{RequestManagement>requestStatus}" class="MM_ComboBox" width="100%" placeholder="{i18n>selectRequestStatus}" items="{LookupModel>/requestStatus}" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUEST_STATUS_DESCRIPTION}"/>
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>requestCreationDateRange}" class="MM_Label" required="false"/>
+                            <DateRangeSelection value="{RequestManagement>requestCreationDateRange}" displayFormat="yyyy-MM-dd" placeholder="yyyy-mm-dd - yyyy-mm-dd" valueFormat="yyyy-MM-dd" class="MM_ComboBox" change=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>createdBy}" class="MM_Label" required="false"/>
+                            <ComboBox placeholder="{i18n>entercreatedBy}" width="100%" class="MM_ComboBox" items="{LookupModel>/createdBy}" selectedKey="{RequestManagement>createdBy}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>userEmail}" text="{LookupModel>userEmail}" additionalText="{LookupModel>userName}"/>
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>requestorOrganization}" class="MM_Label" />
+                            <ComboBox width="100%" class="MM_ComboBox" placeholder="{i18n>selectRequestorOrganization}" selectedKey="{RequestManagement>requestorOrganization}" showSecondaryValues="true" filterSecondaryValues= "true" items="{LookupModel>/requestorOrganization}" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_REQUESTOR_ORG_REF_LIST_CODE} - {LookupModel>MM_REQUESTOR_ORG_REF_LIST_DESC}"/>
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text= "" class="MM_Label"/>
+                            <CheckBox text="{i18n>priority}" selected="{RequestManagement>priority}" class="MM_CheckBox" />
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>materialType}" class="MM_Label" />
+                            <ComboBox selectedKey="{RequestManagement>materialType}" class="MM_ComboBox" width="100%" placeholder="{i18n>selectMaterialType}" items="{LookupModel>/requestSpecificLookups/materialType}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_MATERIAL_TYPE_SAP_CODE} - {LookupModel>MM_MATERIAL_TYPE_DESCRIPTION}"/>
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>materialNumber}" class="MM_Label" />
+                            <Input value="{RequestManagement>materialNumber}" width="100%" autocomplete="false" maxLength="10" showSuggestion="true" suggestionItems="{LookupModel>/reqManRefMaterial}" maxSuggestionWidth="18%" liveChange="onLiveSearchReqManRefMaterial" class="MM_InputText" placeholder="{i18n>enterMaterialNumber}" type="Number" startSuggestion="2">
+                                <suggestionItems>
+                                    <core:ListItem text="{LookupModel>}"/>
+                                </suggestionItems>
+                            </Input>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>materialSyndicationStatus}" class="MM_Label" />
+                            <ComboBox selectedKey="{RequestManagement>materialStatus}" class="MM_ComboBox" width="100%" placeholder="{i18n>selectMaterialSyndicationStatus}" items="{LookupModel>/materialStatus}" showSecondaryValues="true" filterSecondaryValues= "true" change="fnHandleComboboxValidation">
+                                <core:ListItem key="{LookupModel>MM_KEY}" text="{LookupModel>MM_MATERIAL_STATUS_DESCRIPTION}"/>
+                            </ComboBox>
+                        </VBox>
+                        <VBox>
+                            <Label text="{i18n>globalMaterialDescription}" class="MM_Label" />
+                            <Input value="{RequestManagement>materialDescription}" class="MM_InputText" placeholder="{i18n>searchGlobalMaterialDescription}"/>
+                        </VBox>
+                        <VBox>
+                            <Label text=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text=""/>
+                        </VBox>
+                        <VBox>
+                            <Label text=""/>
+                        </VBox>
+                        <HBox justifyContent="End">
+                            <Label text="" class="MM_Label" />
+                                <Button text="{i18n>clear}" icon="sap-icon://clear-filter" type="Default" class="MM_BtnDefault sapUiTinyMarginEnd" press="onClearFilterData" />
+                                <Button text="{i18n>search}" icon="sap-icon://filter" type="Emphasized" class="MM_BtnEmphasized sapUiTinyMarginEnd" press="onSearchData"/>
+                                <Button text="{i18n>Advancesearch}" icon="sap-icon://add-filter" type="Emphasized" class="MM_BtnEmphasized " press="onOpenDynamicSearch"/>
+                        </HBox>
+                    </l:Grid>
+                </content>
+            </Panel>
+
+            <OverflowToolbar style="Clear" class="sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
+                <Title text="{i18n>requestDetailsList}" class="MM_Title" level="H5" titleStyle="H5"></Title>
+                <Text emptyIndicatorMode="On" text="{RequestManagement>/PaginationDetails/totalrecords}" class="MM_TextwithLeftBorder sapUiLargeMarginBegin"></Text>
+            </OverflowToolbar>
+
+            <VBox class="sapUiSmallMarginBeginEnd MM_TableContainer">
+                <table:Table visible="true" rows="{RequestManagement>/RequestDetailList}" rowSelectionChange="onGetRequestDetails" selectionMode="Single" selectionBehavior="RowOnly" class="MM_UiTable MaterialListTable sapUiTinyMarginBottom MM_UiTableCopy uiTable" alternateRowColors="true" id="requestManagementTableId">
+                    <table:columns>
+                        <table:Column width="7%" sortProperty="requestNumber">
+                            <Label text="{i18n>requestID}" />
+                            <table:template>
+                                <Label text="{RequestManagement>requestNumber}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column width="19%" sortProperty="requestDescription">
+                            <Label text="{i18n>requestDescription}" />
+                            <table:template>
+                                <Text text="{RequestManagement>requestDescription}"/>
+                            </table:template>
+                        </table:Column>
+                        <table:Column sortProperty="requestTypeId">
+                            <Label text="{i18n>requestType}" />
+                            <table:template>
+                                <Text text="{parts:['RequestManagement>requestTypeId', 'LookupModel>/requestType'],formatter: '.formatter.getRequestTypetext'}"/>
+                            </table:template>
+                        </table:Column>
+                        <table:Column width="10%" sortProperty="requestStatusId">
+                            <Label text="{i18n>requestStatus}" />
+                            <table:template>
+                                <Text text="{parts:['RequestManagement>requestStatusId', 'LookupModel>/requestStatus'],formatter: '.formatter.getStatustext'}"/>
+                            </table:template>
+                        </table:Column>
+                        <table:Column width="10%" sortProperty="materialTypeId">
+                            <Label text="{i18n>materialType}" />
+                            <table:template>
+                                <Text text="{parts:['RequestManagement>materialTypeId', 'LookupModel>/materialType'], formatter:'.formatter.getMaterialTypetext'}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column sortProperty="createdOn">
+                            <Label text="{i18n>createdOn} {i18n>gmt} " />
+                            <table:template>
+                                <Text text="{RequestManagement>createdOn}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column sortProperty="createdBy">
+                            <Label text="{i18n>createdBy}" />
+                            <table:template>
+                                <Text text="{RequestManagement>createdBy}" />
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:Table>
+
+            </VBox>
+
+
+        </content>
+        <footer>
+            <OverflowToolbar binding="{RequestManagement>/PaginationDetails}" visible="{RequestManagement>/PaginationDetails/footerVisible}">
+                <Label text="{i18n>showingPage} {RequestManagement>currentPage} {i18n>ofText} {RequestManagement>totalPages}" textDirection="RTL" design="Bold"/>
+                <ToolbarSpacer/>
+                <HBox renderType="Bare" alignItems="Center" class="MM_PaginationBox_HBox">
+                    <Button icon="sap-icon://nav-back" enabled="{parts:['RequestManagement>currentPage'], formatter:'.formatter.enableLeftNavButton'}" class="MM_PaginationNavButton" press="onPrevPage"/>
+                    <HBox renderType="Bare" alignItems="Center" items="{RequestManagement>totalPagesArray}">
+                        <Link text="{RequestManagement>page}" press="onPageClick" fieldGroupIds="iD_PageNumber" class="MM_PaginationLinkColor" wrapping="true"/>
+                    </HBox>
+                    <Button icon="sap-icon://navigation-right-arrow" enabled="{parts:['RequestManagement>currentPage','RequestManagement>totalPages'], formatter:'.formatter.enableRightNavButton'}" class="MM_PaginationNavButton" press="onNextPage"/>
+                </HBox>
+                <HBox class="sapUiSmallMargin">
+                    <Label text="{i18n>selectRowsPerPage}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+                    <Select items="{RequestManagement>possibleRowsPerPage}" selectedKey="{RequestManagement>selectRowsPerPage}" change="onSelectPageSize">
+                        <core:Item text="{RequestManagement>key}" key="{RequestManagement>key}"/>
+                    </Select>
+                </HBox>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

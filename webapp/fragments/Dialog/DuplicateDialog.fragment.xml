@@ -1,0 +1,77 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog id="id_DuplicateCheck" title="{i18n>MaterialDuplicateDetails}" class="MM_FragmentHeader" draggable="true">
+        <Table items="{DuplicateMaterial>/DuplicateCheckData}" class="MM_table sapUiSmallMarginBottom" noDataText="{i18n>NoDuplicateMaterialFound}">
+            <columns>
+                <Column hAlign="Center" mergeDuplicates="true">
+                    <Text text="{i18n>materialNumber}" />
+                </Column>
+                <Column hAlign="Center" mergeDuplicates="true" mergeFunctionName="data#materialNumber">
+                    <Text text="{i18n>globalMaterialDescription}" />
+                </Column>
+                <!-- <Column hAlign="Center" mergeDuplicates="true" mergeFunctionName="data#materialNumber">
+                    <Text text="{i18n>requestedMaterialDescription}" />
+                </Column> -->
+                <Column hAlign="Center" mergeDuplicates="true" mergeFunctionName="data#materialNumber">
+                    <Text text="{i18n>livery}" />
+                </Column>
+                <Column hAlign="Center" mergeDuplicates="true" mergeFunctionName="data#materialNumber">
+                    <Text text="{i18n>tradeName}" />
+                </Column>
+                <Column hAlign="Center">
+                    <Text text="{i18n>Alternate_ID_Type}" />
+                </Column>
+                <Column hAlign="Center">
+                    <Text text="{i18n>Field_Value}" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{DuplicateMaterial>materialNumber}" />
+                    </cells>
+                    <cells>
+                        <Text text="{DuplicateMaterial>globalMaterialDescription}">
+                            <customData>
+                                <core:CustomData key="materialNumber" value="{DuplicateMaterial>materialNumber}" />
+                            </customData>
+                        </Text>
+                    </cells>
+                    <!-- <cells>
+                        <Text text="{DuplicateMaterial>requestedMaterialDescription}">
+                            <customData>
+                                <core:CustomData key="materialNumber" value="{DuplicateMaterial>materialNumber}" />
+                            </customData>
+                        </Text>
+                    </cells> -->
+                    <cells>
+                        <Text text="{parts:['DuplicateMaterial>livery', 'LookupModel>/1020'], formatter:'.formatter.getLiveryDescription'}" class="">
+                            <customData>
+                                <core:CustomData key="materialNumber" value="{DuplicateMaterial>materialNumber}" />
+                            </customData>
+                        </Text>
+                    </cells>
+                    <cells>
+                        <Text text="{DuplicateMaterial>tradeName}">
+                            <customData>
+                                <core:CustomData key="materialNumber" value="{DuplicateMaterial>materialNumber}" />
+                            </customData>
+                        </Text>
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['DuplicateMaterial>alternate_ID_Type', 'LookupModel>/MM_ALTERNATE_ID_TYPE_REF_LIST'], formatter:'.formatter.getAlternateIdTypeText'}" />
+                    </cells>
+                    <cells>
+                        <Text text="{parts:['DuplicateMaterial>field_Value', 'LookupModel>/MM_ALTERNATE_ID_FIELD_VALUE_REF_LIST'], formatter:'.formatter.getAlternateIdFieldText'}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button text="{i18n>cancel}" type="Emphasized" press="onCloseDuplicateCheck" />
+            <Button text="{i18n>Continue}" type="Emphasized" press="onProceedDuplicateCheck" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,33 @@
+{
+    "appDetails": {
+        "appEnvironment": "DEV"
+    },
+    "sideNavigation": {
+        "expandable": true,
+        "visible": false,
+        "icon": {
+            "RequestManagement": "sap-icon://folder-blank",
+            "Report": "sap-icon://line-chart",
+            "MassRequest": "sap-icon://checklist",
+            "Repository": "sap-icon://master-task-triangle"
+        },
+        "currentView": "",
+        "sidePanelItemVisibility" : {
+            "RequestManagement" : true,
+            "MassRequest" : true,
+            "Repository" : true
+        }
+    },
+    "taskDetails": {
+        "wfTaskType": "Request_Form_Submission",
+        "taskId": null
+    },
+    "userdetails": {
+        "userName": "",
+        "userMailID": "",
+        "userRole": []
+    },
+    "GeneralData": {
+        "UserComments": {}
+    }
+}

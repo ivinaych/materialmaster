@@ -1,0 +1,97 @@
+{
+    "FilterOptions": {
+        "AdvanceFilter": [],
+        "All_FilterFields": [],
+        "Applicable_FilterFields": [],
+        "BasicFilter": {
+            "materialNumber": [],
+            "materialDescription": "",
+            "materialType": "",
+            "plant": "",
+            "status": "",
+            "MaterialSearchHelpSet": []
+        }
+    },
+    "PaginationDetails": {
+        "totalPages": 1,
+        "currentPage": 1,
+        "rowsPerPage": 10,
+        "selectRowsPerPage": 10,
+        "totalrecords": 0,
+        "totalPagesArray": [],
+        "trayDetails": {
+            "start": 1,
+            "end": 5
+        },
+        "footerVisible": false,
+        "possibleRowsPerPage": [
+            {
+                "key": 10
+            },
+            {
+                "key": 20
+            },
+            {
+                "key": 50
+            },
+            {
+                "key": 100
+            }
+        ]
+    },
+    "DocComments": {
+        "documents": {
+            "attachedDocument": {},
+            "searchDocument": "",
+            "existingDoc": []
+        },
+        "comments": {
+            "userComment": "",
+            "existingComments": [],
+            "newComment": ""
+        }
+    },
+    "MaterialsList": [],
+    "MaterialSelected": {
+        "isMaterialDetailsVisible": false,
+        "selectedMaterialDetailsTab": "ProductData",
+        "showRepoFooterActions": false,
+        "selectedIndex": null,
+        "selectedPath": null,
+        "documentEditability":false
+    },
+    "ProductData": {
+        "productDataOutline": {},
+        "outlineReference": null
+    },
+    "GeneralData":{
+        "attributeListProdData": {}
+    },
+    "RepositoryHeaderData": {},
+    "RepoAuditLogDownload": {
+        "downloadParams": {
+            "fieldName": "",
+            "materialNumber": [],
+            "newValue": "",
+            "oldValue": "",
+            "requestNumber": null,
+            "updatedById": "",
+            "updatedOn": ""
+        },
+        "MaterialSearchHelpSet": [],
+        "updatedByHelpSet": []
+    },
+    "WorkflowDetails": {
+        "visibility" : {
+            "showWorkflowDetailsTab" : false,
+            "showWorkflowDetails" : false,
+            "showChildRequestMessage" : false,
+            "showNoWorkflowTasksMessage" : false
+        },
+        "processDetails": {},
+        "tasksDetail": [],
+        "currentTaskInfo": {},
+        "workflowRequestor": "",
+        "workflowGetContextResponse": []
+    }
+}

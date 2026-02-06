@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="auto" horizontalScrolling="false" draggable="true" title="{i18n>syndicationInformation}" class="MM_FragmentHeader" id="id_SyndicationInfoRepo">
+        <List items="{path: 'Repository>/syndicateParallelRequestResponses', sorter: { path: 'status', group: true , descending: true}}">
+            <StandardListItem title="{Repository>msg}" icon="sap-icon://begin" class=""/>
+        </List>
+        <buttons>
+            <Button text="{i18n>okText}" press="onOkSyndicationInfoRepo" type="Emphasized" class="MM_BtnEmphasized"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

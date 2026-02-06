@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <Toolbar class="MM_HideUnderline">
+            <ToolbarSpacer />
+            <!-- <Button icon="sap-icon://refresh" type="Default" tooltip= "{i18n>refresh}" press="fnGetRequestChangeRequestLog" class="MM_BtnDefault"/> -->
+
+            <SearchField width="auto" placeholder="{i18n>searchByFieldName}" search="onSearchRequestChangeLog" class="MM_SearchField sapUiSmallMarginBeginEnd" />
+        </Toolbar>
+        <VBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTop MM_TableContainer">
+            <Table items="{CreateProject>/requestChangeHistory/historyDetails}" noDataText="{i18n>NoDataAvailable}" contextualWidth="Auto" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders">
+                <columns>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>uiView}" class="" />
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>fieldName}" class="" />
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>oldValue}" class="" />
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>newValue}" class="" />
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>updatedBy}" class="" />
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>updatedOn} {i18n>gmt} " class="" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{CreateProject>uiView}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{path: 'CreateProject>fieldName', formatter: '.formatter.geti18nName'}" class=""/>
+                        </cells>
+                        <cells>
+                            <Text text="{parts:['CreateProject>fieldName', 'CreateProject>oldValue'],formatter: '.formatter.getRequestChangeNewValue'}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{parts:['CreateProject>fieldName', 'CreateProject>newValue'],formatter: '.formatter.getRequestChangeNewValue'}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{CreateProject>changedBy}" class="" />
+                        </cells>
+                        <cells>
+                            <Text text="{CreateProject>changedOn}" class="" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+            <OverflowToolbar binding="{CreateProject>/PaginationDetailsRequestChangeLog}" visible="{CreateProject>/PaginationDetailsRequestChangeLog/footerVisible}">
+                <Label text="{i18n>showingPage} {CreateProject>currentPage} {i18n>ofText} {CreateProject>totalPages}" textDirection="RTL" design="Bold"/>
+                <ToolbarSpacer/>
+                <HBox renderType="Bare" alignItems="Center" class="MM_PaginationBox_HBox">
+                    <Button icon="sap-icon://nav-back" enabled="{parts:['CreateProject>currentPage'], formatter:'.formatter.enableLeftNavButton'}" class="MM_PaginationNavButton" press="onPrevPageRequestChangeLog"/>
+                    <HBox renderType="Bare" alignItems="Center" items="{CreateProject>totalPagesArray}">
+                        <Link text="{CreateProject>page}" press="onPageClickRequestChangeLog" fieldGroupIds="iD_PageNumber" class="MM_PaginationLinkColor" wrapping="true"/>
+                    </HBox>
+                    <Button icon="sap-icon://navigation-right-arrow" enabled="{parts:['CreateProject>currentPage','CreateProject>totalPages'], formatter:'.formatter.enableRightNavButton'}" class="MM_PaginationNavButton" press="onNextPageRequestChangeLog"/>
+                </HBox>
+                <HBox class="sapUiSmallMargin">
+                    <Label text="{i18n>selectRowsPerPage}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+                    <Select items="{CreateProject>possibleRowsPerPage}" selectedKey="{CreateProject>selectRowsPerPage}" change="onSelectPageSizeRequestChangeLog">
+                        <core:Item text="{CreateProject>key}"/>
+                    </Select>
+                </HBox>
+            </OverflowToolbar>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentWidth="20%" horizontalScrolling="false" draggable="true" title="{i18n>workflowValidationSummary}" class="MM_FragmentHeader" id="id_WfValidationSummary">
+        <Table items="{CreateProject>/WorkflowDetails/workflowGetContextResponse}" noDataText="{i18n>noError}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                        <columns>
+                            <Column hAlign="Begin" width="15%" >
+                                <Text text="{i18n>requestNumber}"/>
+                            </Column>
+                            <Column hAlign="Begin" width="20%">
+                                <Text text="{i18n>attributeId}" class=""/>
+                            </Column>
+                            <Column hAlign="Begin" width="15%">
+                                <Text text="{i18n>validationStatus}" class="" />
+                            </Column>
+                            <Column hAlign="Begin" width="50%">
+                                <Text text="{i18n>errorMessage}" class="" />
+                            </Column>
+
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Text text="{CreateProject>requestNumber}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{CreateProject>attributeId}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{CreateProject>validationStatus}" class=""/>
+                                </cells>
+                                <cells>
+                                    <Text text="{CreateProject>errorMessage}" class=""/>
+                                </cells>
+                               
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>okText}" press="onPressOkValidationSummary" type="Emphasized" class="MM_BtnEmphasized"></Button>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

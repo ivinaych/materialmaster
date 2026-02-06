@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog contentHeight="70%" contentWidth="70%" showHeader="true" id="id_mandatoryField" draggable="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title level="H4" titleStyle="H4" text="{i18n>fieldsMissing}" class="MM_Title"/>
+                </contentLeft>
+            </Bar>
+        </customHeader>
+        <content>
+            <!-- table changes need to be done . Pending task  -->
+            <Table items="" noDataText="{i18n>Noplantsavailable}" mode="None" alternateRowColors="true" class="MM_table" sticky="ColumnHeaders" showSeparators="None">
+                <columns>
+                    <Column hAlign="Begin" width="15%">
+                        <Text text="{i18n>fieldName}"/>
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>Plantdesc}"/>
+                    </Column>
+                    <Column hAlign="Begin" width="10%">
+                        <Text text="{i18n>action}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text text="{CreateProject>plant}" class=" " />
+                        </cells>
+                        <cells>
+                            <Text text="{CreateProject>name}" class="" />
+                        </cells>
+                        <cells>
+                            <Button icon="sap-icon://delete" press="onDeleteSelectedPlant" class="MM_BtnDefault"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

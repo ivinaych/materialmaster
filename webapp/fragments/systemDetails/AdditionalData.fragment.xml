@@ -1,0 +1,151 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:main="sap.ui.webc.main"
+    xmlns:core="sap.ui.core">
+
+    <IconTabBar selectedKey="{MaterialDetails>/SystemDetails/AdditionalData/selectedAdditionalTab}" backgroundDesign="Transparent" headerMode="Inline" applyContentPadding="false" expanded="{device>/isNoPhone}" expandable="false" class="MM_IconTabBarMD sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter text="{i18n>Description}" key="Description">
+                <Table items="{MaterialDetails>/SystemDetails/AdditionalData/descriptionData/data}" noDataText="{i18n>noDescription}" alternateRowColors="true" class="MM_table sapUiSmallMarginTop" sticky="ColumnHeaders" showSeparators="None">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text=""/>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onPressAddDescription" enabled="{path: 'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descAddBtnEnabled', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Begin" width="20%">
+                            <Text text="{i18n>MM_LANGUAGE}" class="" />
+                        </Column>
+                        <Column hAlign="Begin" width="70%">
+                            <Text text= "{i18n>MM_MATERIAL_DESCRIPTION_MAKT_MAKTX}" class="" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text= "{i18n>action}" class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                            <ColumnListItem type="Inactive"
+                                highlight="{= ${MaterialDetails>isDeleted} ? 'Error' : 'None' }">
+                            <cells>
+                                <Text text="{MaterialDetails>MM_LANGUAGE}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{MaterialDetails>MM_MATERIAL_DESCRIPTION_MAKT_MAKTX}" class=" " />
+                            </cells>
+                            <cells>
+                                <HBox>
+                                    <!-- When isDeleted is true -->
+                                    <ObjectStatus
+                                        visible="{= ${MaterialDetails>isDeleted} === true }"
+                                        text="Deleted"
+                                        state="Error"
+                                        icon="sap-icon://cancel"
+                                        active="false" />
+
+                                <!-- When isDeleted is false -->
+                                <HBox visible="{= !${MaterialDetails>isDeleted} }" class="MM_SpaceAround">
+                                    <Button icon="sap-icon://edit" tooltip="{i18n>Edit}" type="Default" class="MM_BtnDefault_No_Border"
+                                        press="onEditDescrAdditionalData"
+                                        enabled="{parts:[
+                                            'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descAddBtnEnabled',
+                                            'MaterialDetails>MM_LANGUAGE'
+                                        ], formatter:'.formatter.fnSetEditEnabilityForAdditionalData'}" />
+
+                                    <Button icon="sap-icon://delete" type="Default" tooltip="{i18n>Delete}" class="MM_BtnDefault_No_Border sapUiMediumMarginBegin"
+                                        press="onDeleteDescrAdditionalData"
+                                        enabled="{parts:[
+                                            'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descAddBtnEnabled',
+                                            'MaterialDetails>MM_LANGUAGE',
+                                            'MaterialDetails>MM_NEWLY_ADDED',
+                                            'MaterialDetails>isModified',
+                                            'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descMandatory',
+                                            'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descMandatoryLanguage', 
+                                            'CreateProject>/RequestHeader/data/requestType',
+                                            'oAppModel>/taskDetails/wfTaskType',
+                                            'oAppModel>/sideNavigation/currentView'
+                                        ], formatter:'.formatter.fnSetDeleteEnabilityForAdditionalData'}" />
+                                    </HBox>
+                                </HBox>
+                            </cells>
+                            <cells>
+                                <!-- <HBox class="MM_SpaceAround">
+                                    <Button icon="sap-icon://edit" tooltip="{i18n>Edit}" type="Default" class="MM_BtnDefault_No_Border" press="onEditDescrAdditionalData" enabled="{parts:[ 'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddBtnEnabled','MaterialDetails>MM_LANGUAGE'], formatter:'.formatter.fnSetEditEnabilityForAdditionalData'}"/>
+                                    <Button icon="sap-icon://delete" type="Default" tooltip="{i18n>Delete}" class="MM_BtnDefault_No_Border" press="onDeleteDescrAdditionalData" enabled="{parts:[ 'MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descAddBtnEnabled', 'MaterialDetails>MM_LANGUAGE','MaterialDetails>MM_NEWLY_ADDED', 'MaterialDetails>isModified','MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descMandatory','MaterialDetails>/SystemDetails/AdditionalData/descriptionData/descMandatoryLanguage', 'CreateProject>/RequestHeader/data/requestType'], formatter:'.formatter.fnSetDeleteEnabilityForAdditionalData'}" />
+                                </HBox> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </IconTabFilter>
+            <IconTabFilter text="{i18n>basicDataText}" key="BasicDataText">
+                <Table items="{MaterialDetails>/SystemDetails/AdditionalData/basicDataText/data}" noDataText="{i18n>noBasicDataText}" alternateRowColors="true" class="MM_table sapUiSmallMarginTop" sticky="ColumnHeaders" showSeparators="None">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text=""/>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://add" text="{i18n>Add}" tooltip="{i18n>Add}" type="Default" class="MM_BtnDefault_No_Border" press="onPressAddBasicDataText" enabled="{path: 'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddBtnEnabled', formatter:'.formatter.fnSetEditabilityforNonSAPFields'}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column hAlign="Begin" width="20%">
+                            <Text text="{i18n>MM_LANGUAGE}" class="" />
+                        </Column>
+                        <Column hAlign="Begin" width="70%">
+                            <Text text= "{i18n>MM_MATERIAL_LONG_DESC_STXH_TDNAME}" class="" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text= "{i18n>action}" class="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Inactive"
+                            highlight="{= ${MaterialDetails>isDeleted} ? 'Error' : 'None' }">
+                            <cells>
+                                <Text text="{MaterialDetails>MM_LANGUAGE}" class="" />
+                            </cells>
+                            <cells>
+                                <Text text="{MaterialDetails>MM_MATERIAL_LONG_DESC_STXH_TDNAME}" class=" " />
+                            </cells>
+                            <cells>
+                            <HBox>
+                                    <!-- When isDeleted is true -->
+                                    <ObjectStatus
+                                        visible="{= ${MaterialDetails>isDeleted} === true }"
+                                        text="Deleted"
+                                        state="Error"
+                                        icon="sap-icon://cancel"
+                                        active="false" />
+
+                                <!-- When isDeleted is false -->
+                                <HBox visible="{= !${MaterialDetails>isDeleted} }" class="MM_SpaceAround">
+                                    <Button icon="sap-icon://edit" tooltip="{i18n>Edit}" type="Default" class="MM_BtnDefault_No_Border" press="onEditBasicDataText" enabled="{parts:[ 'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddBtnEnabled','MaterialDetails>MM_LANGUAGE'], formatter:'.formatter.fnSetEditEnabilityForAdditionalData'}"/>
+                                    <Button icon="sap-icon://delete" type="Default" tooltip="{i18n>Delete}" class="MM_BtnDefault_No_Border" press="onDeleteBasicDataText" enabled="{parts:[
+                                            'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextAddBtnEnabled',
+                                            'MaterialDetails>MM_LANGUAGE',
+                                            'MaterialDetails>MM_NEWLY_ADDED',
+                                            'MaterialDetails>isModified',
+                                            'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextMandatory',
+                                            'MaterialDetails>/SystemDetails/AdditionalData/basicDataText/basicTextMandatoryLanguage', 
+                                            'CreateProject>/RequestHeader/data/requestType',
+                                            'oAppModel>/taskDetails/wfTaskType',
+                                            'oAppModel>/sideNavigation/currentView'
+                                        ], formatter:'.formatter.fnSetDeleteEnabilityForAdditionalData'}"/>
+                                </HBox>
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </IconTabFilter>
+            <IconTabFilter text="{i18n>UnitsOfMeasure}" key="UnitsOfMeasure">
+                <core:Fragment fragmentName="com.viatris.materialmaster.fragments.systemDetails.AdditionalUOM" type="XML"/>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

@@ -1,0 +1,100 @@
+{
+    "requestManagement": {
+        "title": [
+            {
+                "key": "RequestHeader",
+                "selected": true,
+                "name": "REQUEST_HEADER"
+            },
+            {
+                "key": "MaterialList",
+                "selected": true,
+                "name": "MATERIAL_HEADER"
+            },
+            {
+                "key": "ProductData",
+                "selected": false,
+                "name": "PRODUCT_DATA"
+            },
+            {
+                "key": "AlternateId",
+                "selected": false,
+                "name": "ALTERNATE_ID"
+            },
+            {
+                "key": "OrganizationalData",
+                "selected": false,
+                "name": "ORGANIZATIONAL_DATA"
+            },
+            {
+                "key": "SystemData",
+                "selected": false,
+                "name": "SYSTEM_DATA"
+            },
+            {
+                "key": "BasicData1",
+                "selected": false,
+                "name": "BASIC_DATA1"
+            },
+            {
+                "key": "BasicData2",
+                "selected": false,
+                "name": "BASIC_DATA2"
+            },
+            {
+                "key": "AdditionalDataDesc",
+                "selected": false,
+                "name": "ADD_DATA_DESC"
+            },
+            {
+                "key": "AdditionalDataBasicDataText",
+                "selected": false,
+                "name": "ADD_DATA_BASIC_DATA_TEXT"
+            },
+            {
+                "key": "AdditionalUOM",
+                "selected": false,
+                "name": "ADDITIONAL_UOM"
+            }
+        ]
+    },
+    "repository": {
+        "title": [
+            {
+                "key": "materialList",
+                "selected": true,
+                "name": "MATERIAL_HEADER"
+            },
+            {
+                "key": "ProductData",
+                "selected": false,
+                "name": "PRODUCT_DATA"
+            },
+            {
+                "key": "AlternateId",
+                "selected": false,
+                "name": "ALTERNATE_ID"
+            },
+            {
+                "key": "OrganizationalData",
+                "selected": false,
+                "name": "ORGANIZATIONAL_DATA"
+            },
+            {
+                "key": "SystemData",
+                "selected": false,
+                "name": "SYSTEM_DATA"
+            },
+            {
+                "key": "AdditionalDataDesc",
+                "selected": false,
+                "name": "ADD_DATA_DESC"
+            },
+            {
+                "key": "AdditionalDataBasicDataText",
+                "selected": false,
+                "name": "ADD_DATA_BASIC_DATA_TEXT"
+            }
+        ]
+    }
+}
